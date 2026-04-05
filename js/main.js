@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initImageGalleries();
   initThesisSteps();
   initVppSteps();
+  initLightbox();
 });
 
 /* ----------------------------------------
@@ -302,14 +303,18 @@ function initThesisSteps() {
     });
   });
 
-  // Prev / Next
-  prevBtn.addEventListener('click', () => {
-    if (current > 1) goToStep(current - 1);
-  });
+  // Prev / Next (if present)
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (current > 1) goToStep(current - 1);
+    });
+  }
 
-  nextBtn.addEventListener('click', () => {
-    if (current < total) goToStep(current + 1);
-  });
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      if (current < total) goToStep(current + 1);
+    });
+  }
 }
 
 /* ----------------------------------------
@@ -342,6 +347,44 @@ function initVppSteps() {
   }
 
   stepBtns.forEach(btn => btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.step))));
-  prevBtn.addEventListener('click', () => { if (current > 1) goToStep(current - 1); });
-  nextBtn.addEventListener('click', () => { if (current < total) goToStep(current + 1); });
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => { if (current > 1) goToStep(current - 1); });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => { if (current < total) goToStep(current + 1); });
+  }
+}
+
+/* ----------------------------------------
+   Lightbox for images
+   ---------------------------------------- */
+function initLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  if (!lightbox) return;
+
+  // All clickable images
+  const targets = document.querySelectorAll('.img-showcase__img, .thesis-panel__preview img');
+
+  targets.forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Close lightbox
+  lightbox.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
 }

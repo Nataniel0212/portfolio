@@ -122,11 +122,12 @@ button {
 }
 
 .nav__logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   color: var(--text-primary);
   transition: color var(--transition);
+  white-space: nowrap;
 }
 
 .nav__logo:hover {
@@ -305,17 +306,6 @@ button {
   padding: 0 24px;
 }
 
-.hero__greeting {
-  font-size: 1.125rem;
-  font-weight: 400;
-  color: var(--accent-light);
-  letter-spacing: 0.05em;
-  margin-bottom: 12px;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s 0.2s forwards;
-}
-
 .hero__name {
   font-size: clamp(2.5rem, 7vw, 5rem);
   font-weight: 700;
@@ -324,17 +314,17 @@ button {
   margin-bottom: 16px;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 0.8s 0.4s forwards;
+  animation: fadeInUp 0.8s 0.2s forwards;
 }
 
 .hero__title {
   font-family: var(--font-mono);
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   color: var(--text-secondary);
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   height: 1.6em;
   opacity: 0;
-  animation: fadeIn 0.8s 0.8s forwards;
+  animation: fadeIn 0.8s 0.5s forwards;
 }
 
 .hero__cursor {
@@ -346,17 +336,6 @@ button {
   50% { opacity: 0; }
 }
 
-.hero__description {
-  font-size: 1.0625rem;
-  color: var(--text-secondary);
-  max-width: 580px;
-  margin: 0 auto 40px;
-  line-height: 1.7;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s 1s forwards;
-}
-
 .hero__cta {
   display: flex;
   gap: 16px;
@@ -364,7 +343,7 @@ button {
   flex-wrap: wrap;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 0.8s 1.2s forwards;
+  animation: fadeInUp 0.8s 0.8s forwards;
 }
 
 /* Buttons */
@@ -409,31 +388,17 @@ button {
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
-  animation: fadeIn 0.8s 1.6s forwards;
+  animation: fadeIn 0.8s 1.2s forwards;
 }
 
-.hero__scroll-line {
-  width: 1px;
-  height: 60px;
-  background: var(--border-light);
-  position: relative;
-  overflow: hidden;
+.hero__arrow {
+  color: var(--accent-light);
+  animation: bounceArrow 2s ease-in-out infinite;
 }
 
-.hero__scroll-line::after {
-  content: '';
-  position: absolute;
-  top: -60px;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: linear-gradient(to bottom, transparent, var(--accent));
-  animation: scrollLine 2s ease-in-out infinite;
-}
-
-@keyframes scrollLine {
-  0% { top: -60px; }
-  100% { top: 60px; }
+@keyframes bounceArrow {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(8px); opacity: 1; }
 }
 
 @keyframes fadeInUp {
@@ -454,6 +419,18 @@ button {
 .section {
   padding: 120px 0;
   position: relative;
+}
+
+.hero + .section::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--bg-primary));
+  pointer-events: none;
+  z-index: 1;
 }
 
 .section__title {
@@ -759,6 +736,101 @@ button {
   display: inline-flex;
 }
 
+/* Project dropdowns */
+.project__dropdown {
+  margin-bottom: 8px;
+}
+
+.project__dropdown-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color var(--transition);
+}
+
+.project__dropdown-title::-webkit-details-marker { display: none; }
+
+.project__dropdown-title::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid var(--accent-light);
+  border-bottom: 2px solid var(--accent-light);
+  transform: rotate(-45deg);
+  transition: transform var(--transition);
+}
+
+.project__dropdown[open] .project__dropdown-title::before {
+  transform: rotate(45deg);
+}
+
+.project__dropdown-title:hover {
+  color: var(--text-primary);
+}
+
+.project__dropdown-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 0 4px 14px;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition);
+  cursor: zoom-out;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox__img {
+  max-width: 85vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color var(--transition);
+  z-index: 2001;
+}
+
+.lightbox__close:hover {
+  color: var(--text-primary);
+}
+
+/* Clickable images */
+.img-showcase__img,
+.thesis-panel__preview img {
+  cursor: zoom-in;
+}
+
 /* Thesis Project - Full Width */
 .project--thesis {
   text-align: center;
@@ -955,11 +1027,12 @@ button {
   background: var(--accent-glow);
 }
 
-.thesis-panel__badge--warning {
-  border-color: var(--warning);
-  color: var(--warning);
-  background: var(--warning-glow);
-}
+.thesis-panel__badge--step1 { border-color: #22c55e; color: #22c55e; background: rgba(34,197,94,0.1); }
+.thesis-panel__badge--step2 { border-color: #3b82f6; color: #3b82f6; background: rgba(59,130,246,0.1); }
+.thesis-panel__badge--step3 { border-color: #f59e0b; color: #f59e0b; background: rgba(245,158,11,0.1); }
+.thesis-panel__badge--step4 { border-color: #a855f7; color: #a855f7; background: rgba(168,85,247,0.1); }
+.thesis-panel__badge--step5 { border-color: #10b981; color: #10b981; background: rgba(16,185,129,0.1); }
+.thesis-panel__badge--step6 { border-color: #ef4444; color: #ef4444; background: rgba(239,68,68,0.1); }
 
 .thesis-panel__list {
   list-style: none;
@@ -1113,10 +1186,10 @@ button {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   padding: 4px 10px;
-  background: rgba(245, 158, 11, 0.08);
-  border: 1px solid rgba(245, 158, 11, 0.2);
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: 100px;
-  color: #fbbf24;
+  color: #a78bfa;
 }
 
 /* VPP visual flow diagram */

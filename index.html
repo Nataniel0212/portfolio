@@ -15,7 +15,7 @@
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
-      <a href="#hero" class="nav__logo">NA</a>
+      <a href="#hero" class="nav__logo">Nataniel Ataseven</a>
       <div class="nav__links">
         <a href="#about" class="nav__link">About</a>
         <a href="#projects" class="nav__link">Projects</a>
@@ -46,20 +46,18 @@
       <div class="hero__grid"></div>
     </div>
     <div class="hero__content">
-      <p class="hero__greeting">Hi, I'm</p>
       <h1 class="hero__name">Nataniel Ataseven</h1>
       <p class="hero__title">
         <span class="hero__typed" id="typedText"></span>
         <span class="hero__cursor">|</span>
       </p>
-      <p class="hero__description">Building solutions from premium web experiences to AI&#8209;powered applications and fraud detection systems.</p>
       <div class="hero__cta">
         <a href="#projects" class="btn btn--primary">View My Work</a>
         <a href="#contact" class="btn btn--outline">Get In Touch</a>
       </div>
     </div>
     <div class="hero__scroll">
-      <div class="hero__scroll-line"></div>
+      <svg class="hero__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
     </div>
   </section>
 
@@ -116,21 +114,27 @@
             <span class="project__category">E-Commerce Website</span>
             <h3 class="project__title">STANEK — Premium Streetwear</h3>
             <p class="project__description">A luxury e-commerce website for a Swedish streetwear brand. Features cinematic video backgrounds, smooth GSAP animations, a loading screen with staggered text reveal, magnetic hover effects, and a fully functional shopping cart with localStorage persistence. Designed with a dark premium aesthetic — gold accents on deep black.</p>
-            <div class="project__features">
-              <span class="feature-tag">Cinematic Video Hero</span>
-              <span class="feature-tag">GSAP Animations</span>
-              <span class="feature-tag">Shopping Cart</span>
-              <span class="feature-tag">Responsive Design</span>
-              <span class="feature-tag">Product Gallery</span>
-              <span class="feature-tag">Contact Form</span>
-            </div>
-            <div class="project__tech">
-              <span class="tech-badge">HTML5</span>
-              <span class="tech-badge">CSS3</span>
-              <span class="tech-badge">JavaScript</span>
-              <span class="tech-badge">GSAP</span>
-              <span class="tech-badge">PHP</span>
-            </div>
+            <details class="project__dropdown">
+              <summary class="project__dropdown-title">Features</summary>
+              <div class="project__dropdown-content">
+                <span class="feature-tag">Cinematic Video Hero</span>
+                <span class="feature-tag">GSAP Animations</span>
+                <span class="feature-tag">Shopping Cart</span>
+                <span class="feature-tag">Responsive Design</span>
+                <span class="feature-tag">Product Gallery</span>
+                <span class="feature-tag">Contact Form</span>
+              </div>
+            </details>
+            <details class="project__dropdown">
+              <summary class="project__dropdown-title">Tech Stack</summary>
+              <div class="project__dropdown-content">
+                <span class="tech-badge">HTML5</span>
+                <span class="tech-badge">CSS3</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">GSAP</span>
+                <span class="tech-badge">PHP</span>
+              </div>
+            </details>
             <a href="https://nataniel0212.github.io/stanek-website/index.html" class="btn btn--primary project__link" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-right:8px"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
               View Live Site
@@ -221,7 +225,7 @@
                 <h4 class="thesis-panel__title">Step 1: Scene Detection</h4>
                 <p class="thesis-panel__subtitle">Analyze video frame by frame</p>
               </div>
-              <span class="thesis-panel__badge">TransNetV2</span>
+              <span class="thesis-panel__badge thesis-panel__badge--accent">TransNetV2</span>
             </div>
             <div class="thesis-panel__split">
               <div class="thesis-panel__text">
@@ -260,7 +264,7 @@
                 <h4 class="thesis-panel__title">Step 2: Clip Extraction</h4>
                 <p class="thesis-panel__subtitle">Split, trim &amp; deduplicate</p>
               </div>
-              <span class="thesis-panel__badge">Hash-based dedup</span>
+              <span class="thesis-panel__badge thesis-panel__badge--accent">Hash-based dedup</span>
             </div>
             <ul class="thesis-panel__list">
               <li>Video is split at each detected scene boundary into individual numbered clips using FFmpeg stream copy (no re-encoding, instant)</li>
@@ -327,7 +331,7 @@
                 <h4 class="thesis-panel__title">Step 4: Video Compilation</h4>
                 <p class="thesis-panel__subtitle">Assemble into finished videos</p>
               </div>
-              <span class="thesis-panel__badge">Multi-format</span>
+              <span class="thesis-panel__badge thesis-panel__badge--accent">Multi-format</span>
             </div>
             <div class="thesis-panel__split">
               <div class="thesis-panel__text">
@@ -367,7 +371,7 @@
                 <h4 class="thesis-panel__title">Step 5: AI Metadata Generation</h4>
                 <p class="thesis-panel__subtitle">GPT-4o powered</p>
               </div>
-              <span class="thesis-panel__badge">~$0.02/video</span>
+              <span class="thesis-panel__badge thesis-panel__badge--accent">~$0.02/video</span>
             </div>
             <div class="thesis-panel__split">
               <div class="thesis-panel__text">
@@ -400,13 +404,6 @@
             </div>
           </div>
 
-        </div>
-
-        <!-- Navigation -->
-        <div class="thesis-nav" id="vppNav">
-          <button class="thesis-nav__btn" id="vppPrev" disabled>&larr; Previous</button>
-          <span class="thesis-nav__counter"><span id="vppCurrentStep">1</span> / 5</span>
-          <button class="thesis-nav__btn" id="vppNext">Next &rarr;</button>
         </div>
 
       </article>
@@ -486,7 +483,7 @@
                 <h4 class="thesis-panel__title">Step 1: Data Collection</h4>
                 <p class="thesis-panel__subtitle">5.4M transactions</p>
               </div>
-              <span class="thesis-panel__badge">5,433,668 rows</span>
+              <span class="thesis-panel__badge thesis-panel__badge--step1">5,433,668 rows</span>
             </div>
             <ul class="thesis-panel__list">
               <li>48 monthly CSV files fetched manually from Gothenburg City's open data portal (2021–2024)</li>
@@ -514,7 +511,7 @@
                 <h4 class="thesis-panel__title">Step 2: System Design</h4>
                 <p class="thesis-panel__subtitle">7 modules</p>
               </div>
-              <span class="thesis-panel__badge">Modular Architecture</span>
+              <span class="thesis-panel__badge thesis-panel__badge--step2">Modular Architecture</span>
             </div>
             <ul class="thesis-panel__list">
               <li>Architecture: 3 statistical core modules + 4 support modules designed iteratively</li>
@@ -541,7 +538,7 @@
                 <h4 class="thesis-panel__title">Step 3: Iterative Development</h4>
                 <p class="thesis-panel__subtitle">V1.0 &rarr; V4.3 (9 versions)</p>
               </div>
-              <span class="thesis-panel__badge thesis-panel__badge--accent">97% reduction</span>
+              <span class="thesis-panel__badge thesis-panel__badge--step3">97% reduction</span>
             </div>
             <ul class="thesis-panel__list">
               <li>9 versions iterated with systematic measurement of high-risk suppliers per version</li>
@@ -568,7 +565,7 @@
                 <h4 class="thesis-panel__title">Step 4: Semantic Analysis</h4>
                 <p class="thesis-panel__subtitle">Module 5</p>
               </div>
-              <span class="thesis-panel__badge">16 associations flagged</span>
+              <span class="thesis-panel__badge thesis-panel__badge--step4">16 associations flagged</span>
             </div>
             <ul class="thesis-panel__list">
               <li>Filtered non-profit associations (802-org.nr) that invoiced services rather than received grants</li>
@@ -595,7 +592,7 @@
                 <h4 class="thesis-panel__title">Step 5: External Verification</h4>
                 <p class="thesis-panel__subtitle">Freedom of Information</p>
               </div>
-              <span class="thesis-panel__badge">221 pages</span>
+              <span class="thesis-panel__badge thesis-panel__badge--step5">221 pages</span>
             </div>
             <ul class="thesis-panel__list">
               <li>14 freedom of information requests sent to Gothenburg City, the District Court, and law firm dNovo</li>
@@ -622,7 +619,7 @@
                 <h4 class="thesis-panel__title">Step 6: Findings &amp; Control Failures</h4>
                 <p class="thesis-panel__subtitle">Bergsj&ouml;n Sportklubb</p>
               </div>
-              <span class="thesis-panel__badge thesis-panel__badge--warning">13 control failures</span>
+              <span class="thesis-panel__badge thesis-panel__badge--step6">13 control failures</span>
             </div>
             <ul class="thesis-panel__list">
               <li>Bergsj&ouml;n SK: 6 contract breaches, no bookkeeping, bankruptcy with 0 SEK assets despite 2.16 MSEK in municipal funding</li>
@@ -645,13 +642,6 @@
             </div>
           </div>
 
-        </div>
-
-        <!-- Step Navigation Buttons -->
-        <div class="thesis-nav" id="thesisNav">
-          <button class="thesis-nav__btn" id="thesisPrev" disabled>&larr; Previous</button>
-          <span class="thesis-nav__counter"><span id="thesisCurrentStep">1</span> / 6</span>
-          <button class="thesis-nav__btn" id="thesisNext">Next &rarr;</button>
         </div>
 
       </article>
@@ -764,6 +754,12 @@
       <p>&copy; 2026 Nataniel Ataseven. Built from scratch with vanilla HTML, CSS &amp; JS.</p>
     </div>
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" aria-label="Close">&times;</button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="">
+  </div>
 
   <script src="js/main.js"></script>
 </body>
