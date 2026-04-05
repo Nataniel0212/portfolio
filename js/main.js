@@ -3,6 +3,7 @@
    ======================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  bustImageCache();
   initNavbar();
   initMobileMenu();
   initTypingEffect();
@@ -15,6 +16,23 @@ document.addEventListener('DOMContentLoaded', () => {
   initPanelDropdowns();
   initLightbox();
 });
+
+/* ----------------------------------------
+   Cache busting for images
+   ---------------------------------------- */
+function bustImageCache() {
+  const v = '?v=3';
+  document.querySelectorAll('img[src]').forEach(img => {
+    if (img.src.includes('assets/') && !img.src.includes('?v=')) {
+      img.src = img.getAttribute('src') + v;
+    }
+  });
+  document.querySelectorAll('[data-src]').forEach(el => {
+    if (!el.dataset.src.includes('?v=')) {
+      el.dataset.src = el.dataset.src + v;
+    }
+  });
+}
 
 /* ----------------------------------------
    Navbar scroll effect
@@ -285,11 +303,6 @@ function initThesisSteps() {
       panel.classList.toggle('active', parseInt(panel.dataset.panel) === step);
     });
 
-    // Update nav
-    prevBtn.disabled = step === 1;
-    nextBtn.disabled = step === total;
-    counter.textContent = step;
-
     // Scroll the active step button into view in the nav
     const activeBtn = nav.querySelector('.thesis-step-btn.active');
     if (activeBtn) {
@@ -297,25 +310,9 @@ function initThesisSteps() {
     }
   }
 
-  // Click on step buttons
   stepBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      goToStep(parseInt(btn.dataset.step));
-    });
+    btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.step)));
   });
-
-  // Prev / Next (if present)
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      if (current > 1) goToStep(current - 1);
-    });
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      if (current < total) goToStep(current + 1);
-    });
-  }
 }
 
 /* ----------------------------------------
@@ -339,21 +336,12 @@ function initVppSteps() {
     current = step;
     stepBtns.forEach(btn => btn.classList.toggle('active', parseInt(btn.dataset.step) === step));
     panels.forEach(panel => panel.classList.toggle('active', parseInt(panel.dataset.panel) === step));
-    prevBtn.disabled = step === 1;
-    nextBtn.disabled = step === total;
-    counter.textContent = step;
 
     const activeBtn = nav.querySelector('.thesis-step-btn.active');
     if (activeBtn) activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
 
   stepBtns.forEach(btn => btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.step))));
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => { if (current > 1) goToStep(current - 1); });
-  }
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => { if (current < total) goToStep(current + 1); });
-  }
 }
 
 /* ----------------------------------------
