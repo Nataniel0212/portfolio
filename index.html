@@ -93,59 +93,245 @@
     <div class="container">
       <h2 class="section__title reveal">Featured Projects</h2>
 
-      <!-- Project 1: STANEK -->
-      <article class="project reveal" id="project-stanek">
-        <div class="project__badge">01</div>
-        <div class="project__layout">
-          <div class="project__visual">
-            <div class="img-showcase" data-gallery="stanek">
-              <div class="img-showcase__main">
-                <img src="assets/images/stanek/site-homepage.png" alt="STANEK website homepage" class="img-showcase__img">
+      <!-- Project 1: Thesis -->
+      <article class="project project--thesis reveal" id="project-thesis">
+
+        <!-- Thesis Header -->
+        <div class="thesis-header">
+          <span class="project__category">Master's Thesis — Data Science</span>
+          <h3 class="project__title">Automated Risk Analysis of Municipal Invoices</h3>
+          <p class="thesis-header__sub">Gothenburg City &middot; 2021–2024 &middot; Industrial Engineering, Mid Sweden University &middot; 15 ECTS</p>
+        </div>
+
+        <!-- Key Stats Bar -->
+        <div class="thesis-stats">
+          <div class="thesis-stat">
+            <span class="thesis-stat__number">5.4 M</span>
+            <span class="thesis-stat__label">Transactions</span>
+          </div>
+          <div class="thesis-stat">
+            <span class="thesis-stat__number">18,774</span>
+            <span class="thesis-stat__label">Suppliers</span>
+          </div>
+          <div class="thesis-stat">
+            <span class="thesis-stat__number">97%</span>
+            <span class="thesis-stat__label">FP Reduction</span>
+          </div>
+          <div class="thesis-stat">
+            <span class="thesis-stat__number">107.6 B</span>
+            <span class="thesis-stat__label">Analyzed (SEK)</span>
+          </div>
+        </div>
+
+        <!-- Step Navigation -->
+        <div class="thesis-steps-nav" id="thesisStepsNav">
+          <button class="thesis-step-btn active" data-step="1">
+            <span class="thesis-step-btn__num">1</span>
+            <span class="thesis-step-btn__title">Data Collection</span>
+            <span class="thesis-step-btn__sub">5.4M transactions</span>
+          </button>
+          <button class="thesis-step-btn" data-step="2">
+            <span class="thesis-step-btn__num">2</span>
+            <span class="thesis-step-btn__title">System Design</span>
+            <span class="thesis-step-btn__sub">7 modules</span>
+          </button>
+          <button class="thesis-step-btn" data-step="3">
+            <span class="thesis-step-btn__num">3</span>
+            <span class="thesis-step-btn__title">Iterative Development</span>
+            <span class="thesis-step-btn__sub">V1.0 &rarr; V4.3 (9 versions)</span>
+          </button>
+          <button class="thesis-step-btn" data-step="4">
+            <span class="thesis-step-btn__num">4</span>
+            <span class="thesis-step-btn__title">Semantic Analysis</span>
+            <span class="thesis-step-btn__sub">Module 5</span>
+          </button>
+          <button class="thesis-step-btn" data-step="5">
+            <span class="thesis-step-btn__num">5</span>
+            <span class="thesis-step-btn__title">External Verification</span>
+            <span class="thesis-step-btn__sub">Freedom of Information</span>
+          </button>
+          <button class="thesis-step-btn" data-step="6">
+            <span class="thesis-step-btn__num">6</span>
+            <span class="thesis-step-btn__title">Findings &amp; Control Failures</span>
+            <span class="thesis-step-btn__sub">Bergsj&ouml;n Sportklubb</span>
+          </button>
+        </div>
+
+        <!-- Step Content Panels -->
+        <div class="thesis-content" id="thesisContent">
+
+          <!-- Step 1 -->
+          <div class="thesis-panel active" data-panel="1">
+            <div class="thesis-panel__header">
+              <div>
+                <h4 class="thesis-panel__title">Step 1: Data Collection</h4>
+                <p class="thesis-panel__subtitle">5.4M transactions</p>
               </div>
-              <div class="img-showcase__thumbs">
-                <button class="img-showcase__thumb active" data-src="assets/images/stanek/site-homepage.png"><img src="assets/images/stanek/site-homepage.png" alt="Homepage"></button>
-                <button class="img-showcase__thumb" data-src="assets/images/stanek/site-umber.png"><img src="assets/images/stanek/site-umber.png" alt="Umber collection"></button>
-                <button class="img-showcase__thumb" data-src="assets/images/stanek/site-onyx.png"><img src="assets/images/stanek/site-onyx.png" alt="Onyx collection"></button>
-                <button class="img-showcase__thumb" data-src="assets/images/stanek/campaign-1.jpg"><img src="assets/images/stanek/campaign-1.jpg" alt="Campaign photo"></button>
+              <span class="thesis-panel__badge thesis-panel__badge--step1">5,433,668 rows</span>
+            </div>
+            <ul class="thesis-panel__list">
+              <li>48 monthly CSV files fetched manually from Gothenburg City's open data portal (2021–2024)</li>
+              <li>Encoding issues (UTF-8 vs ISO-8859-1) identified and standardized in the pipeline</li>
+              <li>Amount fields with text formatting (spaces as thousand separators) converted to float</li>
+              <li>5,433,668 transactions combined into a single dataset — no rows excluded</li>
+            </ul>
+            <div class="thesis-panel__tech">
+              <span class="thesis-panel__tech-label">Tools & Techniques</span>
+              <div class="thesis-panel__tech-tags">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">Pandas</span>
+                <span class="tech-badge">NumPy</span>
+                <span class="tech-badge">CSV Parsing</span>
+                <span class="tech-badge">Encoding</span>
+                <span class="tech-badge">data.goteborg.se</span>
               </div>
             </div>
           </div>
-          <div class="project__info">
-            <span class="project__category">E-Commerce Website</span>
-            <h3 class="project__title">STANEK — Premium Streetwear</h3>
-            <p class="project__description">A luxury e-commerce website for a Swedish streetwear brand. Features cinematic video backgrounds, smooth GSAP animations, a loading screen with staggered text reveal, magnetic hover effects, and a fully functional shopping cart with localStorage persistence. Designed with a dark premium aesthetic — gold accents on deep black.</p>
-            <details class="project__dropdown">
-              <summary class="project__dropdown-title">Features</summary>
-              <div class="project__dropdown-content">
-                <span class="feature-tag">Cinematic Video Hero</span>
-                <span class="feature-tag">GSAP Animations</span>
-                <span class="feature-tag">Shopping Cart</span>
-                <span class="feature-tag">Responsive Design</span>
-                <span class="feature-tag">Product Gallery</span>
-                <span class="feature-tag">Contact Form</span>
+
+          <!-- Step 2 -->
+          <div class="thesis-panel" data-panel="2">
+            <div class="thesis-panel__header">
+              <div>
+                <h4 class="thesis-panel__title">Step 2: System Design</h4>
+                <p class="thesis-panel__subtitle">7 modules</p>
               </div>
-            </details>
-            <details class="project__dropdown">
-              <summary class="project__dropdown-title">Tech Stack</summary>
-              <div class="project__dropdown-content">
-                <span class="tech-badge">HTML5</span>
-                <span class="tech-badge">CSS3</span>
-                <span class="tech-badge">JavaScript</span>
-                <span class="tech-badge">GSAP</span>
-                <span class="tech-badge">PHP</span>
+              <span class="thesis-panel__badge thesis-panel__badge--step2">Modular Architecture</span>
+            </div>
+            <ul class="thesis-panel__list">
+              <li>Architecture: 3 statistical core modules + 4 support modules designed iteratively</li>
+              <li>Module 1: Org. numbers validated via Luhn algorithm — 4.7% (882) lacked valid numbers</li>
+              <li>Modules 2–3: Transaction pattern analysis with 6 sub-analyses + CV-centered supplier profiling</li>
+              <li>Risk score 0–100 with combination bonuses (e.g. &times;1.5 at threshold + disappearing) and legitimacy deductions</li>
+            </ul>
+            <div class="thesis-panel__tech">
+              <span class="thesis-panel__tech-label">Tools & Techniques</span>
+              <div class="thesis-panel__tech-tags">
+                <span class="tech-badge">Python 3.9+</span>
+                <span class="tech-badge">Design Science Research</span>
+                <span class="tech-badge">Luhn Algorithm</span>
+                <span class="tech-badge">Openpyxl</span>
+                <span class="tech-badge">Jinja2</span>
               </div>
-            </details>
-            <a href="https://nataniel0212.github.io/stanek-website/index.html" class="btn btn--primary project__link" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-right:8px"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-              View Live Site
-            </a>
+            </div>
           </div>
+
+          <!-- Step 3 -->
+          <div class="thesis-panel" data-panel="3">
+            <div class="thesis-panel__header">
+              <div>
+                <h4 class="thesis-panel__title">Step 3: Iterative Development</h4>
+                <p class="thesis-panel__subtitle">V1.0 &rarr; V4.3 (9 versions)</p>
+              </div>
+              <span class="thesis-panel__badge thesis-panel__badge--step3">97% reduction</span>
+            </div>
+            <ul class="thesis-panel__list">
+              <li>9 versions iterated with systematic measurement of high-risk suppliers per version</li>
+              <li><strong>Breakthrough V4.3:</strong> CV (coefficient of variation = &sigma;/&mu;) strongest single indicator — uniform amounts flagged</li>
+              <li>LOV suppliers (standardized care rates) caused 50% of false positives &rarr; &minus;15 point adjustment</li>
+              <li>Result: 1,516 &rarr; 31 high-risk suppliers (&minus;97%) — but all top 10 verified as false positives</li>
+            </ul>
+            <div class="thesis-panel__tech">
+              <span class="thesis-panel__tech-label">Tools & Techniques</span>
+              <div class="thesis-panel__tech-tags">
+                <span class="tech-badge">CV Analysis (&sigma;/&mu;)</span>
+                <span class="tech-badge">Benford's Law + Chi&sup2;</span>
+                <span class="tech-badge">Z-Score</span>
+                <span class="tech-badge">LOV Detection</span>
+                <span class="tech-badge">Volume Normalization</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="thesis-panel" data-panel="4">
+            <div class="thesis-panel__header">
+              <div>
+                <h4 class="thesis-panel__title">Step 4: Semantic Analysis</h4>
+                <p class="thesis-panel__subtitle">Module 5</p>
+              </div>
+              <span class="thesis-panel__badge thesis-panel__badge--step4">16 associations flagged</span>
+            </div>
+            <ul class="thesis-panel__list">
+              <li>Filtered non-profit associations (802-org.nr) that invoiced services rather than received grants</li>
+              <li>Flagged illogical combinations: sports club &rarr; "Administrative services" to education department</li>
+              <li>16 associations identified, totaling 13.2 MSEK to the Labour Market and Adult Education Committee</li>
+              <li>Manual web verification per candidate: website, allabolag.se, IVO registry, Google search</li>
+            </ul>
+            <div class="thesis-panel__tech">
+              <span class="thesis-panel__tech-label">Tools & Techniques</span>
+              <div class="thesis-panel__tech-tags">
+                <span class="tech-badge">Python Filtering</span>
+                <span class="tech-badge">Text Analysis</span>
+                <span class="tech-badge">Regex Matching</span>
+                <span class="tech-badge">Allabolag.se</span>
+                <span class="tech-badge">IVO Registry</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="thesis-panel" data-panel="5">
+            <div class="thesis-panel__header">
+              <div>
+                <h4 class="thesis-panel__title">Step 5: External Verification</h4>
+                <p class="thesis-panel__subtitle">Freedom of Information</p>
+              </div>
+              <span class="thesis-panel__badge thesis-panel__badge--step5">221 pages</span>
+            </div>
+            <ul class="thesis-panel__list">
+              <li>14 freedom of information requests sent to Gothenburg City, the District Court, and law firm dNovo</li>
+              <li>Meeting with Gothenburg City Leasing AB (3 representatives): confirmed attestation data not shared with Inyett</li>
+              <li>221 pages of documentation received: contracts, invoice copies, attestation screenshots, audit reports, bankruptcy filings</li>
+              <li>Inyett (240+ municipalities) lacks CV analysis, semantic checks, and attestation flow analysis — confirmed 2026-02-20</li>
+            </ul>
+            <div class="thesis-panel__tech">
+              <span class="thesis-panel__tech-label">Tools & Techniques</span>
+              <div class="thesis-panel__tech-tags">
+                <span class="tech-badge">Freedom of Information Act</span>
+                <span class="tech-badge">Bolagsverket</span>
+                <span class="tech-badge">Gothenburg District Court</span>
+                <span class="tech-badge">Kronofogden</span>
+                <span class="tech-badge">Inyett / Visma</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="thesis-panel" data-panel="6">
+            <div class="thesis-panel__header">
+              <div>
+                <h4 class="thesis-panel__title">Step 6: Findings &amp; Control Failures</h4>
+                <p class="thesis-panel__subtitle">Bergsj&ouml;n Sportklubb</p>
+              </div>
+              <span class="thesis-panel__badge thesis-panel__badge--step6">13 control failures</span>
+            </div>
+            <ul class="thesis-panel__list">
+              <li>Bergsj&ouml;n SK: 6 contract breaches, no bookkeeping, bankruptcy with 0 SEK assets despite 2.16 MSEK in municipal funding</li>
+              <li>Broken functional separation: attestation handler made exception decisions AND sat in the approval chain</li>
+              <li>13 control failures independently confirmed by the administration's own PwC investigation (Report 59-2023)</li>
+              <li><strong>Key insight:</strong> The statistical system did NOT flag this case — only semantic analysis found it</li>
+            </ul>
+            <div class="thesis-panel__tech">
+              <span class="thesis-panel__tech-label">Tools & Techniques</span>
+              <div class="thesis-panel__tech-tags">
+                <span class="tech-badge">COSO Framework</span>
+                <span class="tech-badge">Fraud Triangle (Cressey 1953)</span>
+                <span class="tech-badge">Fraud Diamond (Wolfe &amp; Hermanson 2004)</span>
+                <span class="tech-badge">PwC Report 59-2023</span>
+              </div>
+            </div>
+            <!-- Key Insight callout -->
+            <div class="thesis-panel__insight">
+              <strong>Key insight:</strong> Statistical anomalies in municipal invoices correlate more strongly with legitimate business patterns (framework agreements, LOV care) than with irregularities. Semantic analysis combined with freedom of information requests proved to be the most powerful tools for uncovering control failures.
+            </div>
+          </div>
+
         </div>
+
       </article>
 
       <!-- Project 2: VPP -->
       <article class="project project--vpp reveal" id="project-vpp">
-        <div class="project__badge">02</div>
 
         <div class="thesis-header">
           <span class="project__category">Desktop Application</span>
@@ -408,242 +594,53 @@
 
       </article>
 
-      <!-- Project 3: Thesis -->
-      <article class="project project--thesis reveal" id="project-thesis">
-        <div class="project__badge">03</div>
-
-        <!-- Thesis Header -->
-        <div class="thesis-header">
-          <span class="project__category">Master's Thesis — Data Science</span>
-          <h3 class="project__title">Automated Risk Analysis of Municipal Invoices</h3>
-          <p class="thesis-header__sub">Gothenburg City &middot; 2021–2024 &middot; Industrial Engineering, Mid Sweden University &middot; 15 ECTS</p>
+      <!-- Project 3: STANEK -->
+      <article class="project reveal" id="project-stanek">
+        <div class="project__layout">
+          <div class="project__visual">
+            <div class="img-showcase" data-gallery="stanek">
+              <div class="img-showcase__main">
+                <img src="assets/images/stanek/site-homepage.png" alt="STANEK website homepage" class="img-showcase__img">
+              </div>
+              <div class="img-showcase__thumbs">
+                <button class="img-showcase__thumb active" data-src="assets/images/stanek/site-homepage.png"><img src="assets/images/stanek/site-homepage.png" alt="Homepage"></button>
+                <button class="img-showcase__thumb" data-src="assets/images/stanek/site-umber.png"><img src="assets/images/stanek/site-umber.png" alt="Umber collection"></button>
+                <button class="img-showcase__thumb" data-src="assets/images/stanek/site-onyx.png"><img src="assets/images/stanek/site-onyx.png" alt="Onyx collection"></button>
+                <button class="img-showcase__thumb" data-src="assets/images/stanek/campaign-1.jpg"><img src="assets/images/stanek/campaign-1.jpg" alt="Campaign photo"></button>
+              </div>
+            </div>
+          </div>
+          <div class="project__info">
+            <span class="project__category">E-Commerce Website</span>
+            <h3 class="project__title">STANEK — Premium Streetwear</h3>
+            <p class="project__description">A luxury e-commerce website for a Swedish streetwear brand. Features cinematic video backgrounds, smooth GSAP animations, a loading screen with staggered text reveal, magnetic hover effects, and a fully functional shopping cart with localStorage persistence. Designed with a dark premium aesthetic — gold accents on deep black.</p>
+            <details class="project__dropdown">
+              <summary class="project__dropdown-title">Features</summary>
+              <div class="project__dropdown-content">
+                <span class="feature-tag">Cinematic Video Hero</span>
+                <span class="feature-tag">GSAP Animations</span>
+                <span class="feature-tag">Shopping Cart</span>
+                <span class="feature-tag">Responsive Design</span>
+                <span class="feature-tag">Product Gallery</span>
+                <span class="feature-tag">Contact Form</span>
+              </div>
+            </details>
+            <details class="project__dropdown">
+              <summary class="project__dropdown-title">Tech Stack</summary>
+              <div class="project__dropdown-content">
+                <span class="tech-badge">HTML5</span>
+                <span class="tech-badge">CSS3</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">GSAP</span>
+                <span class="tech-badge">PHP</span>
+              </div>
+            </details>
+            <a href="https://nataniel0212.github.io/stanek-website/index.html" class="btn btn--primary project__link" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-right:8px"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              View Live Site
+            </a>
+          </div>
         </div>
-
-        <!-- Key Stats Bar -->
-        <div class="thesis-stats">
-          <div class="thesis-stat">
-            <span class="thesis-stat__number">5.4 M</span>
-            <span class="thesis-stat__label">Transactions</span>
-          </div>
-          <div class="thesis-stat">
-            <span class="thesis-stat__number">18,774</span>
-            <span class="thesis-stat__label">Suppliers</span>
-          </div>
-          <div class="thesis-stat">
-            <span class="thesis-stat__number">97%</span>
-            <span class="thesis-stat__label">FP Reduction</span>
-          </div>
-          <div class="thesis-stat">
-            <span class="thesis-stat__number">107.6 B</span>
-            <span class="thesis-stat__label">Analyzed (SEK)</span>
-          </div>
-        </div>
-
-        <!-- Step Navigation -->
-        <div class="thesis-steps-nav" id="thesisStepsNav">
-          <button class="thesis-step-btn active" data-step="1">
-            <span class="thesis-step-btn__num">1</span>
-            <span class="thesis-step-btn__title">Data Collection</span>
-            <span class="thesis-step-btn__sub">5.4M transactions</span>
-          </button>
-          <button class="thesis-step-btn" data-step="2">
-            <span class="thesis-step-btn__num">2</span>
-            <span class="thesis-step-btn__title">System Design</span>
-            <span class="thesis-step-btn__sub">7 modules</span>
-          </button>
-          <button class="thesis-step-btn" data-step="3">
-            <span class="thesis-step-btn__num">3</span>
-            <span class="thesis-step-btn__title">Iterative Development</span>
-            <span class="thesis-step-btn__sub">V1.0 &rarr; V4.3 (9 versions)</span>
-          </button>
-          <button class="thesis-step-btn" data-step="4">
-            <span class="thesis-step-btn__num">4</span>
-            <span class="thesis-step-btn__title">Semantic Analysis</span>
-            <span class="thesis-step-btn__sub">Module 5</span>
-          </button>
-          <button class="thesis-step-btn" data-step="5">
-            <span class="thesis-step-btn__num">5</span>
-            <span class="thesis-step-btn__title">External Verification</span>
-            <span class="thesis-step-btn__sub">Freedom of Information</span>
-          </button>
-          <button class="thesis-step-btn" data-step="6">
-            <span class="thesis-step-btn__num">6</span>
-            <span class="thesis-step-btn__title">Findings &amp; Control Failures</span>
-            <span class="thesis-step-btn__sub">Bergsj&ouml;n Sportklubb</span>
-          </button>
-        </div>
-
-        <!-- Step Content Panels -->
-        <div class="thesis-content" id="thesisContent">
-
-          <!-- Step 1 -->
-          <div class="thesis-panel active" data-panel="1">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 1: Data Collection</h4>
-                <p class="thesis-panel__subtitle">5.4M transactions</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--step1">5,433,668 rows</span>
-            </div>
-            <ul class="thesis-panel__list">
-              <li>48 monthly CSV files fetched manually from Gothenburg City's open data portal (2021–2024)</li>
-              <li>Encoding issues (UTF-8 vs ISO-8859-1) identified and standardized in the pipeline</li>
-              <li>Amount fields with text formatting (spaces as thousand separators) converted to float</li>
-              <li>5,433,668 transactions combined into a single dataset — no rows excluded</li>
-            </ul>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tools & Techniques</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">Python</span>
-                <span class="tech-badge">Pandas</span>
-                <span class="tech-badge">NumPy</span>
-                <span class="tech-badge">CSV Parsing</span>
-                <span class="tech-badge">Encoding</span>
-                <span class="tech-badge">data.goteborg.se</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="thesis-panel" data-panel="2">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 2: System Design</h4>
-                <p class="thesis-panel__subtitle">7 modules</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--step2">Modular Architecture</span>
-            </div>
-            <ul class="thesis-panel__list">
-              <li>Architecture: 3 statistical core modules + 4 support modules designed iteratively</li>
-              <li>Module 1: Org. numbers validated via Luhn algorithm — 4.7% (882) lacked valid numbers</li>
-              <li>Modules 2–3: Transaction pattern analysis with 6 sub-analyses + CV-centered supplier profiling</li>
-              <li>Risk score 0–100 with combination bonuses (e.g. &times;1.5 at threshold + disappearing) and legitimacy deductions</li>
-            </ul>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tools & Techniques</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">Python 3.9+</span>
-                <span class="tech-badge">Design Science Research</span>
-                <span class="tech-badge">Luhn Algorithm</span>
-                <span class="tech-badge">Openpyxl</span>
-                <span class="tech-badge">Jinja2</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="thesis-panel" data-panel="3">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 3: Iterative Development</h4>
-                <p class="thesis-panel__subtitle">V1.0 &rarr; V4.3 (9 versions)</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--step3">97% reduction</span>
-            </div>
-            <ul class="thesis-panel__list">
-              <li>9 versions iterated with systematic measurement of high-risk suppliers per version</li>
-              <li><strong>Breakthrough V4.3:</strong> CV (coefficient of variation = &sigma;/&mu;) strongest single indicator — uniform amounts flagged</li>
-              <li>LOV suppliers (standardized care rates) caused 50% of false positives &rarr; &minus;15 point adjustment</li>
-              <li>Result: 1,516 &rarr; 31 high-risk suppliers (&minus;97%) — but all top 10 verified as false positives</li>
-            </ul>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tools & Techniques</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">CV Analysis (&sigma;/&mu;)</span>
-                <span class="tech-badge">Benford's Law + Chi&sup2;</span>
-                <span class="tech-badge">Z-Score</span>
-                <span class="tech-badge">LOV Detection</span>
-                <span class="tech-badge">Volume Normalization</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="thesis-panel" data-panel="4">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 4: Semantic Analysis</h4>
-                <p class="thesis-panel__subtitle">Module 5</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--step4">16 associations flagged</span>
-            </div>
-            <ul class="thesis-panel__list">
-              <li>Filtered non-profit associations (802-org.nr) that invoiced services rather than received grants</li>
-              <li>Flagged illogical combinations: sports club &rarr; "Administrative services" to education department</li>
-              <li>16 associations identified, totaling 13.2 MSEK to the Labour Market and Adult Education Committee</li>
-              <li>Manual web verification per candidate: website, allabolag.se, IVO registry, Google search</li>
-            </ul>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tools & Techniques</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">Python Filtering</span>
-                <span class="tech-badge">Text Analysis</span>
-                <span class="tech-badge">Regex Matching</span>
-                <span class="tech-badge">Allabolag.se</span>
-                <span class="tech-badge">IVO Registry</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 5 -->
-          <div class="thesis-panel" data-panel="5">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 5: External Verification</h4>
-                <p class="thesis-panel__subtitle">Freedom of Information</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--step5">221 pages</span>
-            </div>
-            <ul class="thesis-panel__list">
-              <li>14 freedom of information requests sent to Gothenburg City, the District Court, and law firm dNovo</li>
-              <li>Meeting with Gothenburg City Leasing AB (3 representatives): confirmed attestation data not shared with Inyett</li>
-              <li>221 pages of documentation received: contracts, invoice copies, attestation screenshots, audit reports, bankruptcy filings</li>
-              <li>Inyett (240+ municipalities) lacks CV analysis, semantic checks, and attestation flow analysis — confirmed 2026-02-20</li>
-            </ul>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tools & Techniques</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">Freedom of Information Act</span>
-                <span class="tech-badge">Bolagsverket</span>
-                <span class="tech-badge">Gothenburg District Court</span>
-                <span class="tech-badge">Kronofogden</span>
-                <span class="tech-badge">Inyett / Visma</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 6 -->
-          <div class="thesis-panel" data-panel="6">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 6: Findings &amp; Control Failures</h4>
-                <p class="thesis-panel__subtitle">Bergsj&ouml;n Sportklubb</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--step6">13 control failures</span>
-            </div>
-            <ul class="thesis-panel__list">
-              <li>Bergsj&ouml;n SK: 6 contract breaches, no bookkeeping, bankruptcy with 0 SEK assets despite 2.16 MSEK in municipal funding</li>
-              <li>Broken functional separation: attestation handler made exception decisions AND sat in the approval chain</li>
-              <li>13 control failures independently confirmed by the administration's own PwC investigation (Report 59-2023)</li>
-              <li><strong>Key insight:</strong> The statistical system did NOT flag this case — only semantic analysis found it</li>
-            </ul>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tools & Techniques</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">COSO Framework</span>
-                <span class="tech-badge">Fraud Triangle (Cressey 1953)</span>
-                <span class="tech-badge">Fraud Diamond (Wolfe &amp; Hermanson 2004)</span>
-                <span class="tech-badge">PwC Report 59-2023</span>
-              </div>
-            </div>
-            <!-- Key Insight callout -->
-            <div class="thesis-panel__insight">
-              <strong>Key insight:</strong> Statistical anomalies in municipal invoices correlate more strongly with legitimate business patterns (framework agreements, LOV care) than with irregularities. Semantic analysis combined with freedom of information requests proved to be the most powerful tools for uncovering control failures.
-            </div>
-          </div>
-
-        </div>
-
       </article>
 
     </div>

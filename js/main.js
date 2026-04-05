@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initImageGalleries();
   initThesisSteps();
   initVppSteps();
+  initPanelDropdowns();
   initLightbox();
 });
 
@@ -353,6 +354,35 @@ function initVppSteps() {
   if (nextBtn) {
     nextBtn.addEventListener('click', () => { if (current < total) goToStep(current + 1); });
   }
+}
+
+/* ----------------------------------------
+   Convert tech & config sections to dropdowns
+   ---------------------------------------- */
+function initPanelDropdowns() {
+  document.querySelectorAll('.thesis-panel__tech, .thesis-panel__settings').forEach(section => {
+    const label = section.querySelector('.thesis-panel__tech-label, .thesis-panel__settings-label');
+    if (!label) return;
+
+    const details = document.createElement('details');
+    details.className = 'project__dropdown';
+
+    const summary = document.createElement('summary');
+    summary.className = 'project__dropdown-title';
+    summary.textContent = label.textContent;
+
+    section.parentNode.insertBefore(details, section);
+    details.appendChild(summary);
+
+    // Move all children except the label into a content wrapper
+    const content = document.createElement('div');
+    content.className = 'project__dropdown-content';
+    const children = [...section.children].filter(c => c !== label);
+    children.forEach(child => content.appendChild(child));
+    details.appendChild(content);
+
+    section.remove();
+  });
 }
 
 /* ----------------------------------------
