@@ -1,1 +1,6 @@
 .claude/
+
+# CV and cover letters — keep locally, don't publish
+*.pdf
+cv.html
+personligt_brev_*.html
