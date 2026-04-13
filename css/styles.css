@@ -505,6 +505,17 @@ button {
   position: relative;
 }
 
+.section + .section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: var(--border-light);
+}
+
 .hero + .section::before {
   content: '';
   position: absolute;
@@ -524,6 +535,12 @@ button {
   margin-bottom: 60px;
   text-align: center;
   position: relative;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section__title.visible {
+  clip-path: inset(0 0% 0 0);
 }
 
 .section__title::after {
