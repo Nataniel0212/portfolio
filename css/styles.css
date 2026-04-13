@@ -439,9 +439,10 @@ button {
   font-size: 0.9375rem;
   font-weight: 500;
   border-radius: var(--radius-sm);
-  transition: all var(--transition);
+  transition: all var(--transition), transform 0.2s ease;
   position: relative;
   overflow: hidden;
+  will-change: transform;
 }
 
 .btn--primary {
