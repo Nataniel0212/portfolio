@@ -3,11 +3,14 @@
    ======================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initLoader();
+  initThemeToggle();
   bustImageCache();
   initNavbar();
   initMobileMenu();
   initTypingEffect();
   initTerminal();
+  initScrollProgress();
   initScrollReveal();
   initCounters();
   initSmoothScroll();
@@ -17,7 +20,134 @@ document.addEventListener('DOMContentLoaded', () => {
   initPanelDropdowns();
   initLightbox();
   initMagneticButtons();
+  initBackToTop();
+  initEasterEgg();
 });
+
+/* ----------------------------------------
+   Page loader
+   ---------------------------------------- */
+function initLoader() {
+  const loader = document.getElementById('loader');
+  if (!loader) return;
+
+  // Hide loader after animation completes
+  setTimeout(() => {
+    loader.classList.add('done');
+  }, 1400);
+}
+
+/* ----------------------------------------
+   Dark / Light theme toggle
+   ---------------------------------------- */
+function initThemeToggle() {
+  const toggle = document.getElementById('themeToggle');
+  if (!toggle) return;
+
+  // Check saved preference
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+
+  toggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+
+    if (next === 'dark') {
+      document.documentElement.removeAttribute('data-theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+
+    localStorage.setItem('theme', next);
+  });
+}
+
+/* ----------------------------------------
+   Scroll progress bar
+   ---------------------------------------- */
+function initScrollProgress() {
+  const bar = document.getElementById('scrollProgress');
+  if (!bar) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = progress + '%';
+  }, { passive: true });
+}
+
+/* ----------------------------------------
+   Back to top button
+   ---------------------------------------- */
+function initBackToTop() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+/* ----------------------------------------
+   Easter egg (Konami code)
+   ---------------------------------------- */
+function initEasterEgg() {
+  const code = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let index = 0;
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === code[index]) {
+      index++;
+      if (index === code.length) {
+        triggerEasterEgg();
+        index = 0;
+      }
+    } else {
+      index = 0;
+    }
+  });
+}
+
+function triggerEasterEgg() {
+  // Spawn falling emojis
+  const emojis = ['🚀', '💻', '🎯', '⚡', '🔥', '✨', '🧠', '📊'];
+  for (let i = 0; i < 30; i++) {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      el.style.cssText = `
+        position: fixed;
+        top: -40px;
+        left: ${Math.random() * 100}vw;
+        font-size: ${20 + Math.random() * 24}px;
+        z-index: 99999;
+        pointer-events: none;
+        animation: eggFall ${2 + Math.random() * 2}s linear forwards;
+      `;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 4000);
+    }, i * 80);
+  }
+
+  // Inject keyframe if not present
+  if (!document.getElementById('eggStyle')) {
+    const style = document.createElement('style');
+    style.id = 'eggStyle';
+    style.textContent = `
+      @keyframes eggFall {
+        to { transform: translateY(110vh) rotate(${360 + Math.random() * 360}deg); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+}
 
 /* ----------------------------------------
    Magnetic button hover effect

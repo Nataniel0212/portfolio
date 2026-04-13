@@ -18,9 +18,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=4">
+  <link rel="stylesheet" href="css/styles.css?v=5">
 </head>
 <body>
+
+  <!-- Page Loader -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <span class="loader__text">NA</span>
+      <div class="loader__bar"><div class="loader__fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
@@ -31,6 +42,10 @@
         <a href="#projects" class="nav__link">Projects</a>
         <a href="#skills" class="nav__link">Skills</a>
         <a href="#contact" class="nav__link">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="theme-toggle__icon theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="theme-toggle__icon theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        </button>
       </div>
       <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span>
@@ -769,9 +784,27 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2026 Nataniel Ataseven. Built from scratch with vanilla HTML, CSS &amp; JS.</p>
+      <div class="footer__inner">
+        <div class="footer__left">
+          <p class="footer__name">Nataniel Ataseven</p>
+          <p class="footer__tagline">Building things that solve real problems.</p>
+        </div>
+        <div class="footer__right">
+          <div class="footer__links">
+            <a href="https://github.com/Nataniel0212" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://linkedin.com/in/nataniel-ataseven" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="mailto:nataniel.ata7@hotmail.se">Email</a>
+          </div>
+          <p class="footer__copy">&copy; 2026 &middot; Built from scratch with vanilla HTML, CSS &amp; JS.</p>
+        </div>
+      </div>
     </div>
   </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
@@ -779,6 +812,6 @@
     <img class="lightbox__img" id="lightboxImg" src="" alt="">
   </div>
 
-  <script src="js/main.js?v=4"></script>
+  <script src="js/main.js?v=5"></script>
 </body>
 </html>
