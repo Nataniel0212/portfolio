@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initMobileMenu();
   initTypingEffect();
+  initTerminal();
   initScrollReveal();
   initCounters();
   initSmoothScroll();
@@ -130,6 +131,44 @@ function initTypingEffect() {
 
   // Start after hero animations finish
   setTimeout(type, 1200);
+}
+
+/* ----------------------------------------
+   Terminal animation in hero
+   ---------------------------------------- */
+function initTerminal() {
+  const body = document.getElementById('terminalBody');
+  if (!body) return;
+
+  const lines = [
+    { type: 'output', content: '<span class="terminal__bracket">{</span>' },
+    { type: 'output', content: '  <span class="terminal__key">"name"</span>: <span class="terminal__val">"Nataniel Ataseven"</span>,' },
+    { type: 'output', content: '  <span class="terminal__key">"role"</span>: <span class="terminal__val">"Developer & Data Scientist"</span>,' },
+    { type: 'output', content: '  <span class="terminal__key">"education"</span>: <span class="terminal__val">"MSc Industrial Engineering"</span>,' },
+    { type: 'output', content: '  <span class="terminal__key">"skills"</span>: <span class="terminal__val">["Python", "React", "TypeScript",</span>' },
+    { type: 'output', content: '    <span class="terminal__val">"TensorFlow", "OpenCV", "Node.js"]</span>,' },
+    { type: 'output', content: '  <span class="terminal__key">"projects"</span>: <span class="terminal__val">3</span>,' },
+    { type: 'output', content: '  <span class="terminal__key">"transactions_analyzed"</span>: <span class="terminal__val">5_400_000</span>' },
+    { type: 'output', content: '<span class="terminal__bracket">}</span>' },
+    { type: 'cmd', content: '<span class="terminal__prompt">$</span> <span class="terminal__comment"># scroll down to explore ↓</span>' },
+  ];
+
+  let i = 0;
+  const baseDelay = 1200; // wait for hero text animations
+
+  function addLine() {
+    if (i >= lines.length) return;
+    const line = lines[i];
+    const div = document.createElement('div');
+    div.className = 'terminal__line';
+    div.innerHTML = line.content;
+    div.style.animationDelay = '0s';
+    body.appendChild(div);
+    i++;
+    setTimeout(addLine, 60 + Math.random() * 40);
+  }
+
+  setTimeout(addLine, baseDelay);
 }
 
 /* ----------------------------------------

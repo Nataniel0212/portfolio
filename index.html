@@ -40,20 +40,31 @@
 
   <!-- Hero Section -->
   <section class="hero" id="hero">
-    <div class="hero__bg">
-      <div class="hero__orb hero__orb--1"></div>
-      <div class="hero__orb hero__orb--2"></div>
-      <div class="hero__grid"></div>
-    </div>
-    <div class="hero__content">
-      <h1 class="hero__name">Nataniel Ataseven</h1>
-      <p class="hero__title">
-        <span class="hero__typed" id="typedText"></span>
-        <span class="hero__cursor">|</span>
-      </p>
-      <div class="hero__cta">
-        <a href="#projects" class="btn btn--primary">View My Work</a>
-        <a href="#contact" class="btn btn--outline">Get In Touch</a>
+    <div class="hero__split">
+      <div class="hero__left">
+        <p class="hero__label">Portfolio</p>
+        <h1 class="hero__name">Nataniel<br>Ataseven</h1>
+        <p class="hero__title">
+          <span class="hero__typed" id="typedText"></span>
+          <span class="hero__cursor">|</span>
+        </p>
+        <div class="hero__cta">
+          <a href="#projects" class="btn btn--primary">View My Work</a>
+          <a href="#contact" class="btn btn--outline">Get In Touch</a>
+        </div>
+      </div>
+      <div class="hero__right">
+        <div class="terminal">
+          <div class="terminal__bar">
+            <span class="terminal__dot terminal__dot--red"></span>
+            <span class="terminal__dot terminal__dot--yellow"></span>
+            <span class="terminal__dot terminal__dot--green"></span>
+            <span class="terminal__title">nataniel — portfolio</span>
+          </div>
+          <div class="terminal__body" id="terminalBody">
+            <div class="terminal__line"><span class="terminal__prompt">$</span> <span class="terminal__cmd">cat about.json</span></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="hero__scroll">
@@ -758,6 +769,6 @@
     <img class="lightbox__img" id="lightboxImg" src="" alt="">
   </div>
 
-  <script src="js/main.js?v=3"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>
