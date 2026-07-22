@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV — Nataniel Ataseven</title>
+    <style>
+        /* ATS-friendly: single column, no tables, no graphics, semantic HTML */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.45;
+            color: #1a1a1a;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 14mm 16mm;
+            background: #fff;
+        }
+
+        /* ── Header ── */
+        header {
+            text-align: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #2a2a2a;
+        }
+
+        h1 {
+            font-size: 22pt;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            color: #111;
+        }
+
+        .contact-info {
+            font-size: 9.5pt;
+            color: #333;
+        }
+
+        .contact-info span {
+            margin: 0 6px;
+        }
+
+        .contact-info .sep {
+            color: #999;
+        }
+
+        /* ── Sections ── */
+        section {
+            margin-bottom: 14px;
+        }
+
+        h2 {
+            font-size: 12pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #111;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 3px;
+            margin-bottom: 10px;
+        }
+
+        /* ── Experience / Project entries ── */
+        .entry {
+            margin-bottom: 12px;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .entry-title {
+            font-weight: 700;
+            font-size: 11pt;
+        }
+
+        .entry-date {
+            font-size: 9.5pt;
+            color: #555;
+            white-space: nowrap;
+        }
+
+        .entry-org {
+            font-style: italic;
+            font-size: 10pt;
+            color: #444;
+            margin-bottom: 3px;
+        }
+
+        .entry ul {
+            margin-left: 18px;
+            margin-top: 3px;
+        }
+
+        .entry li {
+            margin-bottom: 2px;
+            font-size: 10.5pt;
+        }
+
+        .tech-label {
+            font-weight: 600;
+            font-size: 10pt;
+        }
+
+        .tech-list {
+            font-size: 10pt;
+            color: #333;
+            margin-top: 2px;
+        }
+
+        /* ── Skills grid ── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            row-gap: 5px;
+            font-size: 10.5pt;
+        }
+
+        .skills-grid dt {
+            font-weight: 600;
+            color: #222;
+        }
+
+        .skills-grid dd {
+            color: #333;
+        }
+
+        /* ── Education ── */
+        .edu-entry {
+            margin-bottom: 6px;
+        }
+
+        /* ── Cookie banner (skapas av js/analytics.js) ── */
+        .cookie-banner {
+            position: fixed;
+            bottom: 16px;
+            left: 16px;
+            max-width: 360px;
+            background: #fff;
+            border: 1px solid #d0cbc4;
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, .12);
+            font-size: 9.5pt;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity .25s ease, transform .25s ease;
+            z-index: 1000;
+        }
+        .cookie-banner.is-visible { opacity: 1; transform: none; }
+        .cookie-banner__text { margin-bottom: 10px; color: #333; }
+        .cookie-banner__actions { display: flex; gap: 8px; justify-content: flex-end; }
+        .cookie-banner__btn {
+            font-size: 9.5pt;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 99px;
+            cursor: pointer;
+            border: 1px solid #2a2a2a;
+            background: #2a2a2a;
+            color: #fff;
+        }
+        .cookie-banner__btn--decline { background: none; color: #333; border-color: #bbb; }
+        @media print { .cookie-banner { display: none; } }
+
+        /* ── Print ── */
+        @media print {
+            body {
+                padding: 10mm 14mm;
+                font-size: 10.5pt;
+            }
+
+            h1 { font-size: 20pt; }
+
+            section { break-inside: avoid; }
+
+            a { color: #1a1a1a; text-decoration: none; }
+        }
+
+        a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ════════════════ HEADER ════════════════ -->
+    <header>
+        <h1>Nataniel Ataseven</h1>
+        <div class="contact-info">
+            <span>Sodertälje, Sverige</span>
+            <span class="sep">|</span>
+            <span>nataniel.ata7@hotmail.se</span>
+            <span class="sep">|</span>
+            <span>linkedin.com/in/nataniel-ataseven</span>
+            <span class="sep">|</span>
+            <span>github.com/Nataniel0212</span>
+        </div>
+    </header>
+
+    <!-- ════════════════ PROFIL ════════════════ -->
+    <section>
+        <h2>Profil</h2>
+        <p>
+            Civilingenjörsstudent inom Industriell ekonomi med praktisk erfarenhet av fullstack-utveckling, AI/ML-integration och dataanalys i stor skala. Har självständigt byggt en AI-driven desktopapplikation med Electron, React och Python, samt genomfört en forskningsstudie som analyserade 5,4 miljoner kommunala transaktioner (107,6 miljarder SEK) och identifierade verkliga kontrollbrister. Kombinerar teknisk bredd med analytiskt tänkande och ett starkt driv att leverera konkreta resultat.
+        </p>
+    </section>
+
+    <!-- ════════════════ KOMPETENSER ════════════════ -->
+    <section>
+        <h2>Tekniska kompetenser</h2>
+        <dl class="skills-grid">
+            <dt>Frontend</dt>
+            <dd>HTML5, CSS3, JavaScript, React, TypeScript, Material-UI, GSAP, Responsive Design</dd>
+            <dt>Backend</dt>
+            <dd>Python, Node.js, Electron, PHP, REST API</dd>
+            <dt>Data & AI/ML</dt>
+            <dd>TensorFlow, PyTorch, OpenCV, pandas, NumPy, OpenAI API (GPT-4o), Benford's Law, statistisk analys</dd>
+            <dt>Verktyg</dt>
+            <dd>Git, GitHub, FFmpeg, VS Code, Jinja2, openpyxl</dd>
+            <dt>Metodik</dt>
+            <dd>Design Science Research, COSO-ramverket, agil utveckling</dd>
+            <dt>Språk</dt>
+            <dd>Svenska (modersmål), Engelska (flytande)</dd>
+        </dl>
+    </section>
+
+    <!-- ════════════════ PROJEKT ════════════════ -->
+    <section>
+        <h2>Projekt</h2>
+
+        <!-- Examensarbete -->
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Automatiserad riskanalys av kommunala fakturor — Examensarbete</span>
+                <span class="entry-date">2025 – 2026</span>
+            </div>
+            <div class="entry-org">Mittuniversitetet — Civilingenjörsprogram Industriell ekonomi</div>
+            <ul>
+                <li>Utvecklade ett dataanalyssystem som granskade 5,4 miljoner transaktioner (107,6 miljarder SEK) från Göteborgs Stad för att identifiera potentiella oegentligheter</li>
+                <li>Byggde 7 analysmoduler med statistisk profilering (CV-analys), semantisk analys och Benfords lag</li>
+                <li>Upptäckte en verklig kontrollbrist (Bergsjön Sport Klubb — 2,16 MSEK utbetalda till förening med noll tillgångar vid konkurs, saknad bokföring och intressekonflikt)</li>
+                <li>Verifierade fynd genom domstolsdokument, visselblåsarrapporter och möten med kommunala enheter</li>
+                <li>Resultat: Statistisk anomalidetektion allena ger falskt positiva — semantisk analys krävs för att hitta faktiska brister</li>
+            </ul>
+            <div class="tech-list"><span class="tech-label">Teknik:</span> Python, pandas, NumPy, openpyxl, Jinja2, Benfords lag, Luhns algoritm, Design Science Research</div>
+        </div>
+
+        <!-- VPP -->
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Video Processor Pro — AI-driven desktopapplikation</span>
+                <span class="entry-date">jan 2025 – feb 2026</span>
+            </div>
+            <div class="entry-org">Eget projekt (frilans)</div>
+            <ul>
+                <li>Designade och byggde en fullständig desktopapplikation för automatiserad videobearbetning med Electron, React och Python-backend</li>
+                <li>Implementerade scendetektering med TransNetV2 och PySceneDetect för automatisk klippning av videor</li>
+                <li>Utvecklade en smart crop-algoritm med 9 detektionsmetoder för anpassning till TikTok, YouTube och Instagram-format</li>
+                <li>Integrerade GPT-4o API för automatisk generering av metadata (titlar, beskrivningar, taggar)</li>
+                <li>Byggde realtids-UI med Material-UI, inklusive framstegsindikator och dark mode</li>
+            </ul>
+            <div class="tech-list"><span class="tech-label">Teknik:</span> Electron, React, TypeScript, Material-UI, Python, TensorFlow, PyTorch, OpenCV, FFmpeg, OpenAI API</div>
+        </div>
+
+        <!-- STANEK -->
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">STANEK — Premium Streetwear E-commerce</span>
+                <span class="entry-date">2024 – 2025</span>
+            </div>
+            <div class="entry-org">Eget projekt</div>
+            <ul>
+                <li>Skapade en modern e-handelssida för ett premium streetwear-varumärke med mörkt tema, cinematiska videobakgrunder och GSAP-animationer</li>
+                <li>Implementerade fullt fungerande kundvagn med localStorage, kontaktformulär med PHP-backend och responsiv design</li>
+                <li>Byggde utan externa ramverk — enbart vanilla HTML, CSS och JavaScript — för att demonstrera djup frontend-kompetens</li>
+                <li>Tillgänglighetsanpassad med prefers-reduced-motion, tangentbordsnavigering och semantisk HTML</li>
+            </ul>
+            <div class="tech-list"><span class="tech-label">Teknik:</span> HTML5, CSS3, JavaScript, GSAP, ScrollTrigger, PHP, Responsive Design</div>
+        </div>
+    </section>
+
+    <!-- ════════════════ ERFARENHET ════════════════ -->
+    <section>
+        <h2>Arbetslivserfarenhet</h2>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Stödassistent — LSS-boende</span>
+                <span class="entry-date">nov 2025 – pågående</span>
+            </div>
+            <div class="entry-org">Södertälje kommun — Deltid</div>
+            <ul>
+                <li>Ger dagligt stöd och omsorg till personer med funktionsnedsättning i enlighet med LSS-lagstiftningen</li>
+                <li>Anpassar insatser efter individuella behov och bidrar till en trygg och stimulerande boendemiljö</li>
+                <li>Samarbetar med kollegor och kontaktpersoner för att säkerställa hög kvalitet i omsorgen</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ════════════════ UTBILDNING ════════════════ -->
+    <section>
+        <h2>Utbildning</h2>
+        <div class="edu-entry">
+            <div class="entry-header">
+                <span class="entry-title">Civilingenjörsexamen — Industriell ekonomi</span>
+                <span class="entry-date">aug 2022 – juni 2028</span>
+            </div>
+            <div class="entry-org">Mittuniversitetet — Master of Science in Engineering</div>
+            <ul>
+                <li>Femårigt civilingenjörsprogram med inriktning mot industriell ekonomi</li>
+                <li>Kandidatarbete: Automatiserad riskanalys av kommunala fakturor — analyserade 5,4 miljoner transaktioner och identifierade kontrollbrister i Göteborgs Stad</li>
+            </ul>
+        </div>
+    </section>
+
+    <script src="js/analytics.js"></script>
+</body>
+</html>

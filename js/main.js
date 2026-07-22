@@ -1,602 +1,199 @@
-/* ========================================
-   Portfolio - Main JavaScript
-   ======================================== */
+/* ============================================================
+   Nataniel Ataseven — portfolio (redesign v3.2, juli 2026)
+   Intro-loader (curtain), orbit-karusell med levande scener
+   (foton / video / data-rain), nav-state, mobilmeny, reveals.
+   Fokuserat klot öppnar kategorins egen sida.
+   ============================================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
-  initLoader();
-  initThemeToggle();
-  bustImageCache();
-  initNavbar();
-  initMobileMenu();
-  initTypingEffect();
-  initTerminal();
-  initScrollProgress();
-  initScrollReveal();
-  initCounters();
-  initSmoothScroll();
-  initImageGalleries();
-  initThesisSteps();
-  initVppSteps();
-  initPanelDropdowns();
-  initLightbox();
-  initMagneticButtons();
-  initBackToTop();
-  initEasterEgg();
-});
+(function () {
+  'use strict';
 
-/* ----------------------------------------
-   Page loader
-   ---------------------------------------- */
-function initLoader() {
-  const loader = document.getElementById('loader');
-  if (!loader) return;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Hide loader after animation completes
-  setTimeout(() => {
-    loader.classList.add('done');
-  }, 1400);
-}
-
-/* ----------------------------------------
-   Dark / Light theme toggle
-   ---------------------------------------- */
-function initThemeToggle() {
-  const toggle = document.getElementById('themeToggle');
-  if (!toggle) return;
-
-  // Check saved preference
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-  }
-
-  toggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
-    const next = current === 'light' ? 'dark' : 'light';
-
-    if (next === 'dark') {
-      document.documentElement.removeAttribute('data-theme');
+  /* ============ Intro-loader: namn in, sedan dras ridån upp ============ */
+  var loader = document.getElementById('loader');
+  if (loader) {
+    if (reducedMotion) {
+      loader.classList.add('gone');
     } else {
-      document.documentElement.setAttribute('data-theme', 'light');
+      window.setTimeout(function () {
+        loader.classList.add('done');
+        window.setTimeout(function () { loader.classList.add('gone'); }, 800);
+      }, 1300);
     }
-
-    localStorage.setItem('theme', next);
-  });
-}
-
-/* ----------------------------------------
-   Scroll progress bar
-   ---------------------------------------- */
-function initScrollProgress() {
-  const bar = document.getElementById('scrollProgress');
-  if (!bar) return;
-
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    bar.style.width = progress + '%';
-  }, { passive: true });
-}
-
-/* ----------------------------------------
-   Back to top button
-   ---------------------------------------- */
-function initBackToTop() {
-  const btn = document.getElementById('backToTop');
-  if (!btn) return;
-
-  window.addEventListener('scroll', () => {
-    btn.classList.toggle('visible', window.scrollY > 600);
-  }, { passive: true });
-
-  btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-/* ----------------------------------------
-   Easter egg (Konami code)
-   ---------------------------------------- */
-function initEasterEgg() {
-  const code = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
-  let index = 0;
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === code[index]) {
-      index++;
-      if (index === code.length) {
-        triggerEasterEgg();
-        index = 0;
-      }
-    } else {
-      index = 0;
-    }
-  });
-}
-
-function triggerEasterEgg() {
-  // Spawn falling emojis
-  const emojis = ['🚀', '💻', '🎯', '⚡', '🔥', '✨', '🧠', '📊'];
-  for (let i = 0; i < 30; i++) {
-    setTimeout(() => {
-      const el = document.createElement('div');
-      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      el.style.cssText = `
-        position: fixed;
-        top: -40px;
-        left: ${Math.random() * 100}vw;
-        font-size: ${20 + Math.random() * 24}px;
-        z-index: 99999;
-        pointer-events: none;
-        animation: eggFall ${2 + Math.random() * 2}s linear forwards;
-      `;
-      document.body.appendChild(el);
-      setTimeout(() => el.remove(), 4000);
-    }, i * 80);
   }
 
-  // Inject keyframe if not present
-  if (!document.getElementById('eggStyle')) {
-    const style = document.createElement('style');
-    style.id = 'eggStyle';
-    style.textContent = `
-      @keyframes eggFall {
-        to { transform: translateY(110vh) rotate(${360 + Math.random() * 360}deg); opacity: 0; }
+  /* ============ Data-rain: fallande guldsiffror (research-scenen) ============ */
+  /* Fyller varje [data-rain]-container med N kolumner av siffror.
+     Antalet styrs av attributvärdet. Hoppas över vid reduced motion. */
+  function seedRain() {
+    if (reducedMotion) return;
+    var containers = document.querySelectorAll('[data-rain]');
+    containers.forEach(function (box) {
+      var count = parseInt(box.getAttribute('data-rain'), 10) || 12;
+      var frag = document.createDocumentFragment();
+      for (var i = 0; i < count; i++) {
+        var col = document.createElement('span');
+        var len = 6 + Math.floor(Math.random() * 8);
+        var digits = '';
+        for (var j = 0; j < len; j++) digits += Math.floor(Math.random() * 10);
+        col.textContent = digits;
+        col.style.left = (Math.random() * 96) + '%';
+        col.style.fontSize = (10 + Math.random() * 5) + 'px';
+        col.style.opacity = (0.35 + Math.random() * 0.65).toFixed(2);
+        var dur = 9 + Math.random() * 14;
+        col.style.animationDuration = dur + 's';
+        col.style.animationDelay = (-Math.random() * dur) + 's';
+        frag.appendChild(col);
       }
-    `;
-    document.head.appendChild(style);
+      box.appendChild(frag);
+    });
   }
-}
+  seedRain();
 
-/* ----------------------------------------
-   Magnetic button hover effect
-   ---------------------------------------- */
-function initMagneticButtons() {
-  // Only on non-touch devices
-  if ('ontouchstart' in window) return;
+  /* ============ Orbit: kategorikarusell ============ */
+  /* Ringens ordning är cyklisk: center = ORDER[i], höger = nästa, vänster = föregående. */
+  var ORDER = ['research', 'websites', 'apps'];
+  var CATS = {
+    research: { label: 'Research', desc: "Master's thesis · fraud detection in 5.4M invoices", url: 'research.html' },
+    apps: { label: 'Apps', desc: 'Privera · Video Processor Pro', url: 'apps.html' },
+    websites: { label: 'Websites', desc: 'STANEK, with more in progress', url: 'websites.html' }
+  };
 
-  const buttons = document.querySelectorAll('.btn');
-  const strength = 0.3;
+  var stage = document.querySelector('.orbit__stage');
+  var sub = document.getElementById('orbitSub');
+  var prevBtn = document.getElementById('orbitPrev');
+  var nextBtn = document.getElementById('orbitNext');
 
-  buttons.forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-      const rect = btn.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      btn.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
-    });
+  if (stage && sub) {
+    var orbs = Array.prototype.slice.call(stage.querySelectorAll('.orb'));
+    var scenes = Array.prototype.slice.call(document.querySelectorAll('.scene__layer'));
+    var sceneVideo = document.querySelector('.scene__video');
+    /* Startläge: Websites i fokus. Deep-link (#research/#apps) kan överstyra. */
+    var focus = ORDER.indexOf('websites');
+    var hashIdx = ORDER.indexOf(window.location.hash.replace('#', ''));
+    if (hashIdx >= 0) focus = hashIdx;
 
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = '';
-    });
-  });
-}
+    var subTimer = null;
 
-/* ----------------------------------------
-   Cache busting for images
-   ---------------------------------------- */
-function bustImageCache() {
-  const v = '?v=3';
-  document.querySelectorAll('img[src]').forEach(img => {
-    if (img.src.includes('assets/') && !img.src.includes('?v=')) {
-      img.src = img.getAttribute('src') + v;
-    }
-  });
-  document.querySelectorAll('[data-src]').forEach(el => {
-    if (!el.dataset.src.includes('?v=')) {
-      el.dataset.src = el.dataset.src + v;
-    }
-  });
-}
+    function apply(withFade) {
+      var center = ORDER[focus];
+      var right = ORDER[(focus + 1) % ORDER.length];
+      var left = ORDER[(focus + 2) % ORDER.length];
 
-/* ----------------------------------------
-   Navbar scroll effect
-   ---------------------------------------- */
-function initNavbar() {
-  const nav = document.getElementById('nav');
-  let ticking = false;
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        nav.classList.toggle('nav--scrolled', window.scrollY > 50);
-        ticking = false;
+      orbs.forEach(function (orb) {
+        var cat = orb.dataset.cat;
+        orb.classList.toggle('orb--center', cat === center);
+        orb.classList.toggle('orb--left', cat === left);
+        orb.classList.toggle('orb--right', cat === right);
+        if (cat === center) {
+          orb.setAttribute('aria-label', CATS[cat].label + ' — open category page');
+        } else {
+          orb.setAttribute('aria-label', CATS[cat].label + ' — rotate into focus');
+        }
       });
-      ticking = true;
+
+      /* Bakgrundsfärg + glöd via CSS (body[data-category]) */
+      document.body.dataset.category = center;
+
+      /* Scenlagren: foton (websites), video (apps), data-rain (research) */
+      scenes.forEach(function (layer) {
+        layer.classList.toggle('is-active', layer.dataset.scene === center);
+      });
+      if (sceneVideo) {
+        if (center === 'apps' && !reducedMotion) {
+          var p = sceneVideo.play();
+          if (p && p.catch) p.catch(function () {});
+        } else {
+          sceneVideo.pause();
+        }
+      }
+
+      /* Undertexten byts med kort fade */
+      var swap = function () {
+        sub.innerHTML = '<strong>' + CATS[center].label + '</strong> · ' + CATS[center].desc;
+        sub.classList.remove('is-swap');
+      };
+      if (withFade && !reducedMotion) {
+        window.clearTimeout(subTimer);
+        sub.classList.add('is-swap');
+        subTimer = window.setTimeout(swap, 180);
+      } else {
+        swap();
+      }
     }
-  });
-}
 
-/* ----------------------------------------
-   Mobile menu
-   ---------------------------------------- */
-function initMobileMenu() {
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const links = mobileMenu.querySelectorAll('.mobile-menu__link');
-
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-  });
-
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      mobileMenu.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-      hamburger.classList.remove('active');
-      mobileMenu.classList.remove('active');
-      document.body.style.overflow = '';
+    function rotate(step) {
+      focus = (focus + step + ORDER.length) % ORDER.length;
+      apply(true);
     }
-  });
-}
 
-/* ----------------------------------------
-   Typing effect for hero subtitle
-   ---------------------------------------- */
-function initTypingEffect() {
-  const element = document.getElementById('typedText');
-  const titles = [
-    'Full-Stack Developer',
-    'Data Scientist',
-    'Problem Solver',
-  ];
+    if (prevBtn) prevBtn.addEventListener('click', function () { rotate(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { rotate(1); });
 
-  let titleIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let pauseTimer = null;
-
-  function type() {
-    const current = titles[titleIndex];
-
-    if (!isDeleting) {
-      element.textContent = current.substring(0, charIndex + 1);
-      charIndex++;
-
-      if (charIndex === current.length) {
-        pauseTimer = setTimeout(() => {
-          isDeleting = true;
-          type();
-        }, 2200);
-        return;
-      }
-      setTimeout(type, 80);
-    } else {
-      element.textContent = current.substring(0, charIndex - 1);
-      charIndex--;
-
-      if (charIndex === 0) {
-        isDeleting = false;
-        titleIndex = (titleIndex + 1) % titles.length;
-        setTimeout(type, 400);
-        return;
-      }
-      setTimeout(type, 40);
-    }
-  }
-
-  // Start after hero animations finish
-  setTimeout(type, 1200);
-}
-
-/* ----------------------------------------
-   Terminal animation in hero
-   ---------------------------------------- */
-function initTerminal() {
-  const body = document.getElementById('terminalBody');
-  if (!body) return;
-
-  const lines = [
-    { type: 'output', content: '<span class="terminal__bracket">{</span>' },
-    { type: 'output', content: '  <span class="terminal__key">"name"</span>: <span class="terminal__val">"Nataniel Ataseven"</span>,' },
-    { type: 'output', content: '  <span class="terminal__key">"role"</span>: <span class="terminal__val">"Developer & Data Scientist"</span>,' },
-    { type: 'output', content: '  <span class="terminal__key">"education"</span>: <span class="terminal__val">"MSc Industrial Engineering"</span>,' },
-    { type: 'output', content: '  <span class="terminal__key">"skills"</span>: <span class="terminal__val">["Python", "React", "TypeScript",</span>' },
-    { type: 'output', content: '    <span class="terminal__val">"TensorFlow", "OpenCV", "Node.js"]</span>,' },
-    { type: 'output', content: '  <span class="terminal__key">"projects"</span>: <span class="terminal__val">3</span>,' },
-    { type: 'output', content: '  <span class="terminal__key">"transactions_analyzed"</span>: <span class="terminal__val">5_400_000</span>' },
-    { type: 'output', content: '<span class="terminal__bracket">}</span>' },
-    { type: 'cmd', content: '<span class="terminal__prompt">$</span> <span class="terminal__comment"># scroll down to explore ↓</span>' },
-  ];
-
-  let i = 0;
-  const baseDelay = 1200; // wait for hero text animations
-
-  function addLine() {
-    if (i >= lines.length) return;
-    const line = lines[i];
-    const div = document.createElement('div');
-    div.className = 'terminal__line';
-    div.innerHTML = line.content;
-    div.style.animationDelay = '0s';
-    body.appendChild(div);
-    i++;
-    setTimeout(addLine, 60 + Math.random() * 40);
-  }
-
-  setTimeout(addLine, baseDelay);
-}
-
-/* ----------------------------------------
-   Scroll reveal (Intersection Observer)
-   ---------------------------------------- */
-function initScrollReveal() {
-  // Standard reveal elements (includes stagger-children parents)
-  const revealElements = document.querySelectorAll('.reveal');
-
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -30px 0px',
-  });
-
-  revealElements.forEach(el => revealObserver.observe(el));
-
-  // Pipeline steps - staggered reveal
-  const pipelineSteps = document.querySelectorAll('.reveal-step');
-
-  const stepObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Find all steps and animate them sequentially
-        pipelineSteps.forEach((step, index) => {
-          setTimeout(() => {
-            step.classList.add('visible');
-          }, index * 150);
-        });
-        // Unobserve all after triggering
-        pipelineSteps.forEach(step => stepObserver.unobserve(step));
-      }
-    });
-  }, {
-    threshold: 0.2,
-  });
-
-  // Only observe the first step to trigger the sequence
-  if (pipelineSteps.length > 0) {
-    stepObserver.observe(pipelineSteps[0]);
-  }
-}
-
-/* ----------------------------------------
-   Animated counters
-   ---------------------------------------- */
-function initCounters() {
-  const counters = document.querySelectorAll('[data-target]');
-
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        counterObserver.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.5,
-  });
-
-  counters.forEach(counter => counterObserver.observe(counter));
-}
-
-function animateCounter(element) {
-  const target = parseFloat(element.dataset.target);
-  const suffix = element.dataset.suffix || '';
-  const decimals = parseInt(element.dataset.decimals) || 0;
-  const duration = 1800;
-  const startTime = performance.now();
-
-  function easeOutQuart(t) {
-    return 1 - Math.pow(1 - t, 4);
-  }
-
-  function update(currentTime) {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const easedProgress = easeOutQuart(progress);
-    const current = easedProgress * target;
-
-    element.textContent = current.toFixed(decimals) + suffix;
-
-    if (progress < 1) {
-      requestAnimationFrame(update);
-    } else {
-      element.textContent = target.toFixed(decimals) + suffix;
-    }
-  }
-
-  requestAnimationFrame(update);
-}
-
-/* ----------------------------------------
-   Smooth scroll for anchor links
-   ---------------------------------------- */
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) {
-        const offset = 80; // nav height
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    });
-  });
-}
-
-/* ----------------------------------------
-   Image gallery (thumbnail → main image)
-   ---------------------------------------- */
-function initImageGalleries() {
-  document.querySelectorAll('.img-showcase').forEach(gallery => {
-    const mainImg = gallery.querySelector('.img-showcase__img');
-    const thumbs = gallery.querySelectorAll('.img-showcase__thumb');
-
-    thumbs.forEach(thumb => {
-      thumb.addEventListener('click', () => {
-        const src = thumb.dataset.src;
-        const alt = thumb.querySelector('img').alt;
-
-        // Fade transition
-        mainImg.style.opacity = '0';
-        setTimeout(() => {
-          mainImg.src = src;
-          mainImg.alt = alt;
-          mainImg.style.opacity = '1';
-        }, 200);
-
-        thumbs.forEach(t => t.classList.remove('active'));
-        thumb.classList.add('active');
+    orbs.forEach(function (orb) {
+      orb.addEventListener('click', function () {
+        var cat = orb.dataset.cat;
+        if (cat === ORDER[focus]) {
+          /* Fokuserat klot: öppna kategorins egen sida */
+          window.location.href = CATS[cat].url;
+        } else if (orb.classList.contains('orb--left')) {
+          rotate(-1);
+        } else {
+          rotate(1);
+        }
       });
     });
-  });
-}
 
-/* ----------------------------------------
-   Thesis interactive steps
-   ---------------------------------------- */
-function initThesisSteps() {
-  const nav = document.getElementById('thesisStepsNav');
-  const content = document.getElementById('thesisContent');
-  const prevBtn = document.getElementById('thesisPrev');
-  const nextBtn = document.getElementById('thesisNext');
-  const counter = document.getElementById('thesisCurrentStep');
-
-  if (!nav || !content) return;
-
-  const stepBtns = nav.querySelectorAll('.thesis-step-btn');
-  const panels = content.querySelectorAll('.thesis-panel');
-  let current = 1;
-  const total = stepBtns.length;
-
-  function goToStep(step) {
-    current = step;
-
-    // Update buttons
-    stepBtns.forEach(btn => {
-      btn.classList.toggle('active', parseInt(btn.dataset.step) === step);
+    /* Piltangenter roterar också klotet */
+    document.addEventListener('keydown', function (e) {
+      if (e.target && /^(input|textarea|select)$/i.test(e.target.tagName)) return;
+      if (e.key === 'ArrowLeft') rotate(-1);
+      if (e.key === 'ArrowRight') rotate(1);
     });
 
-    // Update panels
-    panels.forEach(panel => {
-      panel.classList.toggle('active', parseInt(panel.dataset.panel) === step);
-    });
-
-    // Scroll the active step button into view in the nav
-    const activeBtn = nav.querySelector('.thesis-step-btn.active');
-    if (activeBtn) {
-      activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    }
+    apply(false);
   }
 
-  stepBtns.forEach(btn => {
-    btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.step)));
-  });
-}
-
-/* ----------------------------------------
-   VPP interactive steps
-   ---------------------------------------- */
-function initVppSteps() {
-  const nav = document.getElementById('vppStepsNav');
-  const content = document.getElementById('vppContent');
-  const prevBtn = document.getElementById('vppPrev');
-  const nextBtn = document.getElementById('vppNext');
-  const counter = document.getElementById('vppCurrentStep');
-
-  if (!nav || !content) return;
-
-  const stepBtns = nav.querySelectorAll('.thesis-step-btn');
-  const panels = content.querySelectorAll('.thesis-panel');
-  let current = 1;
-  const total = stepBtns.length;
-
-  function goToStep(step) {
-    current = step;
-    stepBtns.forEach(btn => btn.classList.toggle('active', parseInt(btn.dataset.step) === step));
-    panels.forEach(panel => panel.classList.toggle('active', parseInt(panel.dataset.panel) === step));
-
-    const activeBtn = nav.querySelector('.thesis-step-btn.active');
-    if (activeBtn) activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  /* ============ Nav: border när sidan scrollats ============ */
+  var nav = document.getElementById('nav');
+  if (nav) {
+    var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 10); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 
-  stepBtns.forEach(btn => btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.step))));
-}
-
-/* ----------------------------------------
-   Convert tech & config sections to dropdowns
-   ---------------------------------------- */
-function initPanelDropdowns() {
-  document.querySelectorAll('.thesis-panel__tech, .thesis-panel__settings').forEach(section => {
-    const label = section.querySelector('.thesis-panel__tech-label, .thesis-panel__settings-label');
-    if (!label) return;
-
-    const details = document.createElement('details');
-    details.className = 'project__dropdown';
-
-    const summary = document.createElement('summary');
-    summary.className = 'project__dropdown-title';
-    summary.textContent = label.textContent;
-
-    section.parentNode.insertBefore(details, section);
-    details.appendChild(summary);
-
-    // Move all children except the label into a content wrapper
-    const content = document.createElement('div');
-    content.className = 'project__dropdown-content';
-    const children = [...section.children].filter(c => c !== label);
-    children.forEach(child => content.appendChild(child));
-    details.appendChild(content);
-
-    section.remove();
-  });
-}
-
-/* ----------------------------------------
-   Lightbox for images
-   ---------------------------------------- */
-function initLightbox() {
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  if (!lightbox) return;
-
-  // All clickable images
-  const targets = document.querySelectorAll('.img-showcase__img, .thesis-panel__preview img');
-
-  targets.forEach(img => {
-    img.addEventListener('click', () => {
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
+  /* ============ Mobilmeny ============ */
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', function () {
+      var open = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', String(open));
     });
-  });
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
-  // Close lightbox
-  lightbox.addEventListener('click', () => {
-    lightbox.classList.remove('active');
-    document.body.style.overflow = '';
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  });
-}
+  /* ============ Scroll-reveals (opt-in via prefers-reduced-motion) ============ */
+  var revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('in'); });
+  }
+})();

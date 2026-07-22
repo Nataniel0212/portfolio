@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nataniel Ataseven — Developer & Data Scientist</title>
-  <meta name="description" content="Portfolio of Nataniel Ataseven — Full-Stack Developer & Data Scientist building solutions from premium web experiences to AI-powered applications and fraud detection systems.">
+  <meta name="description" content="Portfolio of Nataniel Ataseven — Developer & Data Scientist. Fraud detection across 5.4M municipal transactions, on-device GDPR tooling for law firms, and AI-powered applications.">
+  <meta name="theme-color" content="#0a1424">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>N</text></svg>">
@@ -12,8 +13,16 @@
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Nataniel Ataseven — Developer & Data Scientist">
-  <meta property="og:description" content="Full-Stack Developer & Data Scientist. Building AI-powered applications, premium web experiences, and fraud detection systems.">
+  <meta property="og:description" content="I build systems that find fraud, protect privacy and ship real products. 5.4M transactions analyzed, 97% false-positive reduction.">
   <meta property="og:url" content="https://nataniel0212.github.io/portfolio/">
+  <meta property="og:image" content="https://nataniel0212.github.io/portfolio/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Nataniel Ataseven — Developer & Data Scientist">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nataniel Ataseven — Developer & Data Scientist">
+  <meta name="twitter:description" content="I build systems that find fraud, protect privacy and ship real products.">
+  <meta name="twitter:image" content="https://nataniel0212.github.io/portfolio/assets/og-image.png">
   <link rel="canonical" href="https://nataniel0212.github.io/portfolio/">
 
   <!-- Structured Data -->
@@ -39,765 +48,155 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=5">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=14">
 </head>
-<body>
+<body data-category="websites">
 
-  <!-- Page Loader -->
-  <div class="loader" id="loader">
-    <div class="loader__inner">
-      <span class="loader__text">NA</span>
-      <div class="loader__bar"><div class="loader__fill"></div></div>
-    </div>
+  <!-- Intro-loader: namnet visas, sedan dras ridån upp (js/main.js) -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <span class="loader__name">Nataniel <em>Ataseven</em></span>
   </div>
-
-  <!-- Scroll Progress -->
-  <div class="scroll-progress" id="scrollProgress"></div>
+  <noscript><style>.loader { display: none; }</style></noscript>
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
-      <a href="#hero" class="nav__logo">Nataniel Ataseven</a>
+      <a href="#" class="nav__logo">Nataniel Ataseven</a>
       <div class="nav__links">
+        <a href="research.html" class="nav__link">Research</a>
+        <a href="apps.html" class="nav__link">Apps</a>
+        <a href="websites.html" class="nav__link">Websites</a>
         <a href="#about" class="nav__link">About</a>
-        <a href="#projects" class="nav__link">Projects</a>
-        <a href="#skills" class="nav__link">Skills</a>
         <a href="#contact" class="nav__link">Contact</a>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-          <svg class="theme-toggle__icon theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          <svg class="theme-toggle__icon theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-        </button>
+        <a href="cv.html" class="nav__cv">View CV</a>
       </div>
-      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#about" class="mobile-menu__link">About</a>
-    <a href="#projects" class="mobile-menu__link">Projects</a>
-    <a href="#skills" class="mobile-menu__link">Skills</a>
-    <a href="#contact" class="mobile-menu__link">Contact</a>
+    <a href="research.html">Research</a>
+    <a href="apps.html">Apps</a>
+    <a href="websites.html">Websites</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="cv.html">View CV</a>
   </div>
 
-  <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <div class="hero__split">
-      <div class="hero__left">
-        <p class="hero__label">Portfolio</p>
-        <h1 class="hero__name">Nataniel<br>Ataseven</h1>
-        <p class="hero__title">
-          <span class="hero__typed" id="typedText"></span>
-          <span class="hero__cursor">|</span>
-        </p>
-        <div class="hero__cta">
-          <a href="#projects" class="btn btn--primary">View My Work</a>
-          <a href="#contact" class="btn btn--outline">Get In Touch</a>
-        </div>
-      </div>
-      <div class="hero__right">
-        <div class="terminal">
-          <div class="terminal__bar">
-            <span class="terminal__dot terminal__dot--red"></span>
-            <span class="terminal__dot terminal__dot--yellow"></span>
-            <span class="terminal__dot terminal__dot--green"></span>
-            <span class="terminal__title">nataniel — portfolio</span>
-          </div>
-          <div class="terminal__body" id="terminalBody">
-            <div class="terminal__line"><span class="terminal__prompt">$</span> <span class="terminal__cmd">cat about.json</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="hero__scroll">
-      <svg class="hero__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
-    </div>
-  </section>
+  <!-- Orbit-hero: kategorikarusell runt "klotet" -->
+  <header class="orbit" id="top">
 
-  <!-- About Section -->
-  <section class="section about" id="about">
+    <!-- Scen: levande bakgrund per kategori -->
+    <div class="orbit__scene" aria-hidden="true">
+      <div class="scene__layer" data-scene="research">
+        <div class="rain" data-rain="26"></div>
+      </div>
+      <div class="scene__layer is-active" data-scene="websites">
+        <img class="scene__img scene__img--a" src="assets/images/stanek/campaign-doorway.jpg" alt="" loading="lazy">
+        <img class="scene__img scene__img--b" src="assets/images/stanek/campaign-detail.jpg" alt="" loading="lazy">
+        <img class="scene__img scene__img--c" src="assets/images/stanek/site-hero.png" alt="" loading="lazy">
+      </div>
+      <div class="scene__layer" data-scene="apps">
+        <video class="scene__video" src="assets/video/privera-demo.mp4" muted loop playsinline preload="metadata"></video>
+      </div>
+      <div class="scene__shade"></div>
+    </div>
+
+    <h1 class="orbit__name">Nataniel Ataseven</h1>
+      <p class="orbit__sub" id="orbitSub" aria-live="polite"><strong>Websites</strong> · STANEK, with more in progress</p>
+
+    <div class="orbit__stage">
+      <button class="orbit__arrow orbit__arrow--prev" id="orbitPrev" type="button" aria-label="Previous category">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+
+      <button class="orb orb--right" data-cat="apps" type="button" aria-label="Apps — rotate into focus">
+        <span class="orb__media" aria-hidden="true"><img src="assets/images/privera/app-ui.png" alt=""></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+        <span class="orb__label">Apps</span>
+      </button>
+
+      <button class="orb orb--left" data-cat="research" type="button" aria-label="Research — open category page">
+        <span class="orb__media" aria-hidden="true"><span class="rain" data-rain="7"></span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z"/><path d="M14 2.5V7.5h5"/><path d="M9 13h6M9 16.5h6"/></svg>
+        <span class="orb__label">Research</span>
+      </button>
+
+      <button class="orb orb--center" data-cat="websites" type="button" aria-label="Websites — rotate into focus">
+        <span class="orb__media" aria-hidden="true"><img src="assets/images/stanek/campaign-doorway.jpg" alt=""></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.6 3.9 5.9 3.9 9.5s-1.3 6.9-3.9 9.5c-2.6-2.6-3.9-5.9-3.9-9.5S9.4 5.1 12 2.5z"/></svg>
+        <span class="orb__label">Websites</span>
+      </button>
+
+      <button class="orbit__arrow orbit__arrow--next" id="orbitNext" type="button" aria-label="Next category">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+
+  </header>
+
+  <!-- About -->
+  <section class="section section--alt" id="about">
     <div class="container">
-      <h2 class="section__title reveal">About Me</h2>
-      <div class="about__grid">
+      <div class="section__head reveal">
+        <span class="eyebrow">About</span>
+        <h2 class="section__title">Engineer first, generalist by curiosity.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about__portrait reveal">
+          <img src="assets/images/portrait.jpg" alt="Nataniel Ataseven" loading="lazy" width="800" height="1000">
+        </div>
         <div class="about__text reveal">
-          <p>I'm a developer and data scientist studying Industrial Engineering &amp; Management at Mid Sweden University. I build things that solve real problems — whether that's creating premium digital experiences, automating complex video workflows with AI, or uncovering financial fraud hidden in millions of transactions.</p>
-          <p>What drives me is the intersection of technology and impact. I enjoy taking a complex challenge, breaking it down, and engineering a solution that actually makes a difference.</p>
+          <p>I study <strong>Industrial Engineering &amp; Management</strong> at Mid Sweden University, and I like problems where the data is messy, the stakes are real, and nobody has looked closely enough. Like 48 CSV files of municipal payments hiding a bankrupt sports club with 2.16 MSEK in public funding.</p>
+          <p>I work across the stack: <strong>Python for data and ML</strong> (Pandas, PyTorch, OpenCV), <strong>TypeScript/React for interfaces</strong>, and enough infrastructure to ship real desktop products with installers, audit logs and 179 automated tests.</p>
+          <div class="about__facts">
+            <div class="fact"><span class="fact__label">Education</span><span class="fact__value">MSc Industrial Engineering, MIUN</span></div>
+            <div class="fact"><span class="fact__label">Focus</span><span class="fact__value">Data science · Full-stack</span></div>
+            <div class="fact"><span class="fact__label">Core stack</span><span class="fact__value">Python · React · TypeScript</span></div>
+            <div class="fact"><span class="fact__label">Currently</span><span class="fact__value">Open to opportunities</span></div>
+          </div>
         </div>
-        <div class="about__stats stagger-children reveal">
-          <div class="stat-card">
-            <span class="stat-card__number" data-target="3">0</span>
-            <span class="stat-card__label">Major Projects</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-card__number" data-target="15">0</span>
-            <span class="stat-card__label">Technologies</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-card__number special" data-target="5.4" data-suffix="M" data-decimals="1">0</span>
-            <span class="stat-card__label">Transactions Analyzed</span>
-          </div>
+      </div>
+
+      <!-- Teamwork -->
+      <div class="about-team reveal">
+        <div class="about-team__media">
+          <img src="assets/images/team.jpg" alt="Nataniel and the Privera team gathered around a laptop in a meeting room" loading="lazy" width="1600" height="1069">
+        </div>
+        <div class="about-team__text">
+          <span class="eyebrow">How I work</span>
+          <h3>Better in a team.</h3>
+          <p>Privera is built together with a small team and real pilot customers who tell us exactly what a law firm needs. I like working that way: someone challenges the idea at the whiteboard, someone else catches the bug you missed, and the product ends up better than anything one person ships alone.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section class="section projects" id="projects">
-    <div class="container">
-      <h2 class="section__title reveal">Featured Projects</h2>
-
-      <!-- Project 1: Thesis -->
-      <article class="project project--thesis reveal" id="project-thesis">
-
-        <!-- Thesis Header -->
-        <div class="thesis-header">
-          <span class="project__category">Master's Thesis — Data Science</span>
-          <h3 class="project__title">Automated Risk Analysis of Municipal Invoices</h3>
-          <p class="thesis-header__sub">Gothenburg City &middot; 2021–2024 &middot; Industrial Engineering, Mid Sweden University &middot; 15 ECTS</p>
-        </div>
-
-        <!-- Key Stats Bar -->
-        <div class="thesis-stats">
-          <div class="thesis-stat">
-            <span class="thesis-stat__number">5.4 M</span>
-            <span class="thesis-stat__label">Transactions</span>
-          </div>
-          <div class="thesis-stat">
-            <span class="thesis-stat__number">18,774</span>
-            <span class="thesis-stat__label">Suppliers</span>
-          </div>
-          <div class="thesis-stat">
-            <span class="thesis-stat__number">97%</span>
-            <span class="thesis-stat__label">FP Reduction</span>
-          </div>
-          <div class="thesis-stat">
-            <span class="thesis-stat__number">107.6 B</span>
-            <span class="thesis-stat__label">Analyzed (SEK)</span>
-          </div>
-        </div>
-
-        <!-- Step Navigation -->
-        <div class="thesis-steps-nav" id="thesisStepsNav">
-          <button class="thesis-step-btn active" data-step="1">
-            <span class="thesis-step-btn__num">1</span>
-            <span class="thesis-step-btn__title">Data Collection</span>
-            <span class="thesis-step-btn__sub">5.4M transactions</span>
-          </button>
-          <button class="thesis-step-btn" data-step="2">
-            <span class="thesis-step-btn__num">2</span>
-            <span class="thesis-step-btn__title">System Design</span>
-            <span class="thesis-step-btn__sub">7 modules</span>
-          </button>
-          <button class="thesis-step-btn" data-step="3">
-            <span class="thesis-step-btn__num">3</span>
-            <span class="thesis-step-btn__title">Iterative Development</span>
-            <span class="thesis-step-btn__sub">V1.0 &rarr; V4.3 (9 versions)</span>
-          </button>
-          <button class="thesis-step-btn" data-step="4">
-            <span class="thesis-step-btn__num">4</span>
-            <span class="thesis-step-btn__title">Semantic Analysis</span>
-            <span class="thesis-step-btn__sub">Module 5</span>
-          </button>
-          <button class="thesis-step-btn" data-step="5">
-            <span class="thesis-step-btn__num">5</span>
-            <span class="thesis-step-btn__title">External Verification</span>
-            <span class="thesis-step-btn__sub">Freedom of Information</span>
-          </button>
-          <button class="thesis-step-btn" data-step="6">
-            <span class="thesis-step-btn__num">6</span>
-            <span class="thesis-step-btn__title">Findings &amp; Control Failures</span>
-            <span class="thesis-step-btn__sub">Bergsj&ouml;n Sportklubb</span>
-          </button>
-        </div>
-
-        <!-- Step Content Panels -->
-        <div class="thesis-content" id="thesisContent">
-
-          <!-- Step 1 -->
-          <div class="thesis-panel active" data-panel="1">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 1: Data Collection</h4>
-                <p class="thesis-panel__subtitle">5.4M transactions</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--step1">5,433,668 rows</span>
-            </div>
-            <ul class="thesis-panel__list">
-              <li>48 monthly CSV files fetched manually from Gothenburg City's open data portal (2021–2024)</li>
-              <li>Encoding issues (UTF-8 vs ISO-8859-1) identified and standardized in the pipeline</li>
-              <li>Amount fields with text formatting (spaces as thousand separators) converted to float</li>
-              <li>5,433,668 transactions combined into a single dataset — no rows excluded</li>
-            </ul>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tools & Techniques</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">Python</span>
-                <span class="tech-badge">Pandas</span>
-                <span class="tech-badge">NumPy</span>
-                <span class="tech-badge">CSV Parsing</span>
-                <span class="tech-badge">Encoding</span>
-                <span class="tech-badge">data.goteborg.se</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="thesis-panel" data-panel="2">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 2: System Design</h4>
-                <p class="thesis-panel__subtitle">7 modules</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--step2">Modular Architecture</span>
-            </div>
-            <ul class="thesis-panel__list">
-              <li>Architecture: 3 statistical core modules + 4 support modules designed iteratively</li>
-              <li>Module 1: Org. numbers validated via Luhn algorithm — 4.7% (882) lacked valid numbers</li>
-              <li>Modules 2–3: Transaction pattern analysis with 6 sub-analyses + CV-centered supplier profiling</li>
-              <li>Risk score 0–100 with combination bonuses (e.g. &times;1.5 at threshold + disappearing) and legitimacy deductions</li>
-            </ul>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tools & Techniques</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">Python 3.9+</span>
-                <span class="tech-badge">Design Science Research</span>
-                <span class="tech-badge">Luhn Algorithm</span>
-                <span class="tech-badge">Openpyxl</span>
-                <span class="tech-badge">Jinja2</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="thesis-panel" data-panel="3">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 3: Iterative Development</h4>
-                <p class="thesis-panel__subtitle">V1.0 &rarr; V4.3 (9 versions)</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--step3">97% reduction</span>
-            </div>
-            <ul class="thesis-panel__list">
-              <li>9 versions iterated with systematic measurement of high-risk suppliers per version</li>
-              <li><strong>Breakthrough V4.3:</strong> CV (coefficient of variation = &sigma;/&mu;) strongest single indicator — uniform amounts flagged</li>
-              <li>LOV suppliers (standardized care rates) caused 50% of false positives &rarr; &minus;15 point adjustment</li>
-              <li>Result: 1,516 &rarr; 31 high-risk suppliers (&minus;97%) — but all top 10 verified as false positives</li>
-            </ul>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tools & Techniques</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">CV Analysis (&sigma;/&mu;)</span>
-                <span class="tech-badge">Benford's Law + Chi&sup2;</span>
-                <span class="tech-badge">Z-Score</span>
-                <span class="tech-badge">LOV Detection</span>
-                <span class="tech-badge">Volume Normalization</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="thesis-panel" data-panel="4">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 4: Semantic Analysis</h4>
-                <p class="thesis-panel__subtitle">Module 5</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--step4">16 associations flagged</span>
-            </div>
-            <ul class="thesis-panel__list">
-              <li>Filtered non-profit associations (802-org.nr) that invoiced services rather than received grants</li>
-              <li>Flagged illogical combinations: sports club &rarr; "Administrative services" to education department</li>
-              <li>16 associations identified, totaling 13.2 MSEK to the Labour Market and Adult Education Committee</li>
-              <li>Manual web verification per candidate: website, allabolag.se, IVO registry, Google search</li>
-            </ul>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tools & Techniques</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">Python Filtering</span>
-                <span class="tech-badge">Text Analysis</span>
-                <span class="tech-badge">Regex Matching</span>
-                <span class="tech-badge">Allabolag.se</span>
-                <span class="tech-badge">IVO Registry</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 5 -->
-          <div class="thesis-panel" data-panel="5">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 5: External Verification</h4>
-                <p class="thesis-panel__subtitle">Freedom of Information</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--step5">221 pages</span>
-            </div>
-            <ul class="thesis-panel__list">
-              <li>14 freedom of information requests sent to Gothenburg City, the District Court, and law firm dNovo</li>
-              <li>Meeting with Gothenburg City Leasing AB (3 representatives): confirmed attestation data not shared with Inyett</li>
-              <li>221 pages of documentation received: contracts, invoice copies, attestation screenshots, audit reports, bankruptcy filings</li>
-              <li>Inyett (240+ municipalities) lacks CV analysis, semantic checks, and attestation flow analysis — confirmed 2026-02-20</li>
-            </ul>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tools & Techniques</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">Freedom of Information Act</span>
-                <span class="tech-badge">Bolagsverket</span>
-                <span class="tech-badge">Gothenburg District Court</span>
-                <span class="tech-badge">Kronofogden</span>
-                <span class="tech-badge">Inyett / Visma</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 6 -->
-          <div class="thesis-panel" data-panel="6">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 6: Findings &amp; Control Failures</h4>
-                <p class="thesis-panel__subtitle">Bergsj&ouml;n Sportklubb</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--step6">13 control failures</span>
-            </div>
-            <ul class="thesis-panel__list">
-              <li>Bergsj&ouml;n SK: 6 contract breaches, no bookkeeping, bankruptcy with 0 SEK assets despite 2.16 MSEK in municipal funding</li>
-              <li>Broken functional separation: attestation handler made exception decisions AND sat in the approval chain</li>
-              <li>13 control failures independently confirmed by the administration's own PwC investigation (Report 59-2023)</li>
-              <li><strong>Key insight:</strong> The statistical system did NOT flag this case — only semantic analysis found it</li>
-            </ul>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tools & Techniques</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">COSO Framework</span>
-                <span class="tech-badge">Fraud Triangle (Cressey 1953)</span>
-                <span class="tech-badge">Fraud Diamond (Wolfe &amp; Hermanson 2004)</span>
-                <span class="tech-badge">PwC Report 59-2023</span>
-              </div>
-            </div>
-            <!-- Key Insight callout -->
-            <div class="thesis-panel__insight">
-              <strong>Key insight:</strong> Statistical anomalies in municipal invoices correlate more strongly with legitimate business patterns (framework agreements, LOV care) than with irregularities. Semantic analysis combined with freedom of information requests proved to be the most powerful tools for uncovering control failures.
-            </div>
-          </div>
-
-        </div>
-
-      </article>
-
-      <!-- Project 2: VPP -->
-      <article class="project project--vpp reveal" id="project-vpp">
-
-        <div class="thesis-header">
-          <span class="project__category">Desktop Application</span>
-          <h3 class="project__title">Video Processor Pro</h3>
-          <p class="thesis-header__sub">Electron + React + Python &middot; AI-Driven Video Processing Pipeline</p>
-        </div>
-
-        <!-- Visual Flow Diagram -->
-        <div class="vpp-flow">
-          <div class="vpp-flow__step">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-            <span>Full Video</span>
-          </div>
-          <div class="vpp-flow__arrow">&rarr;</div>
-          <div class="vpp-flow__step">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-            <span>Detect</span>
-          </div>
-          <div class="vpp-flow__arrow">&rarr;</div>
-          <div class="vpp-flow__step">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg>
-            <span>Split</span>
-          </div>
-          <div class="vpp-flow__arrow">&rarr;</div>
-          <div class="vpp-flow__step">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M4 4h16v16H4zM9 4v16M4 9h16"/></svg>
-            <span>Crop</span>
-          </div>
-          <div class="vpp-flow__arrow">&rarr;</div>
-          <div class="vpp-flow__step">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-            <span>Compile</span>
-          </div>
-          <div class="vpp-flow__arrow">&rarr;</div>
-          <div class="vpp-flow__step">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-            <span>AI Meta</span>
-          </div>
-        </div>
-
-        <!-- Step Navigation -->
-        <div class="thesis-steps-nav" id="vppStepsNav">
-          <button class="thesis-step-btn active" data-step="1">
-            <span class="thesis-step-btn__num">1</span>
-            <span class="thesis-step-btn__title">Scene Detection</span>
-            <span class="thesis-step-btn__sub">TransNetV2 / PySceneDetect</span>
-          </button>
-          <button class="thesis-step-btn" data-step="2">
-            <span class="thesis-step-btn__num">2</span>
-            <span class="thesis-step-btn__title">Clip Extraction</span>
-            <span class="thesis-step-btn__sub">Split, trim &amp; deduplicate</span>
-          </button>
-          <button class="thesis-step-btn" data-step="3">
-            <span class="thesis-step-btn__num">3</span>
-            <span class="thesis-step-btn__title">Smart Cropping</span>
-            <span class="thesis-step-btn__sub">9-method detection</span>
-          </button>
-          <button class="thesis-step-btn" data-step="4">
-            <span class="thesis-step-btn__num">4</span>
-            <span class="thesis-step-btn__title">Video Compilation</span>
-            <span class="thesis-step-btn__sub">TikTok, YouTube, Reels</span>
-          </button>
-          <button class="thesis-step-btn" data-step="5">
-            <span class="thesis-step-btn__num">5</span>
-            <span class="thesis-step-btn__title">AI Metadata</span>
-            <span class="thesis-step-btn__sub">GPT-4o generation</span>
-          </button>
-        </div>
-
-        <!-- Step Content Panels -->
-        <div class="thesis-content" id="vppContent">
-
-          <!-- VPP Step 1 -->
-          <div class="thesis-panel active" data-panel="1">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 1: Scene Detection</h4>
-                <p class="thesis-panel__subtitle">Analyze video frame by frame</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--accent">TransNetV2</span>
-            </div>
-            <div class="thesis-panel__split">
-              <div class="thesis-panel__text">
-                <ul class="thesis-panel__list">
-                  <li>Import a full-length video file — the system analyzes every frame to detect scene boundaries and shot transitions</li>
-                  <li>Primary method: <strong>TransNetV2</strong> deep learning model trained on dramatic shot changes for high accuracy</li>
-                  <li>Fallback: <strong>PySceneDetect</strong> using content-based detection with Laplacian variance (works without TensorFlow)</li>
-                  <li>Video metadata extracted via FFprobe — resolution, duration, frame rate, codec information</li>
-                </ul>
-                <div class="thesis-panel__settings">
-                  <span class="thesis-panel__settings-label">Configurable</span>
-                  <span class="settings-tag">Detection method</span>
-                  <span class="settings-tag">Gap frame tolerance (0–10)</span>
-                </div>
-              </div>
-              <div class="thesis-panel__preview">
-                <img src="assets/images/vpp/vpp-clip.jpg" alt="Scene detection interface">
-              </div>
-            </div>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tech Stack</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">TensorFlow</span>
-                <span class="tech-badge">TransNetV2</span>
-                <span class="tech-badge">PySceneDetect</span>
-                <span class="tech-badge">FFprobe</span>
-                <span class="tech-badge">Python</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- VPP Step 2 -->
-          <div class="thesis-panel" data-panel="2">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 2: Clip Extraction</h4>
-                <p class="thesis-panel__subtitle">Split, trim &amp; deduplicate</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--accent">Hash-based dedup</span>
-            </div>
-            <ul class="thesis-panel__list">
-              <li>Video is split at each detected scene boundary into individual numbered clips using FFmpeg stream copy (no re-encoding, instant)</li>
-              <li>Clips shorter than the minimum duration threshold are automatically discarded — removes single-frame transitions and black screens</li>
-              <li>Optional trim of the first 0–2 seconds per clip to remove residual black frames from scene transitions</li>
-              <li><strong>Fast deduplication:</strong> compares first + last 64KB MD5 hash of each file to eliminate near-identical clips without full file comparison</li>
-            </ul>
-            <div class="thesis-panel__settings">
-              <span class="thesis-panel__settings-label">Configurable</span>
-              <span class="settings-tag">Trim start (0–2s)</span>
-              <span class="settings-tag">Min duration (1–10s)</span>
-              <span class="settings-tag">Workers (1–8)</span>
-              <span class="settings-tag">Gap frames (0–10)</span>
-              <span class="settings-tag">Delete original</span>
-            </div>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tech Stack</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">FFmpeg</span>
-                <span class="tech-badge">Python multiprocessing</span>
-                <span class="tech-badge">MD5 hashing</span>
-                <span class="tech-badge">Stream copy</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- VPP Step 3 -->
-          <div class="thesis-panel" data-panel="3">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 3: Smart Cropping</h4>
-                <p class="thesis-panel__subtitle">9-method crop detection</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--accent">9 methods</span>
-            </div>
-            <ul class="thesis-panel__list">
-              <li>Each clip is analyzed using <strong>9 independent detection methods</strong> to find the optimal crop region for the target aspect ratio</li>
-              <li>Methods include: blur boundary detection (Laplacian variance), gradient variance, edge detection, symmetry analysis, center-weight scoring, and multi-frame sampling (3 frames per clip)</li>
-              <li>A weighted voting system combines all 9 methods to produce the final crop — logo regions are filtered out via connected component analysis</li>
-              <li>Results are cached with version management — re-processing only occurs when the detection algorithm is updated</li>
-            </ul>
-            <div class="thesis-panel__settings">
-              <span class="thesis-panel__settings-label">Configurable</span>
-              <span class="settings-tag">9:16 portrait (TikTok/Reels)</span>
-              <span class="settings-tag">16:9 landscape (YouTube)</span>
-              <span class="settings-tag">Cache invalidation</span>
-            </div>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tech Stack</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">OpenCV</span>
-                <span class="tech-badge">Laplacian variance</span>
-                <span class="tech-badge">Gradient analysis</span>
-                <span class="tech-badge">Edge detection</span>
-                <span class="tech-badge">NumPy</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- VPP Step 4 -->
-          <div class="thesis-panel" data-panel="4">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 4: Video Compilation</h4>
-                <p class="thesis-panel__subtitle">Assemble into finished videos</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--accent">Multi-format</span>
-            </div>
-            <div class="thesis-panel__split">
-              <div class="thesis-panel__text">
-                <ul class="thesis-panel__list">
-                  <li>Individual clips are randomly selected and assembled into finished videos — each clip is used only once across all compilations</li>
-                  <li><strong>Short-form</strong> (9:16, 20–90s): Vertical videos for TikTok, Instagram Reels, and YouTube Shorts with intelligent cropping applied</li>
-                  <li><strong>Long-form</strong> (16:9, 1–10 min): Landscape videos for YouTube's main platform — preserves original quality up to 4K</li>
-                  <li>Capacity analysis calculates realistic output before processing — prevents oversized compilations and recommends optimal settings</li>
-                </ul>
-                <div class="thesis-panel__settings">
-                  <span class="thesis-panel__settings-label">Configurable</span>
-                  <span class="settings-tag">Number of short videos</span>
-                  <span class="settings-tag">Number of long videos</span>
-                  <span class="settings-tag">Target duration per format</span>
-                  <span class="settings-tag">Output directory</span>
-                </div>
-              </div>
-              <div class="thesis-panel__preview">
-                <img src="assets/images/vpp/vpp-compile.jpg" alt="Video compilation interface">
-              </div>
-            </div>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tech Stack</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">FFmpeg</span>
-                <span class="tech-badge">Capacity analysis</span>
-                <span class="tech-badge">Random selection</span>
-                <span class="tech-badge">Timestamp management</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- VPP Step 5 -->
-          <div class="thesis-panel" data-panel="5">
-            <div class="thesis-panel__header">
-              <div>
-                <h4 class="thesis-panel__title">Step 5: AI Metadata Generation</h4>
-                <p class="thesis-panel__subtitle">GPT-4o powered</p>
-              </div>
-              <span class="thesis-panel__badge thesis-panel__badge--accent">~$0.02/video</span>
-            </div>
-            <div class="thesis-panel__split">
-              <div class="thesis-panel__text">
-                <ul class="thesis-panel__list">
-                  <li>5 frames are extracted from each compiled video and sent to <strong>GPT-4o's vision API</strong> for content analysis</li>
-                  <li>Generates optimized titles (max 60 characters), 10–15 relevant hashtags mixing popular and niche tags, and engaging descriptions (100–200 words)</li>
-                  <li>Content-type aware: different strategies for Gaming, Educational, Entertainment, and Tutorial content</li>
-                  <li>Output in TXT (easy copy-paste) or JSON (programmatic use) — ready for direct upload to social platforms</li>
-                </ul>
-                <div class="thesis-panel__settings">
-                  <span class="thesis-panel__settings-label">Configurable</span>
-                  <span class="settings-tag">Content type (Auto/Gaming/Educational/Entertainment)</span>
-                  <span class="settings-tag">Output format (TXT/JSON)</span>
-                  <span class="settings-tag">OpenAI API key</span>
-                </div>
-              </div>
-              <div class="thesis-panel__preview">
-                <img src="assets/images/vpp/vpp-metadata.jpg" alt="AI metadata generation interface">
-              </div>
-            </div>
-            <div class="thesis-panel__tech">
-              <span class="thesis-panel__tech-label">Tech Stack</span>
-              <div class="thesis-panel__tech-tags">
-                <span class="tech-badge">OpenAI GPT-4o</span>
-                <span class="tech-badge">Vision API</span>
-                <span class="tech-badge">Frame extraction</span>
-                <span class="tech-badge">Electron IPC</span>
-                <span class="tech-badge">React</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </article>
-
-      <!-- Project 3: STANEK -->
-      <article class="project reveal" id="project-stanek">
-        <div class="project__layout">
-          <div class="project__visual">
-            <div class="img-showcase" data-gallery="stanek">
-              <div class="img-showcase__main">
-                <img src="assets/images/stanek/site-homepage.png" alt="STANEK website homepage" class="img-showcase__img">
-              </div>
-              <div class="img-showcase__thumbs">
-                <button class="img-showcase__thumb active" data-src="assets/images/stanek/site-homepage.png"><img src="assets/images/stanek/site-homepage.png" alt="Homepage"></button>
-                <button class="img-showcase__thumb" data-src="assets/images/stanek/site-umber.png"><img src="assets/images/stanek/site-umber.png" alt="Umber collection"></button>
-                <button class="img-showcase__thumb" data-src="assets/images/stanek/site-onyx.png"><img src="assets/images/stanek/site-onyx.png" alt="Onyx collection"></button>
-                <button class="img-showcase__thumb" data-src="assets/images/stanek/campaign-1.jpg"><img src="assets/images/stanek/campaign-1.jpg" alt="Campaign photo"></button>
-              </div>
-            </div>
-          </div>
-          <div class="project__info">
-            <span class="project__category">E-Commerce Website</span>
-            <h3 class="project__title">STANEK — Premium Streetwear</h3>
-            <p class="project__description">A luxury e-commerce website for a Swedish streetwear brand. Features cinematic video backgrounds, smooth GSAP animations, a loading screen with staggered text reveal, magnetic hover effects, and a fully functional shopping cart with localStorage persistence. Designed with a dark premium aesthetic — gold accents on deep black.</p>
-            <details class="project__dropdown">
-              <summary class="project__dropdown-title">Features</summary>
-              <div class="project__dropdown-content">
-                <span class="feature-tag">Cinematic Video Hero</span>
-                <span class="feature-tag">GSAP Animations</span>
-                <span class="feature-tag">Shopping Cart</span>
-                <span class="feature-tag">Responsive Design</span>
-                <span class="feature-tag">Product Gallery</span>
-                <span class="feature-tag">Contact Form</span>
-              </div>
-            </details>
-            <details class="project__dropdown">
-              <summary class="project__dropdown-title">Tech Stack</summary>
-              <div class="project__dropdown-content">
-                <span class="tech-badge">HTML5</span>
-                <span class="tech-badge">CSS3</span>
-                <span class="tech-badge">JavaScript</span>
-                <span class="tech-badge">GSAP</span>
-                <span class="tech-badge">PHP</span>
-              </div>
-            </details>
-            <a href="https://stanekf.com/" class="btn btn--primary project__link" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-right:8px"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-              View Live Site
-            </a>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section class="section skills" id="skills">
-    <div class="container">
-      <h2 class="section__title reveal">Skills & Technologies</h2>
-      <div class="skills__grid stagger-children reveal">
-
-        <div class="skill-group">
-          <h3 class="skill-group__title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="skill-group__icon"><path d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-            Frontend
-          </h3>
-          <div class="skill-group__items">
-            <span class="skill-item">HTML5</span>
-            <span class="skill-item">CSS3</span>
-            <span class="skill-item">JavaScript</span>
-            <span class="skill-item">React</span>
-            <span class="skill-item">TypeScript</span>
-            <span class="skill-item">GSAP</span>
-            <span class="skill-item">Material-UI</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3 class="skill-group__title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="skill-group__icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            Backend
-          </h3>
-          <div class="skill-group__items">
-            <span class="skill-item">Python</span>
-            <span class="skill-item">Node.js</span>
-            <span class="skill-item">PHP</span>
-            <span class="skill-item">Electron</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3 class="skill-group__title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="skill-group__icon"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 4v4l3 3"/></svg>
-            Data & AI
-          </h3>
-          <div class="skill-group__items">
-            <span class="skill-item">TensorFlow</span>
-            <span class="skill-item">PyTorch</span>
-            <span class="skill-item">OpenCV</span>
-            <span class="skill-item">Pandas</span>
-            <span class="skill-item">NumPy</span>
-            <span class="skill-item">OpenAI API</span>
-            <span class="skill-item">FFmpeg</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3 class="skill-group__title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="skill-group__icon"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-            Tools & Methods
-          </h3>
-          <div class="skill-group__items">
-            <span class="skill-item">Git</span>
-            <span class="skill-item">Responsive Design</span>
-            <span class="skill-item">UI/UX Design</span>
-            <span class="skill-item">REST APIs</span>
-            <span class="skill-item">Statistical Analysis</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
+  <!-- Contact -->
   <section class="section contact" id="contact">
     <div class="container">
-      <h2 class="section__title reveal">Get In Touch</h2>
-      <p class="contact__text reveal">Interested in working together or have a question? Feel free to reach out.</p>
-      <div class="contact__links stagger-children reveal">
-        <a href="mailto:nataniel.ata7@hotmail.se" class="contact-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="contact-card__icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
-          <span class="contact-card__label">Email</span>
-          <span class="contact-card__value">nataniel.ata7@hotmail.se</span>
-        </a>
-        <a href="mailto:naat2100@student.miun.se" class="contact-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="contact-card__icon"><path d="M22 10v6M2 10l10 5 10-5-10-5-10 5z"/><path d="M6 12v5c0 1 2 3 6 3s6-2 6-3v-5"/></svg>
-          <span class="contact-card__label">University Email</span>
-          <span class="contact-card__value">naat2100@student.miun.se</span>
-        </a>
-        <a href="https://github.com/Nataniel0212" target="_blank" rel="noopener" class="contact-card">
-          <svg viewBox="0 0 24 24" fill="currentColor" class="contact-card__icon"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      <span class="eyebrow reveal">Contact</span>
+      <h2 class="section__title reveal">Let's build something that matters.</h2>
+      <p class="contact__sub reveal">Recruiting, collaborating, or just curious about the fraud detection work? My inbox is open.</p>
+      <a href="mailto:nataniel.ata7@hotmail.se" class="contact__mail reveal">nataniel.ata7@hotmail.se</a>
+      <div class="contact__grid reveal">
+        <a href="https://github.com/Nataniel0212" class="contact-card" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.95.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
           <span class="contact-card__label">GitHub</span>
-          <span class="contact-card__value">Nataniel0212</span>
+          <span class="contact-card__value">@Nataniel0212</span>
         </a>
-        <a href="https://linkedin.com/in/nataniel-ataseven" target="_blank" rel="noopener" class="contact-card">
-          <svg viewBox="0 0 24 24" fill="currentColor" class="contact-card__icon"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <a href="https://linkedin.com/in/nataniel-ataseven" class="contact-card" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
           <span class="contact-card__label">LinkedIn</span>
-          <span class="contact-card__value">Nataniel Ataseven</span>
+          <span class="contact-card__value">nataniel-ataseven</span>
+        </a>
+        <a href="Nataniel_Ataseven_CV.pdf" class="contact-card" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z"/><path d="M14 2.5V7.5h5"/><path d="M9 13h6M9 16.5h6"/></svg>
+          <span class="contact-card__label">CV</span>
+          <span class="contact-card__value">Download PDF</span>
         </a>
       </div>
     </div>
@@ -805,36 +204,13 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer__inner">
-        <div class="footer__left">
-          <p class="footer__name">Nataniel Ataseven</p>
-          <p class="footer__tagline">Building things that solve real problems.</p>
-        </div>
-        <div class="footer__right">
-          <div class="footer__links">
-            <a href="https://github.com/Nataniel0212" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://linkedin.com/in/nataniel-ataseven" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="mailto:nataniel.ata7@hotmail.se">Email</a>
-          </div>
-          <p class="footer__copy">&copy; 2026 &middot; Built from scratch with vanilla HTML, CSS &amp; JS.</p>
-        </div>
-      </div>
+    <div class="container footer__inner">
+      <p>© 2026 Nataniel Ataseven</p>
+      <p>Built from scratch with vanilla HTML, CSS and JS.</p>
     </div>
   </footer>
 
-  <!-- Back to top -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M18 15l-6-6-6 6"/></svg>
-  </button>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox__close" aria-label="Close">&times;</button>
-    <img class="lightbox__img" id="lightboxImg" src="" alt="">
-  </div>
-
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=14"></script>
   <script src="js/analytics.js"></script>
 </body>
 </html>

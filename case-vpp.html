@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Processor Pro — AI video pipeline — Nataniel Ataseven</title>
+  <meta name="description" content="Video Processor Pro turns full-length videos into publish-ready clips for TikTok, Reels and YouTube. Scene detection, smart cropping and AI metadata in one desktop app.">
+  <meta name="theme-color" content="#0d0d14">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>N</text></svg>">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Video Processor Pro — AI video pipeline">
+  <meta property="og:description" content="Full videos in, publish-ready clips out. Scene detection, 9-method smart cropping and GPT-4o metadata.">
+  <meta property="og:url" content="https://nataniel0212.github.io/portfolio/case-vpp.html">
+  <meta property="og:image" content="https://nataniel0212.github.io/portfolio/assets/og-image.png">
+  <link rel="canonical" href="https://nataniel0212.github.io/portfolio/case-vpp.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=14">
+
+  <!-- VPP-tema: sidan speglar appens eget gränssnitt (mörk indigo → rosa gradient) -->
+  <style>
+    body.project-vpp {
+      --bg-0: #0d0d14;
+      --bg-1: #111119;
+      --bg-2: #16161f;
+      --border-1: rgba(180, 170, 255, .10);
+      --border-2: rgba(180, 170, 255, .20);
+      --accent: #8b5cf6;
+      --accent-hover: #a78bfa;
+      --accent-soft: rgba(139, 92, 246, .13);
+      --on-accent: #ffffff;
+      background: var(--bg-0);
+    }
+
+    .project-hero {
+      position: relative;
+      min-height: 78svh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      padding: 150px 0 72px;
+    }
+    .project-hero__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      filter: brightness(.45) saturate(1.1) blur(3px);
+      transform: scale(1.06);
+    }
+    .project-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(13, 13, 20, .6) 0%, rgba(13, 13, 20, .3) 40%, rgba(13, 13, 20, .97) 88%),
+        radial-gradient(ellipse at 80% 10%, rgba(139, 92, 246, .18), transparent 55%),
+        radial-gradient(ellipse at 15% 85%, rgba(236, 72, 153, .12), transparent 50%);
+    }
+    .project-hero .container { position: relative; z-index: 1; }
+    .project-hero__brand {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6.5vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+      margin: 18px 0 14px;
+      background: linear-gradient(95deg, #a5b4fc 0%, #8b5cf6 45%, #ec4899 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .project-hero__tag {
+      font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+      color: rgba(240, 238, 250, .85);
+      max-width: 44ch;
+      margin-bottom: 30px;
+    }
+    .project-hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .who {
+      background: var(--bg-2);
+      border: 1px solid var(--border-1);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+    }
+    .who h3 {
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--text-1);
+      margin-bottom: 8px;
+    }
+    .who p { font-size: .9063rem; }
+    @media (max-width: 768px) { .who-grid { grid-template-columns: 1fr; } }
+
+    /* Beskär bort Windows-ramen på appskärmbilderna */
+    .media-crop {
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-1);
+      overflow: hidden;
+      margin: 6px 0 22px;
+    }
+    .media-crop img { width: 100%; display: block; transform: scale(1.06) translateY(2.5%); margin: 0 !important; border: none !important; border-radius: 0 !important; }
+
+    .case-step > p { max-width: 66ch; margin-bottom: 16px; }
+    .case-step > p strong { color: var(--text-1); font-weight: 500; }
+  </style>
+</head>
+<body class="project-vpp">
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Nataniel Ataseven</a>
+      <div class="nav__links">
+        <a href="research.html" class="nav__link">Research</a>
+        <a href="apps.html" class="nav__link">Apps</a>
+        <a href="websites.html" class="nav__link">Websites</a>
+        <a href="index.html#about" class="nav__link">About</a>
+        <a href="index.html#contact" class="nav__link">Contact</a>
+        <a href="cv.html" class="nav__cv">View CV</a>
+      </div>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="research.html">Research</a>
+    <a href="apps.html">Apps</a>
+    <a href="websites.html">Websites</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="cv.html">View CV</a>
+  </div>
+
+  <!-- Hero: appens eget gränssnitt som bakgrund -->
+  <header class="project-hero">
+    <img class="project-hero__bg" src="assets/images/vpp/vpp-clip.jpg" alt="" aria-hidden="true">
+    <div class="project-hero__overlay" aria-hidden="true"></div>
+    <div class="container">
+      <a href="apps.html" class="case-hero__back">← Back to Apps</a>
+      <h1 class="project-hero__brand">Video Processor Pro</h1>
+      <p class="project-hero__tag">One long video in. Dozens of publish-ready clips out, with titles and hashtags written for you.</p>
+      <div class="project-hero__actions">
+        <a href="#tour" class="btn btn--primary">See how it works</a>
+        <a href="index.html#contact" class="btn btn--ghost">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="case-body">
+    <div class="container">
+
+      <section class="case-step">
+        <span class="case-step__num">What it is</span>
+        <h2>The boring part of content creation, automated</h2>
+        <p>Turning a long recording into short clips means scrubbing through hours of footage, cutting scenes by hand, reframing everything to vertical and writing captions for each post. Video Processor Pro does all of that in one pass. Drop in a full-length video and it detects the scenes, cuts the clips, crops them for each platform and writes the publishing text.</p>
+        <p>The output is ready to upload: vertical 9:16 clips for TikTok, Reels and Shorts, landscape 16:9 compilations for YouTube in up to 4K, and a text file with titles, hashtags and descriptions for every video.</p>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">Who it's for</span>
+        <h2>For anyone who publishes video</h2>
+        <div class="who-grid">
+          <div class="who">
+            <h3>Content creators</h3>
+            <p>Repurpose streams, podcasts and long-form videos into daily short-form content without living in an editor.</p>
+          </div>
+          <div class="who">
+            <h3>Social media teams</h3>
+            <p>Keep several channels fed from one source recording, with captions and hashtags generated per clip.</p>
+          </div>
+          <div class="who">
+            <h3>Agencies &amp; brands</h3>
+            <p>Batch-produce platform-ready cutdowns of campaign material at roughly $0.02 per video in AI cost.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-step" id="tour">
+        <span class="case-step__num">Step 1 · Detect &amp; cut</span>
+        <h2>Every scene found automatically</h2>
+        <p>The app analyzes every frame with <strong>TransNetV2</strong>, a deep learning model trained to spot shot changes, and falls back to PySceneDetect when TensorFlow is unavailable. The video is then split at each boundary with FFmpeg stream copy, so cutting is instant and lossless. Too-short fragments and near-duplicate clips are filtered out automatically.</p>
+        <div class="media-crop">
+          <img src="assets/images/vpp/vpp-clip.jpg" alt="Video Processor Pro: scene cutting with adjustable trim, clip length and worker settings" loading="lazy" width="800" height="429">
+        </div>
+        <div class="case-tech">
+          <span class="tech">TensorFlow</span><span class="tech">TransNetV2</span><span class="tech">PySceneDetect</span><span class="tech">FFmpeg</span>
+        </div>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">Step 2 · Smart crop</span>
+        <h2>Nine methods vote on every frame</h2>
+        <p>Going from landscape to vertical means deciding what to keep in frame. Instead of trusting one heuristic, each clip is analyzed by <strong>nine independent detection methods</strong>: blur boundaries, gradient variance, edge detection, symmetry, center weighting and multi-frame sampling among them. A weighted vote picks the crop, logos are filtered out, and results are cached so nothing is recomputed needlessly.</p>
+        <div class="case-tech">
+          <span class="tech">OpenCV</span><span class="tech">Laplacian variance</span><span class="tech">NumPy</span><span class="tech">Vote-based scoring</span>
+        </div>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">Step 3 · Compile &amp; publish</span>
+        <h2>GPT-4o writes the publishing kit</h2>
+        <p>Clips are assembled into finished videos, each clip used only once across all compilations, with a capacity analysis that recommends realistic settings before processing starts. Five frames per video then go to <strong>GPT-4o vision</strong>, which writes an optimized title, 10 to 15 hashtags and an engaging description, adapted to whether the content is gaming, educational or entertainment.</p>
+        <div class="media-crop">
+          <img src="assets/images/vpp/vpp-metadata.jpg" alt="Video Processor Pro: AI metadata generation with content type and output format" loading="lazy" width="800" height="431">
+        </div>
+        <div class="case-tech">
+          <span class="tech">FFmpeg</span><span class="tech">OpenAI GPT-4o</span><span class="tech">Electron</span><span class="tech">React</span><span class="tech">Python</span>
+        </div>
+      </section>
+
+      <div class="case-insight">
+        <strong>The result:</strong> what used to be an evening of editing per video becomes a single automated run. The creator's time goes into making content, not reformatting it.
+      </div>
+
+      <div class="case-cta">
+        <a href="case-thesis.html" class="btn btn--primary">Next: fraud detection in 5.4M invoices →</a>
+        <a href="apps.html" class="btn btn--ghost">← Back to Apps</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2026 Nataniel Ataseven</p>
+      <p><a href="index.html" style="color:inherit">← Back to portfolio</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=14"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>

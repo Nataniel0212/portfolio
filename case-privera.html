@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privera — on-device GDPR redaction — Nataniel Ataseven</title>
+  <meta name="description" content="Privera redacts sensitive data from PDF and Word documents, entirely on your own computer. Built for law firms and anyone handling confidential material.">
+  <meta name="theme-color" content="#0b1520">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>N</text></svg>">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Privera — on-device GDPR redaction">
+  <meta property="og:description" content="Redacts sensitive data from legal documents on your own computer. Nothing leaves the machine.">
+  <meta property="og:url" content="https://nataniel0212.github.io/portfolio/case-privera.html">
+  <meta property="og:image" content="https://nataniel0212.github.io/portfolio/assets/og-image.png">
+  <link rel="canonical" href="https://nataniel0212.github.io/portfolio/case-privera.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=14">
+
+  <!-- Privera-tema: sidan speglar produktens eget varumärke (marinblå + blått) -->
+  <style>
+    body.project-privera {
+      --bg-0: #0b1520;
+      --bg-1: #0e1a28;
+      --bg-2: #122031;
+      --border-1: rgba(160, 200, 255, .10);
+      --border-2: rgba(160, 200, 255, .20);
+      --accent: #3b82f6;
+      --accent-hover: #60a5fa;
+      --accent-soft: rgba(59, 130, 246, .12);
+      --on-accent: #ffffff;
+      background: var(--bg-0);
+    }
+
+    /* Ren marinblå hero: text till vänster, produktvideon som panel till höger */
+    .project-hero {
+      position: relative;
+      min-height: 82svh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 150px 0 72px;
+      background: #0b1520;
+    }
+    .project-hero::before,
+    .project-hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(130px);
+      pointer-events: none;
+    }
+    .project-hero::before {
+      width: 640px; height: 640px;
+      top: -240px; right: -140px;
+      background: rgba(59, 130, 246, .16);
+    }
+    .project-hero::after {
+      width: 460px; height: 460px;
+      bottom: -220px; left: -140px;
+      background: rgba(30, 80, 170, .14);
+    }
+    .project-hero .container { position: relative; z-index: 1; }
+    .project-hero__inner {
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .project-hero__media {
+      width: 100%;
+      display: block;
+      border-radius: var(--radius);
+      border: 1px solid rgba(160, 200, 255, .18);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .55);
+      background: #0e1a28;
+    }
+    @media (max-width: 900px) {
+      .project-hero__inner { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    .ad-showcase {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-1);
+      margin-top: 24px;
+    }
+    .project-hero__brand {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      color: #fff;
+      line-height: 1;
+      margin: 18px 0 14px;
+    }
+    .project-hero__brand span { color: var(--accent); }
+    .project-hero__tag {
+      font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+      color: rgba(235, 243, 252, .85);
+      max-width: 46ch;
+      margin-bottom: 30px;
+    }
+    .project-hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .who {
+      background: var(--bg-2);
+      border: 1px solid var(--border-1);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+    }
+    .who h3 {
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--text-1);
+      margin-bottom: 8px;
+    }
+    .who p { font-size: .9063rem; }
+    @media (max-width: 768px) { .who-grid { grid-template-columns: 1fr; } }
+
+    /* Beskär bort appbildens grå ram */
+    .media-crop {
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-1);
+      overflow: hidden;
+      margin: 6px 0 22px;
+    }
+    .media-crop img { width: 100%; height: auto; display: block; margin: 0 !important; border: none !important; border-radius: 0 !important; }
+
+    .case-step > p { max-width: 66ch; margin-bottom: 16px; }
+    .case-step > p strong { color: var(--text-1); font-weight: 500; }
+  </style>
+</head>
+<body class="project-privera">
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Nataniel Ataseven</a>
+      <div class="nav__links">
+        <a href="research.html" class="nav__link">Research</a>
+        <a href="apps.html" class="nav__link">Apps</a>
+        <a href="websites.html" class="nav__link">Websites</a>
+        <a href="index.html#about" class="nav__link">About</a>
+        <a href="index.html#contact" class="nav__link">Contact</a>
+        <a href="cv.html" class="nav__cv">View CV</a>
+      </div>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="research.html">Research</a>
+    <a href="apps.html">Apps</a>
+    <a href="websites.html">Websites</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="cv.html">View CV</a>
+  </div>
+
+  <!-- Hero: produktvideon som panel bredvid varumärket -->
+  <header class="project-hero">
+    <div class="container">
+      <div class="project-hero__inner">
+        <div>
+          <a href="apps.html" class="case-hero__back">← Back to Apps</a>
+          <h1 class="project-hero__brand">Privera<span>.</span></h1>
+          <p class="project-hero__tag">Automatic redaction of sensitive data in PDF and Word documents. On your computer, never in the cloud.</p>
+          <div class="project-hero__actions">
+            <a href="https://privera.se" class="btn btn--primary" target="_blank" rel="noopener">Visit privera.se ↗</a>
+            <a href="#demo" class="btn btn--ghost">See it work</a>
+          </div>
+        </div>
+        <video class="project-hero__media" src="assets/video/privera-demo.mp4" autoplay muted loop playsinline preload="auto" aria-label="Privera finds and masks sensitive data in a legal document"></video>
+      </div>
+    </div>
+  </header>
+
+  <main class="case-body">
+    <div class="container">
+
+      <section class="case-step">
+        <span class="case-step__num">What it is</span>
+        <h2>Redaction without the busywork</h2>
+        <p>Anonymizing a legal document by hand means reading every line, hunting for names, personal numbers and addresses, and hoping you did not miss one. Privera does that work for you. Open a file, and it finds the sensitive information automatically: names, personnummer, addresses, phone numbers, emails, bank details.</p>
+        <p>You stay in control. Every detection is shown for review before anything is masked, and the finished document is exported with the sensitive pixels actually removed, not just covered up. <strong>Nothing is uploaded anywhere.</strong> The entire process runs on your own machine.</p>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">Who it's for</span>
+        <h2>Built for people who handle sensitive documents</h2>
+        <div class="who-grid">
+          <div class="who">
+            <h3>Law firms</h3>
+            <p>Redact privileged material for court filings, discovery and client sharing without letting it leave the firm.</p>
+          </div>
+          <div class="who">
+            <h3>HR, finance &amp; public sector</h3>
+            <p>Anonymize employment records, invoices and case files before archiving or handing them out.</p>
+          </div>
+          <div class="who">
+            <h3>Anyone under GDPR</h3>
+            <p>Large document volumes take hours to handle manually. Privera batch-processes up to 100 files at a time, locally.</p>
+          </div>
+        </div>
+        <img class="ad-showcase" src="assets/images/privera/ad-batch.png" alt="From Privera's launch campaign: large document volumes take hours to handle manually. Privera batch-processes up to 100 files at a time, entirely locally." loading="lazy" width="1318" height="1254">
+      </section>
+
+      <section class="case-step" id="demo">
+        <span class="case-step__num">See it work</span>
+        <h2>Open, review, export</h2>
+        <div class="media-crop">
+          <img src="assets/images/privera/app-ui.png" alt="Privera's review view: detected sensitive data grouped by category, ready to mask" loading="lazy" width="1920" height="1080">
+        </div>
+        <p>The document renders in the center with every hit color-coded and grouped by category on the right. Toggle categories, click a hit to exclude it, or draw your own redactions. Then export a clean file. <a href="https://privera.se" target="_blank" rel="noopener">Try it at privera.se ↗</a></p>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">How it works</span>
+        <h2>Three engines, one clean result</h2>
+        <p><strong>Detect.</strong> Three engines read the document together. Regex with Luhn checksum validation catches structured identifiers like personnummer and IBAN. Dedicated patterns catch phone numbers and emails. KB-BERT, a Swedish language model from the National Library, finds names, organisations and places. Scanned documents fall back to Tesseract OCR automatically.</p>
+        <p><strong>Propagate.</strong> When a name is found once, it is masked everywhere, including a signature on the last page that the model only tagged on page one. Addresses grow to cover house numbers and postcodes, even when they wrap across a line break.</p>
+        <p><strong>Redact, for real.</strong> Most tools draw a black box over the text. Privera removes the underlying pixels, so the content cannot be recovered by copy-paste or forensic tools.</p>
+        <p><strong>Prove it.</strong> Every run writes an audit file with SHA-256 hashes of input and output, a tamper-evident log for GDPR compliance. The whole pipeline is covered by 179 automated tests.</p>
+        <div class="case-tech">
+          <span class="tech">Electron</span><span class="tech">React</span><span class="tech">Python</span><span class="tech">KB-BERT</span><span class="tech">PyMuPDF</span><span class="tech">Tesseract OCR</span><span class="tech">SHA-256</span>
+        </div>
+      </section>
+
+      <div class="case-insight">
+        <strong>Why local-first matters:</strong> competing tools upload documents to the cloud. Privera runs everything on the user's own machine. No account, no telemetry, nothing leaves the firm. For privileged legal material, that is the whole point.
+      </div>
+
+      <div class="case-cta">
+        <a href="https://privera.se" class="btn btn--primary" target="_blank" rel="noopener">Visit privera.se ↗</a>
+        <a href="case-vpp.html" class="btn btn--ghost">Next: Video Processor Pro →</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2026 Nataniel Ataseven</p>
+      <p><a href="index.html" style="color:inherit">← Back to portfolio</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=14"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>

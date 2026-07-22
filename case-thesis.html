@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finding fraud in 5.4M municipal invoices — Nataniel Ataseven</title>
+  <meta name="description" content="A master's thesis that read every invoice Gothenburg City paid over four years, narrowed 18,774 suppliers to 31 high-risk candidates and surfaced 13 control failures later confirmed by PwC.">
+  <meta name="theme-color" content="#171006">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>N</text></svg>">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Finding fraud in 5.4M municipal invoices">
+  <meta property="og:description" content="18,774 suppliers narrowed to 31. 13 control failures confirmed by PwC's own investigation.">
+  <meta property="og:url" content="https://nataniel0212.github.io/portfolio/case-thesis.html">
+  <meta property="og:image" content="https://nataniel0212.github.io/portfolio/assets/og-image.png">
+  <link rel="canonical" href="https://nataniel0212.github.io/portfolio/case-thesis.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=14">
+
+  <!-- Thesis-tema: varm mörk research-känsla med sifferregn -->
+  <style>
+    body.project-thesis {
+      --bg-0: #171006;
+      --bg-1: #1c150a;
+      --bg-2: #221a0e;
+      --border-1: rgba(255, 220, 170, .09);
+      --border-2: rgba(255, 220, 170, .18);
+      background: var(--bg-0);
+    }
+
+    .project-hero {
+      position: relative;
+      min-height: 74svh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      padding: 150px 0 64px;
+    }
+    .project-hero__scene {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .project-hero::before {
+      content: '';
+      position: absolute;
+      width: 620px; height: 620px;
+      top: -240px; right: -140px;
+      border-radius: 50%;
+      filter: blur(130px);
+      background: rgba(224, 118, 60, .14);
+      pointer-events: none;
+    }
+    .project-hero .container { position: relative; z-index: 1; }
+    .project-hero__brand {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5.5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1.06;
+      color: var(--text-1);
+      margin: 18px 0 14px;
+      max-width: 22ch;
+    }
+    .project-hero__brand em { font-style: normal; color: var(--accent); }
+    .project-hero__tag {
+      font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+      color: var(--text-2);
+      max-width: 52ch;
+      margin-bottom: 30px;
+    }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .who {
+      background: var(--bg-2);
+      border: 1px solid var(--border-1);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+    }
+    .who h3 {
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--text-1);
+      margin-bottom: 8px;
+    }
+    .who p { font-size: .9063rem; }
+    @media (max-width: 768px) { .who-grid { grid-template-columns: 1fr; } }
+
+    .case-step > p { max-width: 66ch; margin-bottom: 16px; }
+    .case-step > p strong { color: var(--text-1); font-weight: 500; }
+  </style>
+</head>
+<body class="project-thesis">
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Nataniel Ataseven</a>
+      <div class="nav__links">
+        <a href="research.html" class="nav__link">Research</a>
+        <a href="apps.html" class="nav__link">Apps</a>
+        <a href="websites.html" class="nav__link">Websites</a>
+        <a href="index.html#about" class="nav__link">About</a>
+        <a href="index.html#contact" class="nav__link">Contact</a>
+        <a href="cv.html" class="nav__cv">View CV</a>
+      </div>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="research.html">Research</a>
+    <a href="apps.html">Apps</a>
+    <a href="websites.html">Websites</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="cv.html">View CV</a>
+  </div>
+
+  <!-- Hero: sifferregn bakom titeln -->
+  <header class="project-hero">
+    <div class="project-hero__scene" aria-hidden="true">
+      <div class="rain" data-rain="26"></div>
+    </div>
+    <div class="container">
+      <a href="research.html" class="case-hero__back">← Back to Research</a>
+      <span class="eyebrow">Master's thesis · Data science</span>
+      <h1 class="project-hero__brand">Finding fraud in <em>5.4 million</em> municipal invoices</h1>
+      <p class="project-hero__tag">Four years of Gothenburg City's payments, read by a system I built from scratch. It pointed at one association. PwC's own investigation later confirmed what it found.</p>
+      <div class="case-stats">
+        <div class="case-stat"><span class="case-stat__num">5.4M</span><span class="case-stat__label">transactions</span></div>
+        <div class="case-stat"><span class="case-stat__num">107.6B</span><span class="case-stat__label">SEK analyzed</span></div>
+        <div class="case-stat"><span class="case-stat__num">97%</span><span class="case-stat__label">false-positive reduction</span></div>
+        <div class="case-stat"><span class="case-stat__num">13</span><span class="case-stat__label">control failures confirmed</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="case-body">
+    <div class="container">
+
+      <section class="case-step">
+        <span class="case-step__num">What this is</span>
+        <h2>A fraud detector for public money</h2>
+        <p>Every year Gothenburg City pays out billions of SEK across millions of invoices. No auditor can read them all, so irregularities can hide in plain sight for years. For my master's thesis I built a system that reads every single one and points to the suppliers that deserve a closer look.</p>
+        <p>The system narrowed <strong>18,774 suppliers down to 31 high-risk candidates</strong>, and uncovered 13 control failures around a single association. Months later, PwC's own investigation reached the same conclusions.</p>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">Who it's for</span>
+        <h2>Anyone responsible for public spending</h2>
+        <div class="who-grid">
+          <div class="who">
+            <h3>Municipalities</h3>
+            <p>Screen every payment continuously instead of sampling a handful of invoices at audit time.</p>
+          </div>
+          <div class="who">
+            <h3>Auditors &amp; regulators</h3>
+            <p>Get a ranked shortlist of suppliers worth investigating, with the statistical evidence attached.</p>
+          </div>
+          <div class="who">
+            <h3>Researchers</h3>
+            <p>A documented Design Science approach showing what actually works on real open payment data.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">How it was done</span>
+        <h2>From 48 CSV files to a shortlist of 31</h2>
+        <p><strong>Collect.</strong> Four years of open payment data, 48 monthly CSV files with mixed encodings and text-formatted amounts, cleaned and combined into one dataset of 5,433,668 transactions. No rows excluded.</p>
+        <p><strong>Design.</strong> A modular system with seven parts: three statistical cores and four support modules. Suppliers are profiled on transaction patterns and scored 0 to 100, with bonuses for dangerous combinations like uniform amounts from a supplier that suddenly disappears.</p>
+        <p><strong>Iterate.</strong> Nine versions, each measured against the last. The breakthrough was the coefficient of variation: suppliers invoicing suspiciously uniform amounts stood out. Standardized care rates caused half of all false alarms and got their own adjustment. The shortlist went from 1,516 suppliers to 31, a 97 percent reduction.</p>
+        <p><strong>Read between the lines.</strong> Statistics alone were not enough; every top candidate turned out to have a legitimate explanation. So the system also reads what invoices say. A sports club billing "administrative services" to the education department is grammatically normal and semantically absurd. That lens surfaced 16 associations worth 13.2 MSEK.</p>
+        <p><strong>Verify in the real world.</strong> Fourteen freedom-of-information requests, 221 pages of contracts, attestation records and bankruptcy filings, and a meeting with the city's leasing company turned suspicion into evidence.</p>
+        <div class="case-tech">
+          <span class="tech">Python</span><span class="tech">Pandas</span><span class="tech">Benford's Law + Chi²</span><span class="tech">CV analysis</span><span class="tech">Luhn algorithm</span><span class="tech">Design Science Research</span>
+        </div>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">The finding</span>
+        <h2>One association, 13 control failures</h2>
+        <p>Bergsjön Sportklubb received 2.16 MSEK in municipal funding, breached its contract six times, kept no bookkeeping and went bankrupt with zero assets. The same person who handled attestation exceptions also sat in the approval chain. In total, <strong>13 broken controls</strong>, each one independently confirmed by PwC's investigation, Report 59-2023.</p>
+        <p>The market-leading screening tool used by 240 municipalities had not flagged any of it. Neither had my statistical modules. <strong>Only the semantic analysis found it</strong>, which became the thesis's central result.</p>
+        <div class="case-tech">
+          <span class="tech">COSO framework</span><span class="tech">Fraud Triangle</span><span class="tech">Freedom of Information Act</span><span class="tech">PwC Report 59-2023</span>
+        </div>
+      </section>
+
+      <div class="case-insight">
+        <strong>Key insight:</strong> statistical anomalies in municipal invoices correlate more with legitimate business patterns than with fraud. The powerful combination is semantics plus public records: read what the invoices say, then demand the paperwork.
+      </div>
+
+      <div class="case-cta">
+        <a href="case-privera.html" class="btn btn--primary">Next: Privera →</a>
+        <a href="research.html" class="btn btn--ghost">← Back to Research</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2026 Nataniel Ataseven</p>
+      <p><a href="index.html" style="color:inherit">← Back to portfolio</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=14"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>

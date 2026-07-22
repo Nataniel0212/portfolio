@@ -1,6 +1,8 @@
 .claude/
 
-# CV and cover letters — keep locally, don't publish
-*.pdf
-cv.html
+# Personliga brev — hålls lokalt (flyttade till ../portfölj_privat), publiceras aldrig
 personligt_brev_*.html
+Personligt_brev_*.pdf
+Cover_Letter_*.pdf
+
+# OBS: CV:t publiceras numera — sajten länkar till cv.html och Nataniel_Ataseven_CV.pdf

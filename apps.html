@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apps — Nataniel Ataseven</title>
+  <meta name="description" content="Apps by Nataniel Ataseven — Privera, an on-device GDPR redaction tool for law firms, and Video Processor Pro, an AI-powered video pipeline.">
+  <meta name="theme-color" content="#081712">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>N</text></svg>">
+  <link rel="canonical" href="https://nataniel0212.github.io/portfolio/apps.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=14">
+</head>
+<body data-category="apps">
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Nataniel Ataseven</a>
+      <div class="nav__links">
+        <a href="research.html" class="nav__link">Research</a>
+        <a href="apps.html" class="nav__link">Apps</a>
+        <a href="websites.html" class="nav__link">Websites</a>
+        <a href="index.html#about" class="nav__link">About</a>
+        <a href="index.html#contact" class="nav__link">Contact</a>
+        <a href="cv.html" class="nav__cv">View CV</a>
+      </div>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="research.html">Research</a>
+    <a href="apps.html">Apps</a>
+    <a href="websites.html">Websites</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="cv.html">View CV</a>
+  </div>
+
+  <!-- Kategorihero -->
+  <header class="cat-page-hero">
+    <div class="cat-page-hero__scene" aria-hidden="true">
+      <video class="scene__video" src="assets/video/privera-demo.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <div class="scene__shade"></div>
+    </div>
+    <div class="container">
+      <a href="index.html" class="case-hero__back">← Back to the globe</a>
+      <h1>Apps</h1>
+      <p class="cat-page-hero__sub">Real desktop products with installers, audit logs and automated tests. From privacy tooling for law firms to AI-powered video pipelines.</p>
+      <div class="work-cat__head">
+        <span class="work-cat__num">02</span>
+        <span class="work-cat__line" aria-hidden="true"></span>
+        <span class="work-cat__count">2 projects</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Projekt -->
+  <section class="section section--cat-projects">
+    <div class="container">
+      <div class="work-grid">
+
+        <article class="card">
+          <div class="card__media card__media--sm">
+            <img src="assets/images/privera/ad-batch-card.jpg" alt="Privera: automatic redaction of large document volumes, entirely on your own computer" loading="lazy" width="1200" height="675">
+          </div>
+          <span class="card__cat">Commercial product</span>
+          <h2 class="card__title">Privera · On-device GDPR redaction</h2>
+          <p class="card__desc">Finds and masks personal data in legal documents, <strong>entirely on the lawyer's machine</strong>. Built on KB-BERT with OCR fallback and true pixel-level redaction.</p>
+          <div class="card__stats">
+            <span class="chip">100% on-device</span>
+            <span class="chip">179 tests</span>
+          </div>
+          <div class="card__tech">
+            <span class="tech">Electron</span><span class="tech">React</span><span class="tech">Python</span><span class="tech">KB-BERT</span>
+          </div>
+          <a href="case-privera.html" class="card__link">Explore Privera</a>
+          <a href="https://privera.se" class="card__ext" target="_blank" rel="noopener">privera.se ↗</a>
+        </article>
+
+        <article class="card">
+          <div class="card__media card__media--sm">
+            <img src="assets/images/vpp/vpp-clip.jpg" alt="Video Processor Pro: scene cutting interface" loading="lazy" width="800" height="429" style="object-position: center 65%">
+          </div>
+          <span class="card__cat">AI pipeline</span>
+          <h2 class="card__title">Video Processor Pro</h2>
+          <p class="card__desc">Turns full videos into publish-ready shorts. Scene detection with <strong>TransNetV2</strong>, 9-method smart cropping and GPT-4o metadata.</p>
+          <div class="card__stats">
+            <span class="chip">9-method smart crop</span>
+            <span class="chip">~$0.02/video</span>
+          </div>
+          <div class="card__tech">
+            <span class="tech">TensorFlow</span><span class="tech">OpenCV</span><span class="tech">FFmpeg</span><span class="tech">GPT-4o</span>
+          </div>
+          <a href="case-vpp.html" class="card__link">Explore the app</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2026 Nataniel Ataseven</p>
+      <p>Built from scratch with vanilla HTML, CSS and JS.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=14"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>
