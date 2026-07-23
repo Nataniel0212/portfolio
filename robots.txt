@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nataniel0212.github.io/portfolio/sitemap.xml
+Sitemap: https://natanielataseven.github.io/sitemap.xml
