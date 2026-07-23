@@ -69,8 +69,8 @@
     var orbs = Array.prototype.slice.call(stage.querySelectorAll('.orb'));
     var scenes = Array.prototype.slice.call(document.querySelectorAll('.scene__layer'));
     var sceneVideo = document.querySelector('.scene__video');
-    /* Startläge: Websites i fokus. Deep-link (#research/#apps) kan överstyra. */
-    var focus = ORDER.indexOf('websites');
+    /* Startläge: Apps i fokus. Deep-link (#research/#websites) kan överstyra. */
+    var focus = ORDER.indexOf('apps');
     var hashIdx = ORDER.indexOf(window.location.hash.replace('#', ''));
     if (hashIdx >= 0) focus = hashIdx;
 
