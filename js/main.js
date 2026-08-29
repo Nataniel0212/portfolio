@@ -56,7 +56,7 @@
   var ORDER = ['research', 'websites', 'apps'];
   var CATS = {
     research: { label: 'Research', desc: "Master's thesis · fraud detection in 5.4M invoices", url: 'research.html' },
-    apps: { label: 'Apps', desc: 'Privera · Video Processor Pro', url: 'apps.html' },
+    apps: { label: 'Apps', desc: 'Privera · Video Processor Pro · File Converter', url: 'apps.html' },
     websites: { label: 'Websites', desc: 'STANEK, with more in progress', url: 'websites.html' }
   };
 

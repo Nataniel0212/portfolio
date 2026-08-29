@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Converter — calculator files and text — Nataniel Ataseven</title>
+  <meta name="description" content="A converter for graphing calculator files that runs entirely in the browser. Casio .g1e and TI-83/84 .8xp to text and back, byte-exact, with a file format specification that did not previously exist.">
+  <meta name="theme-color" content="#081712">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="File Converter — calculator files and text">
+  <meta property="og:description" content="Drop in a folder of calculator files, get text back. In the browser, byte-exact, with nothing uploaded anywhere.">
+  <meta property="og:url" content="https://natanielataseven.github.io/case-converter.html">
+  <meta property="og:image" content="https://natanielataseven.github.io/assets/og-image.png">
+  <link rel="canonical" href="https://natanielataseven.github.io/case-converter.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=14">
+
+  <!-- Converter-tema: sidan speglar appens eget gränssnitt (terminalgrönt på djup skiffer) -->
+  <style>
+    body.project-converter {
+      --bg-0: #0b1210;
+      --bg-1: #0f1917;
+      --bg-2: #14201d;
+      --border-1: rgba(120, 230, 175, .10);
+      --border-2: rgba(120, 230, 175, .22);
+      --accent: #46c97a;
+      --accent-hover: #5edd92;
+      --accent-soft: rgba(70, 201, 122, .11);
+      --on-accent: #04140c;
+      background: var(--bg-0);
+    }
+
+    .project-hero {
+      position: relative;
+      min-height: 78svh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      padding: 150px 0 72px;
+    }
+    .project-hero__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      filter: brightness(.26) saturate(1.1) blur(4px);
+      transform: scale(1.08);
+    }
+    .project-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(11, 18, 16, .78) 0%, rgba(11, 18, 16, .55) 38%, rgba(11, 18, 16, .98) 86%),
+        radial-gradient(ellipse at 78% 12%, rgba(70, 201, 122, .15), transparent 55%),
+        radial-gradient(ellipse at 12% 88%, rgba(45, 160, 130, .11), transparent 50%);
+    }
+    .project-hero .container { position: relative; z-index: 1; }
+    .project-hero__brand {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6.5vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+      margin: 18px 0 14px;
+      background: linear-gradient(95deg, #a7f3d0 0%, #5edd92 48%, #22b8a0 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .project-hero__tag {
+      font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+      color: rgba(232, 244, 238, .85);
+      max-width: 46ch;
+      margin-bottom: 30px;
+    }
+    .project-hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Flödesdiagram: mappen in, mappen ut */
+    .flow {
+      font-family: var(--font-mono);
+      font-size: clamp(.75rem, 1.55vw, .9375rem);
+      line-height: 1.9;
+      color: var(--text-2);
+      background: var(--bg-2);
+      border: 1px solid var(--border-1);
+      border-radius: var(--radius-sm);
+      padding: 26px 20px;
+      margin: 6px 0 24px;
+      overflow-x: auto;
+      white-space: pre;
+      -webkit-overflow-scrolling: touch;
+    }
+    .flow b { color: var(--accent); font-weight: 500; }
+
+    /* Siffror som bär hela poängen */
+    .numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 4px 0 24px;
+    }
+    .num {
+      background: var(--bg-2);
+      border: 1px solid var(--border-1);
+      border-radius: var(--radius-sm);
+      padding: 22px 24px;
+    }
+    .num__val {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--accent);
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .num__label { font-size: .875rem; color: var(--text-2); }
+    @media (max-width: 768px) { .numbers { grid-template-columns: 1fr; } }
+
+    /* Tre sätt att köra den */
+    .ways { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 4px 0 8px; }
+    .way {
+      background: var(--bg-2);
+      border: 1px solid var(--border-1);
+      border-radius: var(--radius-sm);
+      padding: 22px 24px;
+    }
+    .way h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-1);
+      margin-bottom: 8px;
+    }
+    .way p { font-size: .9063rem; margin-bottom: 12px; }
+    .way code {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: .8125rem;
+      color: var(--accent);
+      background: rgba(70, 201, 122, .08);
+      border: 1px solid var(--border-1);
+      border-radius: 6px;
+      padding: 8px 10px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    @media (max-width: 900px) { .ways { grid-template-columns: 1fr; } }
+
+    .media-crop {
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-1);
+      overflow: hidden;
+      margin: 6px 0 22px;
+    }
+    .media-crop img { width: 100%; display: block; margin: 0 !important; border: none !important; border-radius: 0 !important; }
+
+    .case-step > p { max-width: 66ch; margin-bottom: 16px; }
+    .case-step > p strong { color: var(--text-1); font-weight: 500; }
+    .case-step > p code {
+      font-family: var(--font-mono);
+      font-size: .875em;
+      color: var(--accent);
+      background: rgba(70, 201, 122, .09);
+      border-radius: 4px;
+      padding: 1px 5px;
+    }
+  </style>
+</head>
+<body class="project-converter">
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Nataniel Ataseven</a>
+      <div class="nav__links">
+        <a href="research.html" class="nav__link">Research</a>
+        <a href="apps.html" class="nav__link">Apps</a>
+        <a href="websites.html" class="nav__link">Websites</a>
+        <a href="index.html#about" class="nav__link">About</a>
+        <a href="index.html#contact" class="nav__link">Contact</a>
+        <a href="cv.html" class="nav__cv">View CV</a>
+      </div>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="research.html">Research</a>
+    <a href="apps.html">Apps</a>
+    <a href="websites.html">Websites</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="cv.html">View CV</a>
+  </div>
+
+  <!-- Hero: appens eget gränssnitt som bakgrund -->
+  <header class="project-hero">
+    <img class="project-hero__bg" src="assets/images/converter/converter-files.png" alt="" aria-hidden="true">
+    <div class="project-hero__overlay" aria-hidden="true"></div>
+    <div class="container">
+      <a href="apps.html" class="case-hero__back">← Back to Apps</a>
+      <h1 class="project-hero__brand">File Converter</h1>
+      <p class="project-hero__tag">Graphing calculator files become editable text, and go back byte for byte. A whole folder at a time, in a browser tab, with nothing uploaded anywhere.</p>
+      <div class="project-hero__actions">
+        <a href="https://nataniel0212.github.io/calculator-file-converter/" class="btn btn--primary" target="_blank" rel="noopener">Open the converter ↗</a>
+        <a href="https://github.com/Nataniel0212/calculator-file-converter" class="btn btn--ghost" target="_blank" rel="noopener">Source on GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="case-body">
+    <div class="container">
+
+      <section class="case-step">
+        <span class="case-step__num">What it is</span>
+        <h2>A folder in, a folder out</h2>
+        <p>Notes written on a graphing calculator are stuck there. Getting them onto a computer to edit, print or search means converting each file one by one, and getting them back on again means doing it in reverse. This tool takes the whole folder in one pass — Casio <code>.g1e</code> documents and TI-83/84 <code>.8xp</code> programs to plain text, and text back into files the calculator will open.</p>
+        <div class="flow"> notes.txt  ─┐                        ┌─  <b>NOTES.G1E</b>
+ lab.txt    ─┤   drop the folder in   ├─  <b>LAB.G1E</b>
+ game.txt   ─┘                        └─  <b>GAME.8xp</b></div>
+        <p>It also says what will not fit before you find out on the calculator: lines too long for a 21-character screen, characters the Casio cannot draw, tokens that need a newer TI. Every format states its own limits next to the control that picks it, so <strong>Å becoming A is something you read beforehand rather than discover afterwards</strong>.</p>
+        <div class="media-crop">
+          <img src="assets/images/converter/converter-limits.png" alt="The converter listing the Casio format's limits: 21 characters a line, no lower case, and what happens to accented characters" loading="lazy" width="879" height="522">
+        </div>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">Why it exists</span>
+        <h2>Two problems, one of them invisible</h2>
+        <p>For Casio documents the problem is effort. The converter most people use is a Windows program from 2012 that handles <strong>one file at a time</strong>, so a folder of revision notes is a few hundred clicks.</p>
+        <p>For TI programs the problem is correctness, and it is the kind you do not notice. TI-BASIC is stored as tokens rather than text, and turning text back into tokens is genuinely ambiguous: <code>L1</code> is either the list <em>L1</em> or the letter <em>L</em> followed by the digit <em>1</em>. Existing tools resolve this by guessing longest-match, which is why a program containing <code>pin</code> can come back containing <code>πn</code>.</p>
+        <div class="numbers">
+          <div class="num"><span class="num__val">654,481</span><span class="num__label">adjacent token pairs the TI format allows</span></div>
+          <div class="num"><span class="num__val">219</span><span class="num__label">of them the usual longest-match guess gets wrong</span></div>
+          <div class="num"><span class="num__val">0</span><span class="num__label">that this converter gets wrong — it does not guess</span></div>
+        </div>
+        <p>Instead of guessing, it writes text that can only be read one way, and proves that claim on every token of every file. CI re-checks all 654,481 pairs on each commit, along with every token alone and 400 random token streams — no sample files required.</p>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">The hard part</span>
+        <h2>Writing the specification that did not exist</h2>
+        <p>The Casio <code>.g1e</code> document format has no public specification. <strong>Cahute</strong>, the reference open-source toolset for these formats, documents the container and then marks the document body itself as still to be described. There was nothing to implement against.</p>
+        <p>So I worked it out by comparing documents against the text they were made from — purely from data files, byte by byte. No manufacturer software was decompiled or disassembled, and no code from any existing converter was read or reused. The result is <strong>a written specification of the format</strong>, published in the repository so the next person does not have to repeat the work.</p>
+        <p>“Byte-exact” is the standard the test suite holds it to, in both directions: take a file the manufacturer's own software produced, decode it, re-encode it from scratch, and every single byte matches.</p>
+        <div class="case-tech">
+          <span class="tech">Binary format reverse engineering</span><span class="tech">Round-trip property testing</span><span class="tech">node:test</span><span class="tech">GitHub Actions</span>
+        </div>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">Architecture</span>
+        <h2>No server, no upload, no build step</h2>
+        <p>The codecs are plain ES modules with <strong>zero dependencies</strong>, so the same files run in Node and in a browser through a single module script tag. That one property is what lets the project ship three front ends without three implementations.</p>
+        <p>The web app makes <strong>no network requests at all</strong>, and its Content-Security-Policy enforces that rather than merely promising it. Files are read and written on your own machine, and the app keeps working offline once loaded. In Chrome and Edge it writes results straight into a folder you pick, and remembers that folder between visits.</p>
+        <div class="ways">
+          <div class="way">
+            <h3>Browser</h3>
+            <p>Nothing to install. Drop a folder in, choose where the results go.</p>
+            <code>Open it in a tab</code>
+          </div>
+          <div class="way">
+            <h3>Command line</h3>
+            <p>Scriptable, with a dry run that writes nothing until you are happy.</p>
+            <code>npx calcconv notes/ -o text/</code>
+          </div>
+          <div class="way">
+            <h3>Desktop</h3>
+            <p>Windows, macOS and Linux builds. The same interface, fully offline.</p>
+            <code>Attached to each release</code>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">In use</span>
+        <h2>Built because I needed it</h2>
+        <p>This is not a demo project. I write my exam revision notes on the calculator, and the screenshot at the top of this page is the real tool converting my own thermodynamics and decision-analysis notes — <strong>six files, 1,214 lines, in one pass</strong>. Those same files are what the encoders are tested against.</p>
+        <p>The whole thing is <strong>AGPL-3.0</strong> and the format documentation is open, because the reason it had to be written in the first place was that nobody had published theirs.</p>
+        <div class="case-tech">
+          <span class="tech">JavaScript (ES modules)</span><span class="tech">Zero dependencies</span><span class="tech">Electron</span><span class="tech">Node CLI</span><span class="tech">AGPL-3.0</span>
+        </div>
+      </section>
+
+      <div class="case-insight">
+        <strong>The result:</strong> a format that nobody had documented is now documented, and a conversion that used to be a few hundred clicks — or a silent corruption — is one drag of a folder.
+      </div>
+
+      <div class="case-cta">
+        <a href="https://nataniel0212.github.io/calculator-file-converter/" class="btn btn--primary" target="_blank" rel="noopener">Try it in your browser ↗</a>
+        <a href="case-thesis.html" class="btn btn--ghost">Next: fraud detection in 5.4M invoices →</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2026 Nataniel Ataseven</p>
+      <p><a href="index.html" style="color:inherit">← Back to portfolio</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=15"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>
