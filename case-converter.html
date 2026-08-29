@@ -225,7 +225,7 @@
       <section class="case-step">
         <span class="case-step__num">What it is</span>
         <h2>A folder in, a folder out</h2>
-        <p>Notes written on a graphing calculator are stuck there. Getting them onto a computer to edit, print or search means converting each file one by one, and getting them back on again means doing it in reverse. This tool takes the whole folder in one pass — Casio <code>.g1e</code> documents and TI-83/84 <code>.8xp</code> programs to plain text, and text back into files the calculator will open.</p>
+        <p>Notes written on a graphing calculator are stuck there. Getting them onto a computer to edit, print or search means converting each file one by one, and getting them back on again means doing it in reverse. This tool takes the whole folder in one pass: Casio <code>.g1e</code> documents and TI-83/84 <code>.8xp</code> programs to plain text, and text back into files the calculator will open.</p>
         <div class="flow"> notes.txt  ─┐                        ┌─  <b>NOTES.G1E</b>
  lab.txt    ─┤   drop the folder in   ├─  <b>LAB.G1E</b>
  game.txt   ─┘                        └─  <b>GAME.8xp</b></div>
@@ -243,16 +243,16 @@
         <div class="numbers">
           <div class="num"><span class="num__val">654,481</span><span class="num__label">adjacent token pairs the TI format allows</span></div>
           <div class="num"><span class="num__val">219</span><span class="num__label">of them the usual longest-match guess gets wrong</span></div>
-          <div class="num"><span class="num__val">0</span><span class="num__label">that this converter gets wrong — it does not guess</span></div>
+          <div class="num"><span class="num__val">0</span><span class="num__label">that this converter gets wrong, because it does not guess</span></div>
         </div>
-        <p>Instead of guessing, it writes text that can only be read one way, and proves that claim on every token of every file. CI re-checks all 654,481 pairs on each commit, along with every token alone and 400 random token streams — no sample files required.</p>
+        <p>Instead of guessing, it writes text that can only be read one way, and proves that claim on every token of every file. CI re-checks all 654,481 pairs on each commit, along with every token alone and 400 random token streams, with no sample files required.</p>
       </section>
 
       <section class="case-step">
         <span class="case-step__num">The hard part</span>
         <h2>Writing the specification that did not exist</h2>
         <p>The Casio <code>.g1e</code> document format has no public specification. <strong>Cahute</strong>, the reference open-source toolset for these formats, documents the container and then marks the document body itself as still to be described. There was nothing to implement against.</p>
-        <p>So I worked it out by comparing documents against the text they were made from — purely from data files, byte by byte. No manufacturer software was decompiled or disassembled, and no code from any existing converter was read or reused. The result is <strong>a written specification of the format</strong>, published in the repository so the next person does not have to repeat the work.</p>
+        <p>So I worked it out by comparing documents against the text they were made from, purely from data files, byte by byte. No manufacturer software was decompiled or disassembled, and no code from any existing converter was read or reused. The result is <strong>a written specification of the format</strong>, published in the repository so the next person does not have to repeat the work.</p>
         <p>“Byte-exact” is the standard the test suite holds it to, in both directions: take a file the manufacturer's own software produced, decode it, re-encode it from scratch, and every single byte matches.</p>
         <div class="case-tech">
           <span class="tech">Binary format reverse engineering</span><span class="tech">Round-trip property testing</span><span class="tech">node:test</span><span class="tech">GitHub Actions</span>
@@ -286,7 +286,7 @@
       <section class="case-step">
         <span class="case-step__num">In use</span>
         <h2>Built because I needed it</h2>
-        <p>This is not a demo project. I write my exam revision notes on the calculator, and the screenshot at the top of this page is the real tool converting my own thermodynamics and decision-analysis notes — <strong>six files, 1,214 lines, in one pass</strong>. Those same files are what the encoders are tested against.</p>
+        <p>This is not a demo project. I write my exam revision notes on the calculator, and the screenshot at the top of this page is the real tool converting my own thermodynamics and decision-analysis notes: <strong>six files, 1,214 lines, in one pass</strong>. Those same files are what the encoders are tested against.</p>
         <p>The whole thing is <strong>AGPL-3.0</strong> and the format documentation is open, because the reason it had to be written in the first place was that nobody had published theirs.</p>
         <div class="case-tech">
           <span class="tech">JavaScript (ES modules)</span><span class="tech">Zero dependencies</span><span class="tech">Electron</span><span class="tech">Node CLI</span><span class="tech">AGPL-3.0</span>
@@ -294,7 +294,7 @@
       </section>
 
       <div class="case-insight">
-        <strong>The result:</strong> a format that nobody had documented is now documented, and a conversion that used to be a few hundred clicks — or a silent corruption — is one drag of a folder.
+        <strong>The result:</strong> a format that nobody had documented is now documented, and a conversion that used to be a few hundred clicks, or a silent corruption, is one drag of a folder.
       </div>
 
       <div class="case-cta">
