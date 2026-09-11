@@ -3,103 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Finding fraud in 5.4M municipal invoices — Nataniel Ataseven</title>
-  <meta name="description" content="A master's thesis that read every invoice Gothenburg City paid over four years, narrowed 18,774 suppliers to 31 high-risk candidates and surfaced 13 control failures later confirmed by PwC.">
-  <meta name="theme-color" content="#171006">
+  <title>Automated risk analysis of municipal payments — Nataniel Ataseven</title>
+  <meta name="description" content="Published bachelor's thesis: automated risk analysis of 5.4M municipal transactions, verified against public records. Read the full text in DiVA.">
+  <meta name="theme-color" content="#f4f2ed">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Finding fraud in 5.4M municipal invoices">
-  <meta property="og:description" content="18,774 suppliers narrowed to 31. 13 control failures confirmed by PwC's own investigation.">
+  <meta property="og:title" content="Automated risk analysis of municipal payments">
+  <meta property="og:description" content="5.4M transactions. Seven analysis modules. A document-based investigation into the limits of open payment data.">
   <meta property="og:url" content="https://natanielataseven.github.io/case-thesis.html">
   <meta property="og:image" content="https://natanielataseven.github.io/assets/og-image.png">
   <link rel="canonical" href="https://natanielataseven.github.io/case-thesis.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=14">
+  <link rel="stylesheet" href="css/styles.css?v=15">
 
-  <!-- Thesis-tema: varm mörk research-känsla med sifferregn -->
-  <style>
-    body.project-thesis {
-      --bg-0: #171006;
-      --bg-1: #1c150a;
-      --bg-2: #221a0e;
-      --border-1: rgba(255, 220, 170, .09);
-      --border-2: rgba(255, 220, 170, .18);
-      background: var(--bg-0);
-    }
-
-    .project-hero {
-      position: relative;
-      min-height: 74svh;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      padding: 150px 0 64px;
-    }
-    .project-hero__scene {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-    .project-hero::before {
-      content: '';
-      position: absolute;
-      width: 620px; height: 620px;
-      top: -240px; right: -140px;
-      border-radius: 50%;
-      filter: blur(130px);
-      background: rgba(224, 118, 60, .14);
-      pointer-events: none;
-    }
-    .project-hero .container { position: relative; z-index: 1; }
-    .project-hero__brand {
-      font-family: var(--font-display);
-      font-size: clamp(2.25rem, 5.5vw, 4rem);
-      font-weight: 700;
-      letter-spacing: -.03em;
-      line-height: 1.06;
-      color: var(--text-1);
-      margin: 18px 0 14px;
-      max-width: 22ch;
-    }
-    .project-hero__brand em { font-style: normal; color: var(--accent); }
-    .project-hero__tag {
-      font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
-      color: var(--text-2);
-      max-width: 52ch;
-      margin-bottom: 30px;
-    }
-
-    .who-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 8px;
-    }
-    .who {
-      background: var(--bg-2);
-      border: 1px solid var(--border-1);
-      border-radius: var(--radius-sm);
-      padding: 24px;
-    }
-    .who h3 {
-      font-family: var(--font-display);
-      font-size: 1.0625rem;
-      font-weight: 600;
-      color: var(--text-1);
-      margin-bottom: 8px;
-    }
-    .who p { font-size: .9063rem; }
-    @media (max-width: 768px) { .who-grid { grid-template-columns: 1fr; } }
-
-    .case-step > p { max-width: 66ch; margin-bottom: 16px; }
-    .case-step > p strong { color: var(--text-1); font-weight: 500; }
-  </style>
+  <link rel="stylesheet" href="css/thesis.css?v=1">
 </head>
 <body class="project-thesis">
 
@@ -128,21 +51,20 @@
     <a href="cv.html">View CV</a>
   </div>
 
-  <!-- Hero: sifferregn bakom titeln -->
-  <header class="project-hero">
-    <div class="project-hero__scene" aria-hidden="true">
-      <div class="rain" data-rain="26"></div>
-    </div>
+  <header class="paper-cover">
     <div class="container">
-      <a href="research.html" class="case-hero__back">← Back to Research</a>
-      <span class="eyebrow">Master's thesis · Data science</span>
-      <h1 class="project-hero__brand">Finding fraud in <em>5.4 million</em> municipal invoices</h1>
-      <p class="project-hero__tag">Four years of Gothenburg City's payments, read by a system I built from scratch. It pointed at one association. PwC's own investigation later confirmed what it found.</p>
-      <div class="case-stats">
-        <div class="case-stat"><span class="case-stat__num">5.4M</span><span class="case-stat__label">transactions</span></div>
-        <div class="case-stat"><span class="case-stat__num">107.6B</span><span class="case-stat__label">SEK analyzed</span></div>
-        <div class="case-stat"><span class="case-stat__num">97%</span><span class="case-stat__label">false-positive reduction</span></div>
-        <div class="case-stat"><span class="case-stat__num">13</span><span class="case-stat__label">control failures confirmed</span></div>
+      <div class="paper-topline"><a href="research.html">← Research</a><span>Mid Sweden University · 2026</span></div>
+      <div class="paper-title">
+        <p class="paper-kicker">Bachelor’s thesis in Industrial Engineering &amp; Management</p>
+        <h1 lang="sv">Automatiserad riskanalys av kommunala leverantörsfakturor</h1>
+        <p class="paper-subtitle" lang="sv">En datadriven metod för att identifiera potentiella oegentligheter i Göteborgs stads ekonomiska transaktioner</p>
+        <p class="paper-author">Nataniel Ataseven</p>
+        <p class="paper-affiliation">Department of Communication, Quality Management, and Information Systems<br>Mid Sweden University, Sweden</p>
+        <div class="paper-details"><span>15 ECTS</span><span>59 pages</span><span>In Swedish</span><span>Published in DiVA</span></div>
+        <div class="publication-actions">
+          <a class="btn btn--primary" href="https://urn.kb.se/resolve?urn=urn:nbn:se:miun:diva-58574" target="_blank" rel="noopener">View publication in DiVA ↗</a>
+          <a class="btn btn--ghost" href="https://miun.diva-portal.org/smash/get/diva2:2099325/FULLTEXT01.pdf" target="_blank" rel="noopener">Read full text (PDF) ↗</a>
+        </div>
       </div>
     </div>
   </header>
@@ -150,61 +72,66 @@
   <main class="case-body">
     <div class="container">
 
-      <section class="case-step">
-        <span class="case-step__num">What this is</span>
-        <h2>A fraud detector for public money</h2>
-        <p>Every year Gothenburg City pays out billions of SEK across millions of invoices. No auditor can read them all, so irregularities can hide in plain sight for years. For my master's thesis I built a system that reads every single one and points to the suppliers that deserve a closer look.</p>
-        <p>The system narrowed <strong>18,774 suppliers down to 31 high-risk candidates</strong>, and uncovered 13 control failures around a single association. Months later, PwC's own investigation reached the same conclusions.</p>
+      <section class="paper-abstract" aria-labelledby="abstract-heading">
+        <h2 id="abstract-heading">Abstract <span>Research overview</span></h2>
+        <p>This study examines the potential and limitations of automated risk analysis using open municipal payment data. A seven-module Python system was applied to 5.4 million transactions from the City of Gothenburg, then selected cases were verified against public records. Statistical flags predominantly reflected legitimate payment patterns. A complementary semantic screen led to a case with 13 documented control deficiencies. The findings highlight the importance of contextual review and the limits imposed by missing invoice-approval data.</p>
+        <p class="paper-keywords"><strong>Keywords</strong> Open data · Anomaly detection · Municipal finance · Internal control</p>
       </section>
-
-      <section class="case-step">
-        <span class="case-step__num">Who it's for</span>
-        <h2>Anyone responsible for public spending</h2>
-        <div class="who-grid">
-          <div class="who">
-            <h3>Municipalities</h3>
-            <p>Screen every payment continuously instead of sampling a handful of invoices at audit time.</p>
-          </div>
-          <div class="who">
-            <h3>Auditors &amp; regulators</h3>
-            <p>Get a ranked shortlist of suppliers worth investigating, with the statistical evidence attached.</p>
-          </div>
-          <div class="who">
-            <h3>Researchers</h3>
-            <p>A documented Design Science approach showing what actually works on real open payment data.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="case-step">
-        <span class="case-step__num">How it was done</span>
-        <h2>From 48 CSV files to a shortlist of 31</h2>
-        <p><strong>Collect.</strong> Four years of open payment data, 48 monthly CSV files with mixed encodings and text-formatted amounts, cleaned and combined into one dataset of 5,433,668 transactions. No rows excluded.</p>
-        <p><strong>Design.</strong> A modular system with seven parts: three statistical cores and four support modules. Suppliers are profiled on transaction patterns and scored 0 to 100, with bonuses for dangerous combinations like uniform amounts from a supplier that suddenly disappears.</p>
-        <p><strong>Iterate.</strong> Nine versions, each measured against the last. The breakthrough was the coefficient of variation: suppliers invoicing suspiciously uniform amounts stood out. Standardized care rates caused half of all false alarms and got their own adjustment. The shortlist went from 1,516 suppliers to 31, a 97 percent reduction.</p>
-        <p><strong>Read between the lines.</strong> Statistics alone were not enough; every top candidate turned out to have a legitimate explanation. So the system also reads what invoices say. A sports club billing "administrative services" to the education department is grammatically normal and semantically absurd. That lens surfaced 16 associations worth 13.2 MSEK.</p>
-        <p><strong>Verify in the real world.</strong> Fourteen freedom-of-information requests, 221 pages of contracts, attestation records and bankruptcy filings, and a meeting with the city's leasing company turned suspicion into evidence.</p>
-        <div class="case-tech">
-          <span class="tech">Python</span><span class="tech">Pandas</span><span class="tech">Benford's Law + Chi²</span><span class="tech">CV analysis</span><span class="tech">Luhn algorithm</span><span class="tech">Design Science Research</span>
-        </div>
-      </section>
-
-      <section class="case-step">
-        <span class="case-step__num">The finding</span>
-        <h2>One association, 13 control failures</h2>
-        <p>Bergsjön Sportklubb received 2.16 MSEK in municipal funding, breached its contract six times, kept no bookkeeping and went bankrupt with zero assets. The same person who handled attestation exceptions also sat in the approval chain. In total, <strong>13 broken controls</strong>, each one independently confirmed by PwC's investigation, Report 59-2023.</p>
-        <p>The market-leading screening tool used by 240 municipalities had not flagged any of it. Neither had my statistical modules. <strong>Only the semantic analysis found it</strong>, which became the thesis's central result.</p>
-        <div class="case-tech">
-          <span class="tech">COSO framework</span><span class="tech">Fraud Triangle</span><span class="tech">Freedom of Information Act</span><span class="tech">PwC Report 59-2023</span>
-        </div>
-      </section>
-
-      <div class="case-insight">
-        <strong>Key insight:</strong> statistical anomalies in municipal invoices correlate more with legitimate business patterns than with fraud. The powerful combination is semantics plus public records: read what the invoices say, then demand the paperwork.
+      <div class="case-stats" aria-label="Study at a glance">
+        <div class="case-stat"><span class="case-stat__num">5.4M</span><span class="case-stat__label">transactions</span></div>
+        <div class="case-stat"><span class="case-stat__num">107.6B</span><span class="case-stat__label">SEK analyzed</span></div>
+        <div class="case-stat"><span class="case-stat__num">7</span><span class="case-stat__label">analysis modules</span></div>
+        <div class="case-stat"><span class="case-stat__num">13</span><span class="case-stat__label">control deficiencies</span></div>
       </div>
 
+      <section class="case-step">
+        <span class="case-step__num">01 / Research question</span>
+        <h2>Can open data support independent scrutiny?</h2>
+        <p>Gothenburg publishes its supplier payments as open data. For my bachelor's thesis in Industrial Engineering and Management, I built a Python system to examine all <strong>5,433,668 published transactions from 2021–2024</strong>: 18,774 suppliers and SEK 107.6 billion.</p>
+        <p>The study follows a Design Science approach: build an analytical system, then test its practical value by checking flagged cases against contracts, original invoices and approval records obtained through requests for public documents.</p>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">02 / Method</span>
+        <h2>From 48 CSV files to seven analysis modules</h2>
+        <p><strong>Prepare the data.</strong> Harmonize mixed encodings, column names, dates and text-formatted amounts. Keep all transactions, including credit invoices, and validate supplier identifiers.</p>
+        <p><strong>Look for patterns.</strong> Profile suppliers using variation in amounts, concentration near procurement thresholds and possible split purchases. Complement the scoring model with identity checks, Benford analysis and tools for manual review.</p>
+        <p><strong>Evaluate and iterate.</strong> Nine versions reduced high-risk flags from 1,516 to 31. That is a reduction in review volume, not a demonstrated improvement in fraud detection. The ten highest-ranked suppliers examined in the detailed results all had legitimate explanations, including fixed care rates, framework agreements and rent.</p>
+        <p><strong>Examine the context.</strong> A complementary semantic screen compared supplier activity with the service indicated by the account description. It identified 16 associations billing administrative services. Interpreting those combinations required human review.</p>
+        <div class="case-tech"><span class="tech">Python</span><span class="tech">Pandas</span><span class="tech">NumPy</span><span class="tech">CV analysis</span><span class="tech">Benford's Law</span><span class="tech">Design Science Research</span></div>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">03 / Verification</span>
+        <h2>Follow the signal all the way to the documents</h2>
+        <p>Fourteen requests for public documents supported the investigation. Of six semantically flagged cases taken to external verification, four had legitimate explanations, one showed a price anomaly without demonstrated irregularity, and one contained <strong>13 documented control deficiencies</strong>.</p>
+        <div class="who-grid">
+          <div class="who"><h3>4 explained cases</h3><p>Contracts and invoices explained the flagged patterns. Broad account descriptions had obscured legitimate services.</p></div>
+          <div class="who"><h3>1 price anomaly</h3><p>A markedly higher hourly rate warranted attention, but the documentation did not establish an irregularity.</p></div>
+          <div class="who"><h3>1 case with deficiencies</h3><p>Document review established gaps in invoice requirements, approval procedures and record keeping.</p></div>
+        </div>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">04 / Findings</span>
+        <h2>A small transaction opened a larger investigation</h2>
+        <p>A payment of SEK 80,000 led to the review of an association that had received SEK 2.16 million in municipal funding. The study documented 13 control deficiencies through invoices, contracts, written responses and bankruptcy records. The statistical model had assigned the association a low score.</p>
+        <p>An independent whistleblower investigation at the same administration described similar patterns in <strong>other cases</strong>. It supported the comparison of control weaknesses; it did not investigate or individually confirm this study's 13 findings.</p>
+        <p>The findings concern documented control deficiencies. The study does not establish whether a crime occurred.</p>
+      </section>
+
+      <section class="case-step">
+        <span class="case-step__num">05 / Discussion</span>
+        <h2>The missing fields matter as much as the model</h2>
+        <p>Regular payments often reflect legitimate business arrangements. A meaningful review also needs context: what was purchased, what the contract required and who handled and approved the invoice.</p>
+        <p>The thesis proposes <strong>pseudonymised invoice-approval data</strong> to make patterns such as the same person controlling multiple steps visible to external reviewers. This is a proposal for further development; the study did not implement or validate an approval-analysis system.</p>
+        <p>The results come from one municipality and a small, deliberately selected set of cases. The semantic screen's value is supported by one case with documented deficiencies, which calls for further testing across municipalities.</p>
+      </section>
+
+      <div class="case-insight"><strong>Key insight:</strong> automated screening generates leads. Public records and careful human review determine what those leads actually mean.</div>
+
       <div class="case-cta">
-        <a href="case-privera.html" class="btn btn--primary">Next: Privera →</a>
+        <a href="https://urn.kb.se/resolve?urn=urn:nbn:se:miun:diva-58574" class="btn btn--primary" target="_blank" rel="noopener">Read the published thesis ↗</a>
         <a href="research.html" class="btn btn--ghost">← Back to Research</a>
       </div>
 
@@ -218,7 +145,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=15"></script>
+  <script src="js/main.js?v=16"></script>
   <script src="js/analytics.js"></script>
 </body>
 </html>

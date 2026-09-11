@@ -5,6 +5,9 @@
    Kategorier separerar arbetet: Data Science / Apps / Websites.
    ============================================================ */
 
+.publication-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.publication-actions .btn { white-space: normal; text-align: center; }
+
 /* ============ TOKENS ============ */
 :root {
   --bg-0: #0e0d0b;      /* sidbakgrund, djup varm svärta (ej ren #000) */

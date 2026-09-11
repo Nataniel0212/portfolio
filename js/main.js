@@ -55,7 +55,7 @@
   /* Ringens ordning är cyklisk: center = ORDER[i], höger = nästa, vänster = föregående. */
   var ORDER = ['research', 'websites', 'apps'];
   var CATS = {
-    research: { label: 'Research', desc: "Master's thesis · fraud detection in 5.4M invoices", url: 'research.html' },
+    research: { label: 'Research', desc: "Published thesis · risk analysis of 5.4M transactions", url: 'research.html' },
     apps: { label: 'Apps', desc: 'Privera · Video Processor Pro · File Converter', url: 'apps.html' },
     websites: { label: 'Websites', desc: 'STANEK, with more in progress', url: 'websites.html' }
   };
