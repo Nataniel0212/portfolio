@@ -65,7 +65,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=15">
-  <link rel="stylesheet" href="css/research.css?v=1">
+  <link rel="stylesheet" href="css/research.css?v=2">
 </head>
 <body class="research-home" data-category="apps">
 
@@ -108,7 +108,9 @@
     <!-- Scen: levande bakgrund per kategori -->
     <div class="orbit__scene" aria-hidden="true">
       <div class="scene__layer" data-scene="research">
-        <div class="rain" data-rain="26"></div>
+        <img class="research-scene-page research-scene-page--cover" src="assets/images/research/thesis-cover.jpg" alt="">
+        <img class="research-scene-page research-scene-page--method" src="assets/images/research/thesis-method.jpg" alt="">
+        <div class="rain research-scene-rain" data-rain="12"></div>
       </div>
       <div class="scene__layer" data-scene="websites">
         <img class="scene__img scene__img--a" src="assets/images/stanek/campaign-doorway.jpg" alt="" loading="lazy">
@@ -136,7 +138,7 @@
       </button>
 
       <button class="orb orb--right" data-cat="research" type="button" aria-label="Research — rotate into focus">
-        <span class="orb__media research-orb-paper" aria-hidden="true"><span class="research-orb-lines"></span></span>
+        <span class="orb__media" aria-hidden="true"><img src="assets/images/research/thesis-cover.jpg" alt=""></span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z"/><path d="M14 2.5V7.5h5"/><path d="M9 13h6M9 16.5h6"/></svg>
         <span class="orb__label">Research</span>
       </button>
