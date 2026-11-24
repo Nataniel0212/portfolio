@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privera — on-device GDPR redaction — Nataniel Ataseven</title>
+  <title>Privera · On-device GDPR redaction | Nataniel Ataseven</title>
   <meta name="description" content="Privera redacts sensitive data from PDF and Word documents, entirely on your own computer. Built for law firms and anyone handling confidential material.">
   <meta name="theme-color" content="#0b1520">
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -12,15 +12,15 @@
   <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Privera — on-device GDPR redaction">
+  <meta property="og:title" content="Privera · On-device GDPR redaction">
   <meta property="og:description" content="Redacts sensitive data from legal documents on your own computer. Nothing leaves the machine.">
   <meta property="og:url" content="https://natanielataseven.github.io/case-privera.html">
-  <meta property="og:image" content="https://natanielataseven.github.io/assets/og-image.png">
+  <meta property="og:image" content="https://natanielataseven.github.io/assets/og-image-v2.jpg">
   <link rel="canonical" href="https://natanielataseven.github.io/case-privera.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=14">
+  <link rel="stylesheet" href="css/styles.css?v=22">
 
   <!-- Privera-tema: sidan speglar produktens eget varumärke (marinblå + blått) -->
   <style>
@@ -74,6 +74,8 @@
     }
     .project-hero__media {
       width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
       display: block;
       border-radius: var(--radius);
       border: 1px solid rgba(160, 200, 255, .18);
@@ -102,6 +104,11 @@
       margin: 18px 0 14px;
     }
     .project-hero__brand span { color: var(--accent); }
+    /* Fylld knapp: mörkare blå så den vita texten klarar 4.5:1 */
+    body.project-privera .btn--primary,
+    body.project-privera .cookie-banner__btn--accept { background: #2563eb; border-color: #2563eb; }
+    body.project-privera .btn--primary:hover,
+    body.project-privera .cookie-banner__btn--accept:hover { background: #1d4ed8; }
     .project-hero__tag {
       font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
       color: rgba(235, 243, 252, .85);
@@ -109,6 +116,8 @@
       margin-bottom: 30px;
     }
     .project-hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .project-hero__role { font-size: .9375rem; color: rgba(235, 243, 252, .72); margin: -14px 0 28px; }
+    .project-hero__role span { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-hover); margin-right: 10px; }
 
     .who-grid {
       display: grid;
@@ -152,7 +161,7 @@
       <a href="index.html" class="nav__logo">Nataniel Ataseven</a>
       <div class="nav__links">
         <a href="research.html" class="nav__link">Research</a>
-        <a href="apps.html" class="nav__link">Apps</a>
+        <a href="apps.html" class="nav__link" aria-current="true">Apps</a>
         <a href="websites.html" class="nav__link">Websites</a>
         <a href="index.html#about" class="nav__link">About</a>
         <a href="index.html#contact" class="nav__link">Contact</a>
@@ -165,7 +174,7 @@
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <a href="research.html">Research</a>
-    <a href="apps.html">Apps</a>
+    <a href="apps.html" aria-current="true">Apps</a>
     <a href="websites.html">Websites</a>
     <a href="index.html#about">About</a>
     <a href="index.html#contact">Contact</a>
@@ -177,15 +186,16 @@
     <div class="container">
       <div class="project-hero__inner">
         <div>
-          <a href="apps.html" class="case-hero__back">← Back to Apps</a>
+          <a href="apps.html#privera" class="case-hero__back">← Back to Apps</a>
           <h1 class="project-hero__brand">Privera<span>.</span></h1>
           <p class="project-hero__tag">Automatic redaction of sensitive data in PDF and Word documents. On your computer, never in the cloud.</p>
+          <p class="project-hero__role"><span>Founder &amp; owner</span> I created Privera and build it with a small team.</p>
           <div class="project-hero__actions">
             <a href="https://privera.se" class="btn btn--primary" target="_blank" rel="noopener">Visit privera.se ↗</a>
             <a href="#demo" class="btn btn--ghost">See it work</a>
           </div>
         </div>
-        <video class="project-hero__media" src="assets/video/privera-demo.mp4" autoplay muted loop playsinline preload="auto" aria-label="Privera finds and masks sensitive data in a legal document"></video>
+        <video class="project-hero__media" src="assets/video/privera-demo.mp4?v=2" poster="assets/images/privera/privera-demo-poster.jpg" data-autoplay muted loop playsinline preload="metadata" width="1280" height="720" aria-label="Privera finds and masks sensitive data in a legal document"></video>
       </div>
     </div>
   </header>
@@ -217,14 +227,14 @@
             <p>Large document volumes take hours to handle manually. Privera batch-processes up to 100 files at a time, locally.</p>
           </div>
         </div>
-        <img class="ad-showcase" src="assets/images/privera/ad-batch.png" alt="From Privera's launch campaign: large document volumes take hours to handle manually. Privera batch-processes up to 100 files at a time, entirely locally." loading="lazy" width="1318" height="1254">
+        <img class="ad-showcase" src="assets/images/privera/ad-batch.webp" alt="From Privera's launch campaign: large document volumes take hours to handle manually. Privera batch-processes up to 100 files at a time, entirely locally." loading="lazy" width="1318" height="1254">
       </section>
 
       <section class="case-step" id="demo">
         <span class="case-step__num">See it work</span>
         <h2>Open, review, export</h2>
         <div class="media-crop">
-          <img src="assets/images/privera/app-ui.png" alt="Privera's review view: detected sensitive data grouped by category, ready to mask" loading="lazy" width="1920" height="1080">
+          <img src="assets/images/privera/app-ui.webp" alt="Privera's review view: detected sensitive data grouped by category, ready to mask" loading="lazy" width="1600" height="900">
         </div>
         <p>The document renders in the center with every hit color-coded and grouped by category on the right. Toggle categories, click a hit to exclude it, or draw your own redactions. Then export a clean file. <a href="https://privera.se" target="_blank" rel="noopener">Try it at privera.se ↗</a></p>
       </section>
@@ -260,7 +270,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=15"></script>
-  <script src="js/analytics.js"></script>
+  <script src="js/main.js?v=20"></script>
+  <script src="js/analytics.js?v=2"></script>
 </body>
 </html>

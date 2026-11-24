@@ -41,12 +41,12 @@ function showBanner() {
   const banner = document.createElement('div');
   banner.className = 'cookie-banner';
   banner.setAttribute('role', 'dialog');
-  banner.setAttribute('aria-label', 'Cookie-inställningar');
+  banner.setAttribute('aria-label', 'Cookie settings');
   banner.innerHTML = `
-    <p class="cookie-banner__text">Denna sida använder anonyma cookies för att förstå hur den används. Ingen personlig data lagras.</p>
+    <p class="cookie-banner__text">This site uses cookies to understand how it is used. You can decline.</p>
     <div class="cookie-banner__actions">
-      <button type="button" class="cookie-banner__btn cookie-banner__btn--decline">Neka</button>
-      <button type="button" class="cookie-banner__btn cookie-banner__btn--accept">Acceptera</button>
+      <button type="button" class="cookie-banner__btn cookie-banner__btn--decline">Decline</button>
+      <button type="button" class="cookie-banner__btn cookie-banner__btn--accept">Accept</button>
     </div>
   `;
   document.body.appendChild(banner);

@@ -3,21 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apps — Nataniel Ataseven</title>
-  <meta name="description" content="Apps by Nataniel Ataseven — Privera, an on-device GDPR redaction tool for law firms, Video Processor Pro, an AI-powered video pipeline, and a browser-based converter for graphing calculator files.">
-  <meta name="theme-color" content="#081712">
+  <title>Apps | Nataniel Ataseven</title>
+  <meta name="description" content="Apps by Nataniel Ataseven: Privera, an on-device GDPR redaction tool for law firms, Video Processor Pro, an AI-powered video pipeline, and a browser-based converter for graphing calculator files.">
+  <meta name="theme-color" content="#0b1520">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nataniel Ataseven">
+  <meta property="og:title" content="Apps | Nataniel Ataseven">
+  <meta property="og:description" content="Privera, Video Processor Pro and File Converter: real apps with installers, audit logs and automated tests.">
+  <meta property="og:url" content="https://natanielataseven.github.io/apps.html">
+  <meta property="og:image" content="https://natanielataseven.github.io/assets/og-image-v2.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://natanielataseven.github.io/assets/og-image-v2.jpg">
   <link rel="canonical" href="https://natanielataseven.github.io/apps.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=14">
+  <link rel="stylesheet" href="css/styles.css?v=22">
 </head>
-<body data-category="apps">
+<body data-category="apps" data-project="privera">
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
@@ -25,7 +35,7 @@
       <a href="index.html" class="nav__logo">Nataniel Ataseven</a>
       <div class="nav__links">
         <a href="research.html" class="nav__link">Research</a>
-        <a href="apps.html" class="nav__link">Apps</a>
+        <a href="apps.html" class="nav__link" aria-current="page">Apps</a>
         <a href="websites.html" class="nav__link">Websites</a>
         <a href="index.html#about" class="nav__link">About</a>
         <a href="index.html#contact" class="nav__link">Contact</a>
@@ -39,92 +49,97 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="research.html">Research</a>
-    <a href="apps.html">Apps</a>
+    <a href="apps.html" aria-current="page">Apps</a>
     <a href="websites.html">Websites</a>
     <a href="index.html#about">About</a>
     <a href="index.html#contact">Contact</a>
     <a href="cv.html">View CV</a>
   </div>
 
-  <!-- Kategorihero -->
-  <header class="cat-page-hero">
-    <div class="cat-page-hero__scene" aria-hidden="true">
-      <video class="scene__video" src="assets/video/privera-demo.mp4" autoplay muted loop playsinline preload="metadata"></video>
+  <!-- Projekt-orbit: apparna som klot, bakgrunden följer projektet i fokus -->
+  <main class="orbit orbit--projects" id="top" data-orbit="project" data-start="privera">
+
+    <div class="orbit__scene" aria-hidden="true">
+      <div class="scene__layer is-active" data-scene="privera">
+        <video class="scene__video" src="assets/video/privera-demo.mp4?v=2" poster="assets/images/privera/privera-demo-poster.jpg" muted loop playsinline preload="metadata"></video>
+      </div>
+      <div class="scene__layer" data-scene="vpp">
+        <img class="scene__img scene__img--soft scene__img--a" data-src="assets/images/vpp/vpp-clip.jpg" alt="">
+        <img class="scene__img scene__img--soft scene__img--b" data-src="assets/images/vpp/vpp-compile.jpg" alt="">
+        <img class="scene__img scene__img--soft scene__img--c" data-src="assets/images/vpp/vpp-metadata.jpg" alt="">
+      </div>
+      <div class="scene__layer" data-scene="converter">
+        <img class="scene__img scene__img--soft scene__img--a" data-src="assets/images/converter/converter-files.png" alt="">
+        <img class="scene__img scene__img--soft scene__img--b" data-src="assets/images/converter/converter-limits.png" alt="">
+        <img class="scene__img scene__img--soft scene__img--c" data-src="assets/images/converter/converter-card.png" alt="">
+      </div>
       <div class="scene__shade"></div>
     </div>
-    <div class="container">
-      <a href="index.html" class="case-hero__back">← Back to the globe</a>
-      <h1>Apps</h1>
-      <p class="cat-page-hero__sub">Real products with installers, audit logs and automated tests. From privacy tooling for law firms to AI-powered video pipelines and a converter you can open in a tab right now.</p>
-      <div class="work-cat__head">
-        <span class="work-cat__num">02</span>
-        <span class="work-cat__line" aria-hidden="true"></span>
-        <span class="work-cat__count">3 projects</span>
+
+    <a href="index.html#apps" class="orbit__back">← Back to all categories</a>
+    <h1 class="orbit__name">Apps</h1>
+    <p class="orbit__sub" aria-live="polite"><strong>Privera</strong> · On-device GDPR redaction</p>
+
+    <div class="orbit__stage">
+      <button class="orbit__arrow orbit__arrow--prev" type="button" aria-label="Previous project">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+
+      <a class="orb orb--center" href="case-privera.html" data-key="privera" data-label="Privera" data-desc="On-device GDPR redaction" data-action="open the project" data-theme="#0b1520" aria-label="Privera: open the project">
+        <span class="orb__media" aria-hidden="true"><img src="assets/images/orbs/privera.jpg" alt="" width="440" height="440"></span>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l7.5 3v6c0 4.6-3.2 8.4-7.5 10-4.3-1.6-7.5-5.4-7.5-10v-6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>
+        <span class="orb__label">Privera</span>
+      </a>
+
+      <a class="orb orb--right" href="case-vpp.html" data-key="vpp" data-label="Video Processor Pro" data-desc="AI video pipeline" data-action="open the project" data-theme="#0d0d14" aria-label="Video Processor Pro: rotate into focus">
+        <span class="orb__media" aria-hidden="true"><img src="assets/images/orbs/vpp.jpg" alt="" width="440" height="440"></span>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="M10 9.2l5 2.8-5 2.8z"/></svg>
+        <span class="orb__label">Video Processor Pro</span>
+      </a>
+
+      <a class="orb orb--left" href="case-converter.html" data-key="converter" data-label="File Converter" data-desc="Calculator files and text" data-action="open the project" data-theme="#0b1210" aria-label="File Converter: rotate into focus">
+        <span class="orb__media" aria-hidden="true"><img src="assets/images/orbs/converter.jpg" alt="" width="440" height="440"></span>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h14.5M15 4.5L18.5 8 15 11.5"/><path d="M20 16H5.5M9 12.5L5.5 16 9 19.5"/></svg>
+        <span class="orb__label">File Converter</span>
+      </a>
+
+      <button class="orbit__arrow orbit__arrow--next" type="button" aria-label="Next project">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+
+    <div class="orbit__info">
+      <div class="orbit__panel is-active" data-key="privera">
+        <h2 class="sr-only">Privera · On-device GDPR redaction</h2>
+        <p class="orbit__kicker"><span>01 / 03</span></p>
+        <p class="orbit__desc">Finds and masks personal data in legal documents, entirely on the lawyer's own machine.</p>
+        <div class="orbit__actions">
+          <a href="case-privera.html" class="btn btn--primary">Explore Privera →</a>
+          <a href="https://privera.se" class="btn btn--ghost" target="_blank" rel="noopener">Visit privera.se <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
+      </div>
+
+      <div class="orbit__panel" data-key="vpp" aria-hidden="true" inert>
+        <h2 class="sr-only">Video Processor Pro · AI video pipeline</h2>
+        <p class="orbit__kicker"><span>02 / 03</span></p>
+        <p class="orbit__desc">Turns full videos into publish-ready shorts with titles and hashtags written for you.</p>
+        <div class="orbit__actions">
+          <a href="case-vpp.html" class="btn btn--primary">Explore Video Processor Pro →</a>
+        </div>
+      </div>
+
+      <div class="orbit__panel" data-key="converter" aria-hidden="true" inert>
+        <h2 class="sr-only">File Converter · Calculator files and text</h2>
+        <p class="orbit__kicker"><span>03 / 03</span></p>
+        <p class="orbit__desc">Calculator files become editable text and go back byte for byte, with nothing uploaded.</p>
+        <div class="orbit__actions">
+          <a href="case-converter.html" class="btn btn--primary">Explore File Converter →</a>
+          <a href="https://nataniel0212.github.io/calculator-file-converter/" class="btn btn--ghost" target="_blank" rel="noopener">Try the web app <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
       </div>
     </div>
-  </header>
 
-  <!-- Projekt -->
-  <section class="section section--cat-projects">
-    <div class="container">
-      <div class="work-grid">
-
-        <article class="card">
-          <div class="card__media card__media--sm">
-            <img src="assets/images/privera/ad-batch-card.jpg" alt="Privera: automatic redaction of large document volumes, entirely on your own computer" loading="lazy" width="1200" height="675">
-          </div>
-          <span class="card__cat">Commercial product</span>
-          <h2 class="card__title">Privera · On-device GDPR redaction</h2>
-          <p class="card__desc">Finds and masks personal data in legal documents, <strong>entirely on the lawyer's machine</strong>. Built on KB-BERT with OCR fallback and true pixel-level redaction.</p>
-          <div class="card__stats">
-            <span class="chip">100% on-device</span>
-            <span class="chip">179 tests</span>
-          </div>
-          <div class="card__tech">
-            <span class="tech">Electron</span><span class="tech">React</span><span class="tech">Python</span><span class="tech">KB-BERT</span>
-          </div>
-          <a href="case-privera.html" class="card__link">Explore Privera</a>
-          <a href="https://privera.se" class="card__ext" target="_blank" rel="noopener">privera.se ↗</a>
-        </article>
-
-        <article class="card">
-          <div class="card__media card__media--sm">
-            <img src="assets/images/vpp/vpp-clip.jpg" alt="Video Processor Pro: scene cutting interface" loading="lazy" width="800" height="429" style="object-position: center 65%">
-          </div>
-          <span class="card__cat">AI pipeline</span>
-          <h2 class="card__title">Video Processor Pro</h2>
-          <p class="card__desc">Turns full videos into publish-ready shorts. Scene detection with <strong>TransNetV2</strong>, 9-method smart cropping and GPT-4o metadata.</p>
-          <div class="card__stats">
-            <span class="chip">9-method smart crop</span>
-            <span class="chip">~$0.02/video</span>
-          </div>
-          <div class="card__tech">
-            <span class="tech">TensorFlow</span><span class="tech">OpenCV</span><span class="tech">FFmpeg</span><span class="tech">GPT-4o</span>
-          </div>
-          <a href="case-vpp.html" class="card__link">Explore the app</a>
-        </article>
-
-        <article class="card">
-          <div class="card__media card__media--sm">
-            <img src="assets/images/converter/converter-card.png" alt="File Converter: a list of Casio .G1E documents converted to text in one pass, with line counts and sizes" loading="lazy" width="879" height="494">
-          </div>
-          <span class="card__cat">Open source · Live in your browser</span>
-          <h2 class="card__title">File Converter · Calculator files ↔ text</h2>
-          <p class="card__desc">Casio <strong>.g1e</strong> and TI-83/84 <strong>.8xp</strong> files become editable text and go back byte for byte. A whole folder at a time, with <strong>nothing uploaded anywhere</strong>.</p>
-          <div class="card__stats">
-            <span class="chip">Byte-exact round-trip</span>
-            <span class="chip">654,481 token pairs verified</span>
-          </div>
-          <div class="card__tech">
-            <span class="tech">JavaScript</span><span class="tech">Zero dependencies</span><span class="tech">Electron</span><span class="tech">Node CLI</span>
-          </div>
-          <a href="case-converter.html" class="card__link">Explore the converter</a>
-          <a href="https://nataniel0212.github.io/calculator-file-converter/" class="card__ext" target="_blank" rel="noopener">Open it live ↗</a>
-        </article>
-
-      </div>
-    </div>
-  </section>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
@@ -134,7 +149,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=15"></script>
-  <script src="js/analytics.js"></script>
+  <script src="js/main.js?v=20"></script>
+  <script src="js/analytics.js?v=2"></script>
 </body>
 </html>

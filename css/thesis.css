@@ -60,6 +60,7 @@ body.project-thesis {
 .project-thesis .case-step > p strong { font-weight: 700; color: var(--text-1); }
 .project-thesis .case-step > p a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 .project-thesis .case-step > p a:hover { color: var(--accent-hover); }
+.project-thesis .case-insight strong { color: var(--accent); }
 .paper-install { margin-top: 20px; }
 .paper-install code { display: inline-block; padding: 7px 14px; font: 500 .8rem/1.4 'JetBrains Mono', monospace; color: var(--text-1); background: #edf2f1; border: 1px solid #d7e0de; border-radius: 2px; }
 .project-thesis .tech { border-radius: 2px; background: transparent; color: var(--text-3); border-color: var(--border-1); font-size: .65rem; }

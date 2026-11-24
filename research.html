@@ -3,30 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Research — Nataniel Ataseven</title>
+  <title>Research | Nataniel Ataseven</title>
   <meta name="description" content="Research by Nataniel Ataseven: a published bachelor's thesis on automated risk analysis of 5.4M municipal transactions, and Rosetta, an open-source tool that names unknown columns in BioLogic EC-Lab battery data without a language model.">
-  <meta name="theme-color" content="#f4f2ed">
+  <meta name="theme-color" content="#191006">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nataniel Ataseven">
+  <meta property="og:title" content="Research | Nataniel Ataseven">
+  <meta property="og:description" content="A published thesis on 5.4M municipal transactions, and Rosetta, an open-source tool for battery-lab data.">
+  <meta property="og:url" content="https://natanielataseven.github.io/research.html">
+  <meta property="og:image" content="https://natanielataseven.github.io/assets/og-image-v2.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://natanielataseven.github.io/assets/og-image-v2.jpg">
   <link rel="canonical" href="https://natanielataseven.github.io/research.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=15">
-  <link rel="stylesheet" href="css/research.css?v=1">
-  <link rel="stylesheet" href="css/research-header.css?v=1">
+  <link rel="stylesheet" href="css/styles.css?v=22">
+  <link rel="stylesheet" href="css/research.css?v=3">
 </head>
-<body class="research-library" data-category="research">
+<body data-category="research" data-project="thesis">
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">Nataniel Ataseven</a>
       <div class="nav__links">
-        <a href="research.html" class="nav__link">Research</a>
+        <a href="research.html" class="nav__link" aria-current="page">Research</a>
         <a href="apps.html" class="nav__link">Apps</a>
         <a href="websites.html" class="nav__link">Websites</a>
         <a href="index.html#about" class="nav__link">About</a>
@@ -40,7 +49,7 @@
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="research.html">Research</a>
+    <a href="research.html" aria-current="page">Research</a>
     <a href="apps.html">Apps</a>
     <a href="websites.html">Websites</a>
     <a href="index.html#about">About</a>
@@ -48,86 +57,74 @@
     <a href="cv.html">View CV</a>
   </div>
 
-  <!-- Kategorihero -->
-  <header class="cat-page-hero">
-    <div class="research-header-scene" aria-hidden="true">
-      <img src="assets/images/research/thesis-method.jpg" alt="">
+  <!-- Projekt-orbit: studierna som klot, bakgrunden följer studien i fokus -->
+  <main class="orbit orbit--projects" id="top" data-orbit="project" data-start="thesis">
+
+    <div class="orbit__scene" aria-hidden="true">
+      <div class="scene__layer is-active" data-scene="thesis">
+        <img class="research-scene-page research-scene-page--cover" src="assets/images/research/thesis-cover.jpg" alt="">
+        <img class="research-scene-page research-scene-page--method" src="assets/images/research/thesis-method.jpg" alt="">
+        <div class="rain research-scene-rain" data-rain="12"></div>
+      </div>
+      <div class="scene__layer" data-scene="rosetta">
+        <div class="hexscene" data-hexscene></div>
+      </div>
+      <div class="scene__shade"></div>
     </div>
-    <div class="container">
-      <a href="index.html#research" class="case-hero__back">← Back to portfolio</a>
-      <p class="research-kicker">Publications &amp; studies</p>
-      <h1>Research</h1>
-      <p class="cat-page-hero__sub">Studies where the data is messy and every answer is checked against something real: open payment data against public records, and unknown instrument data against physics.</p>
-      <div class="work-cat__head">
-        <span class="work-cat__num">01</span>
-        <span class="work-cat__line" aria-hidden="true"></span>
-        <span class="work-cat__count">2 studies · 2026</span>
+
+    <a href="index.html#research" class="orbit__back">← Back to all categories</a>
+    <h1 class="orbit__name">Research</h1>
+    <p class="orbit__sub" aria-live="polite"><strong>Bachelor's thesis</strong> · Risk analysis of 5.4M municipal transactions</p>
+
+    <div class="orbit__stage">
+      <button class="orbit__arrow orbit__arrow--prev" type="button" aria-label="Previous study">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+
+      <a class="orb orb--center" href="case-thesis.html" data-key="thesis" data-label="Bachelor's thesis" data-desc="Risk analysis of 5.4M municipal transactions" data-action="open the study" data-theme="#191006" aria-label="Bachelor's thesis: open the study">
+        <span class="orb__media orb__media--paper" aria-hidden="true"><img src="assets/images/orbs/thesis.jpg" alt="" width="440" height="440"></span>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z"/><path d="M14 2.5V7.5h5"/><path d="M9 13h6M9 16.5h6"/></svg>
+        <span class="orb__label">Thesis</span>
+      </a>
+
+      <a class="orb orb--right" href="case-rosetta.html" data-key="rosetta" data-label="Rosetta" data-desc="Naming unknown columns in battery-lab data" data-action="open the project" data-theme="#0f1c1f" aria-label="Rosetta: rotate into focus">
+        <span class="orb__media" aria-hidden="true"><span class="orb__hex">3F 1A 00 C2
+B7 04 9E 51
+00 2D F1 8A
+6C 33 07 E9
+A2 5B 10 4F</span></span>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7" width="17" height="10" rx="2"/><path d="M21.5 10.5v3"/><path d="M11.5 9l-2.5 3.5h3L9.5 16"/></svg>
+        <span class="orb__label">Rosetta</span>
+      </a>
+
+      <button class="orbit__arrow orbit__arrow--next" type="button" aria-label="Next study">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+
+    <div class="orbit__info">
+      <div class="orbit__panel is-active" data-key="thesis">
+        <h2 class="sr-only" lang="sv">Automatiserad riskanalys av kommunala leverantörsfakturor</h2>
+        <p class="orbit__kicker"><span>01 / 02</span></p>
+        <p class="orbit__desc">A seven-module Python system that screened 5.4 million municipal transactions, with flagged cases checked against public records.</p>
+        <div class="orbit__actions">
+          <a href="case-thesis.html" class="btn btn--primary">Explore the thesis →</a>
+          <a href="https://urn.kb.se/resolve?urn=urn:nbn:se:miun:diva-58574" class="btn btn--ghost" target="_blank" rel="noopener">Read in DiVA <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
+      </div>
+
+      <div class="orbit__panel" data-key="rosetta" aria-hidden="true" inert>
+        <h2 class="sr-only">Rosetta: naming unknown columns in battery-lab data without a language model</h2>
+        <p class="orbit__kicker"><span>02 / 02</span></p>
+        <p class="orbit__desc">Names unknown columns in battery-lab data from physics, without a language model.</p>
+        <div class="orbit__actions">
+          <a href="case-rosetta.html" class="btn btn--primary">Explore Rosetta →</a>
+          <a href="https://github.com/Nataniel0212/rosetta-eclab" class="btn btn--ghost" target="_blank" rel="noopener">Source on GitHub <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
       </div>
     </div>
-  </header>
 
-  <!-- Projekt -->
-  <section class="section section--cat-projects">
-    <div class="container">
-      <div class="work-grid">
-
-        <article class="card card--featured">
-          <div>
-            <span class="card__cat">Bachelor's thesis · Published in DiVA</span>
-            <h2 class="card__title" lang="sv"><a href="case-thesis.html">Automatiserad riskanalys av kommunala leverantörsfakturor</a></h2>
-            <p class="research-byline">Nataniel Ataseven · Mid Sweden University · 15 ECTS</p>
-            <p class="card__desc">A seven-module Python system, four years of open payment data and a document-based investigation. Semantic screening led to a case with <strong>13 documented control deficiencies</strong> — and a finding about the limits of external scrutiny.</p>
-            <div class="card__stats">
-              <span class="chip">5.4M transactions</span>
-              <span class="chip">107.6B SEK</span>
-              <span class="chip">13 control deficiencies</span>
-            </div>
-            <div class="card__tech">
-              <span class="tech">Python</span><span class="tech">Pandas</span><span class="tech">Benford's Law</span><span class="tech">Design Science</span>
-            </div>
-            <div class="publication-actions"><a href="case-thesis.html" class="btn btn--primary">Explore the study →</a><a href="https://urn.kb.se/resolve?urn=urn:nbn:se:miun:diva-58574" class="btn btn--ghost" target="_blank" rel="noopener">Publication in DiVA ↗</a></div>
-          </div>
-          <div class="card__media pipeline" aria-hidden="true">
-            <div class="pipeline__row">
-              <div class="pipeline__box"><span class="pipeline__num">48 CSV files</span><span class="pipeline__lbl">open payment data 2021–2024</span></div>
-            </div>
-            <div class="pipeline__arrow">↓</div>
-            <div class="pipeline__row">
-              <div class="pipeline__box"><span class="pipeline__num">7 modules</span><span class="pipeline__lbl">statistical + semantic analysis</span></div>
-              <div class="pipeline__box"><span class="pipeline__num">9 versions</span><span class="pipeline__lbl">V1.0 → V4.3</span></div>
-            </div>
-            <div class="pipeline__arrow">↓</div>
-            <div class="pipeline__row">
-              <div class="pipeline__box"><span class="pipeline__num">Public records</span><span class="pipeline__lbl">contracts, invoices &amp; approval records</span></div>
-            </div>
-            <div class="pipeline__arrow">↓</div>
-            <div class="pipeline__row">
-              <div class="pipeline__box pipeline__box--result"><span class="pipeline__num">13 control deficiencies</span><span class="pipeline__lbl">documented through case verification</span></div>
-            </div>
-          </div>
-        </article>
-
-        <article class="card card--featured">
-          <div>
-            <span class="card__cat">Open-source software · Pre-registered benchmark</span>
-            <h2 class="card__title"><a href="case-rosetta.html">Rosetta: naming unknown columns in battery&#8209;lab data without a language model</a></h2>
-            <p class="research-byline">Nataniel Ataseven · Independent project · 2026</p>
-            <p class="card__desc">When a lab instrument adds a new data column, open-source parsers stop reading the file. Rosetta reads it anyway and names each unknown column from physics, with the evidence. Tested on five frozen hold-outs against Claude Opus 5.5, it gave <strong>half as many wrong names</strong> and abstained where the data could not support a name.</p>
-            <div class="card__stats">
-              <span class="chip">373 real columns</span>
-              <span class="chip">5 wrong names vs 10</span>
-              <span class="chip">No language model</span>
-            </div>
-            <div class="card__tech">
-              <span class="tech">Python</span><span class="tech">NumPy</span><span class="tech">Binary formats</span><span class="tech">Benchmark design</span>
-            </div>
-            <div class="publication-actions"><a href="case-rosetta.html" class="btn btn--primary">Explore the project →</a><a href="https://github.com/Nataniel0212/rosetta-eclab" class="btn btn--ghost" target="_blank" rel="noopener">Source on GitHub ↗</a></div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
@@ -137,7 +134,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=16"></script>
-  <script src="js/analytics.js"></script>
+  <script src="js/main.js?v=20"></script>
+  <script src="js/analytics.js?v=2"></script>
 </body>
 </html>

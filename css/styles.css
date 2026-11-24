@@ -17,7 +17,7 @@
   --border-2: rgba(255, 255, 255, .16);   /* interaktiv border */
   --text-1: #f4f2ec;    /* rubriker, varm off-white */
   --text-2: #aba79c;    /* brödtext */
-  --text-3: #79756a;    /* muted */
+  --text-3: #86827a;    /* muted (≥ 4.5:1 mot alla mörka bakgrunder) */
   --accent: #e0763c;        /* koppar */
   --accent-hover: #ee8a50;
   --accent-soft: rgba(224, 118, 60, .09);  /* kopparton yta */
@@ -108,19 +108,32 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
   transition: color var(--dur-fast) var(--ease-std);
 }
 .nav__link:hover { color: var(--text-1); }
-.nav__link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+.nav__link:focus-visible,
+.nav__logo:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+/* "Du är här": kategorin för sidan (eller projektets kategori) markeras */
+.nav__link[aria-current] {
+  color: var(--text-1);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
+.mobile-menu a[aria-current] { color: var(--accent); }
 
 .nav__cv {
   font-size: .8125rem;
   font-weight: 600;
   color: var(--accent);
   text-decoration: none;
+  /* Kanten följer sidans accent (koppar, eller produktens färg på case-sidorna) */
   border: 1px solid rgba(224, 118, 60, .35);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
   padding: 7px 16px;
   border-radius: 99px;
   transition: border-color var(--dur-fast) var(--ease-std), background var(--dur-fast) var(--ease-std), color var(--dur-fast) var(--ease-std);
 }
 .nav__cv:hover { border-color: var(--accent); background: var(--accent-soft); }
+.nav__cv:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* Hamburger (mobil) */
 .nav__hamburger {
@@ -183,7 +196,8 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
   transition: transform 750ms cubic-bezier(.76, 0, .24, 1);
 }
 .loader.done { transform: translateY(-100%); }
-.loader.gone { display: none; }
+.loader.gone,
+.intro-seen .loader { display: none; }
 
 .loader__name {
   font-family: var(--font-display);
@@ -285,8 +299,9 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(.28) saturate(.8) blur(2px);
-  transform: scale(1.04);
+  /* Kraftigt suddad: videon ska läsas som textur, inte som text bakom namnet */
+  filter: brightness(.28) saturate(.8) blur(7px);
+  transform: scale(1.12);
 }
 
 /* Research: fallande guldsiffror (genereras av js/main.js i [data-rain]) */
@@ -328,14 +343,16 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
   line-height: 1.1;
 }
 
+/* Fast rad under namnet: vad jag gör. Roterar aldrig. */
 .orbit__role {
-  font-family: var(--font-mono);
-  font-size: .8125rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--text-3);
-  margin-top: 10px;
+  font-size: clamp(1rem, 1.35vw, 1.125rem);
+  color: var(--text-1);
+  opacity: .88;
+  max-width: 62ch;
+  text-wrap: balance;
+  margin-top: 14px;
 }
+.orbit__role + .orbit__sub { margin-top: 10px; }
 
 /* Undertexten byts ut när klotet roteras */
 .orbit__sub {
@@ -372,21 +389,28 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
   justify-content: center;
   gap: 10px;
   cursor: pointer;
-  overflow: hidden;
   font-family: var(--font-display);
-  background:
-    radial-gradient(circle at 32% 26%, #2b2723 0%, #191613 55%, #0d0b09 100%);
   border: 1px solid var(--border-2);
-  box-shadow:
-    inset 0 -22px 44px rgba(0, 0, 0, .55),
-    inset 0 10px 24px rgba(255, 255, 255, .04),
-    0 26px 64px rgba(0, 0, 0, .5);
+  box-shadow: 0 26px 64px rgba(0, 0, 0, .5);
   transition:
     transform 550ms var(--ease-out),
     opacity 550ms var(--ease-std),
     filter 550ms var(--ease-std),
     border-color 300ms var(--ease-std),
     box-shadow 300ms var(--ease-std);
+}
+/* Själva sfären ligger i ett eget lager, så sidokloten kan tonas ner
+   medan etiketten fortfarande går att läsa. */
+.orb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 26%, #2b2723 0%, #191613 55%, #0d0b09 100%);
+  box-shadow:
+    inset 0 -22px 44px rgba(0, 0, 0, .55),
+    inset 0 10px 24px rgba(255, 255, 255, .04);
+  transition: opacity 550ms var(--ease-std);
 }
 .orb:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
@@ -397,6 +421,7 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
   border-radius: 50%;
   overflow: hidden;
   pointer-events: none;
+  transition: opacity 550ms var(--ease-std), filter 550ms var(--ease-std);
 }
 .orb__media img {
   width: 100%;
@@ -413,16 +438,29 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
   background: radial-gradient(circle at 32% 26%, rgba(255, 255, 255, .06) 0%, rgba(13, 11, 9, .25) 55%, rgba(13, 11, 9, .82) 100%);
 }
 .orb__media .rain span { font-size: 11px; color: rgba(224, 118, 60, .45); }
+/* Vitt papper (avhandlingens omslag) blir annars för ljust bakom ikonen */
+.orb__media--paper img { opacity: .5; filter: brightness(.42) sepia(.35) saturate(.7); }
 
-.orb svg { position: relative; z-index: 1; width: 30px; height: 30px; color: var(--text-2); transition: color 300ms var(--ease-std); filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .8)); }
+.orb svg { position: relative; z-index: 1; width: 30px; height: 30px; margin-top: -26px; color: var(--text-2); transition: color 300ms var(--ease-std), opacity 550ms var(--ease-std); filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .8)); }
+/* Etiketten ligger fritt: under ikonen i mittklotet, och under sidoklotet
+   (utanför den förminskade sfären) så att den går att läsa även på mobil. */
 .orb__label {
-  position: relative;
+  position: absolute;
   z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 14px);
+  transform-origin: 50% 0;
+  width: max-content;
+  max-width: 180px;
+  text-align: center;
+  line-height: 1.25;
   font-size: .9375rem;
   font-weight: 600;
   letter-spacing: .02em;
   color: var(--text-1);
   text-shadow: 0 2px 10px rgba(0, 0, 0, .85);
+  transition: color 550ms var(--ease-std), transform 550ms var(--ease-out);
 }
 
 .orb--center {
@@ -434,24 +472,34 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
 .orb--center:hover {
   border-color: var(--accent);
   box-shadow:
-    inset 0 -22px 44px rgba(0, 0, 0, .55),
-    inset 0 10px 24px rgba(255, 255, 255, .04),
     0 26px 64px rgba(0, 0, 0, .5),
     0 0 44px rgba(224, 118, 60, .18);
 }
 
-/* Sidokloten: mindre, blekare, lägre — som om de kurvar bort runt sfären */
+/* Sidokloten: mindre, blekare, lägre, som om de kurvar bort runt sfären.
+   Sfär, bild och ikon tonas ner; etiketten hålls läsbar (WCAG 4.5:1). */
 .orb--left,
 .orb--right {
   z-index: 2;
-  opacity: .42;
-  filter: saturate(.5) brightness(.75);
+  border-color: rgba(255, 255, 255, .07);
+  box-shadow: none;
 }
+.orb--left::before, .orb--right::before { opacity: .42; }
+.orb--left .orb__media, .orb--right .orb__media { opacity: .4; filter: saturate(.5) brightness(.75); }
+.orb--left svg, .orb--right svg { opacity: .45; }
+.orb--left .orb__label, .orb--right .orb__label { color: var(--text-2); }
 .orb--left  { transform: translate(calc(-50% - var(--orb-shift)), calc(-50% + 8%)) scale(.55); }
 .orb--right { transform: translate(calc(-50% + var(--orb-shift)), calc(-50% + 8%)) scale(.55); }
-.orb--left:hover, .orb--right:hover { opacity: .65; }
+.orb--left:hover::before, .orb--right:hover::before { opacity: .65; }
+.orb--left:hover .orb__media, .orb--right:hover .orb__media { opacity: .6; }
 
-.orb--left .orb__label, .orb--right .orb__label { font-size: .8125rem; }
+/* Sidoklotet är skalat till .55, etiketten skalas upp igen (≈ 13 px) och
+   hamnar under sfären. Bara transform ändras, så storleken glider mjukt. */
+.orb--left .orb__label, .orb--right .orb__label {
+  max-width: 170px;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, .9);
+  transform: translate(-50%, calc(var(--orb-size) / 2 + 16px)) scale(1.56);
+}
 
 /* Pilarna */
 .orbit__arrow {
@@ -484,6 +532,277 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
   letter-spacing: .06em;
   color: var(--text-3);
   margin-top: 22px;
+}
+
+/* Klot längre bort på ringen (används när en ring har fler än tre klot,
+   och som startläge när ett klot "lindas runt" till andra sidan). */
+.orb--far-left,
+.orb--far-right,
+.orb--hidden {
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  filter: saturate(.4) brightness(.6);
+}
+.orb--far-left  { transform: translate(calc(-50% - var(--orb-shift) * 1.7), calc(-50% + 14%)) scale(.32); }
+.orb--far-right { transform: translate(calc(-50% + var(--orb-shift) * 1.7), calc(-50% + 14%)) scale(.32); }
+.orb--hidden    { transform: translate(-50%, calc(-50% + 18%)) scale(.2); }
+.orb--instant   { transition: none !important; }
+
+/* Klot som är länkar (startsida + kategorisidor) */
+a.orb { text-decoration: none; }
+
+/* ============ PROJEKT-ORBIT (kategorisidorna) ============
+   Samma karusell som startsidan, men kloten är projekten i kategorin.
+   Bakgrunden (färg, glöd och scen) följer projektet i fokus. */
+.orbit--projects { padding-top: 104px; padding-bottom: 56px; }
+
+.orbit__back {
+  font-size: .875rem;
+  color: var(--text-2);
+  text-decoration: none;
+  margin-bottom: 14px;
+  padding: 4px 2px;
+  transition: color var(--dur-fast) var(--ease-std);
+}
+.orbit__back:hover { color: var(--accent); }
+.orbit__back:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* Info om projektet i fokus. Alla paneler ligger i samma grid-cell så att
+   höjden aldrig hoppar när klotet roteras (kloten står still vertikalt). */
+.orbit__info {
+  display: grid;
+  width: 100%;
+  max-width: 640px;
+  margin-top: 6px;
+}
+.orbit__panel {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(8px);
+  visibility: hidden;
+  transition: opacity var(--dur-base) var(--ease-std), transform var(--dur-slow) var(--ease-out), visibility 0s linear var(--dur-base);
+}
+/* Den nya panelen tonar in först när den gamla tonat ut, så texten aldrig spökar */
+.orbit__panel.is-active {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition: opacity var(--dur-base) var(--ease-std) var(--dur-base), transform var(--dur-slow) var(--ease-out) var(--dur-base), visibility 0s;
+}
+/* Minimalistisk panel: räknare, en mening, knapparna */
+.orbit__kicker {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  letter-spacing: .16em;
+  color: var(--accent);
+}
+
+/* Första läget (även via direktlänk) sätts utan övergångar (js/main.js) */
+.orbit-init body,
+.orbit-init .orbit::before,
+.orbit-init .orbit::after,
+.orbit-init .orb,
+.orbit-init .orb::before,
+.orbit-init .orb__media,
+.orbit-init .orb svg,
+.orbit-init .orb__label,
+.orbit-init .scene__layer,
+.orbit-init .orbit__sub,
+.orbit-init .orbit__panel { transition: none !important; }
+.orbit__desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-2);
+  max-width: 46ch;
+  text-wrap: balance;
+}
+.orbit__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px 16px;
+  margin-top: 4px;
+}
+.orbit__actions .btn { padding: 10px 22px; font-size: .875rem; }
+/* Pappersdesignen på forskningssidorna är godkänd som den är: behåll dess knappar */
+.project-thesis .btn { min-height: 0; line-height: inherit; }
+
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Projektteman: djupa toner från respektive produkts eget varumärke */
+body[data-project="privera"]   { background: #0b1520; --glow-a: rgba(59, 130, 246, .15); --glow-b: rgba(30, 64, 140, .10); }
+body[data-project="vpp"]       { background: #0d0d14; --glow-a: rgba(139, 92, 246, .15); --glow-b: rgba(236, 72, 153, .08); }
+body[data-project="converter"] { background: #0b1210; --glow-a: rgba(70, 201, 122, .11); --glow-b: rgba(30, 110, 70, .09); }
+body[data-project="thesis"]    { background: #191006; --glow-a: rgba(224, 118, 60, .13); --glow-b: rgba(150, 85, 45, .09); }
+body[data-project="rosetta"]   { background: #0f1c1f; --glow-a: rgba(80, 160, 175, .13); --glow-b: rgba(36, 91, 112, .12); }
+body[data-project="stanek"]    { background: #0e0d0b; --glow-a: rgba(217, 179, 106, .10); --glow-b: rgba(120, 100, 60, .08); }
+body[data-project="peterbaho"] { background: #0c0b0a; --glow-a: rgba(244, 244, 241, .08); --glow-b: rgba(214, 160, 96, .08); }
+body[data-project="art"]       { background: #110e0b; --glow-a: rgba(200, 150, 100, .10); --glow-b: rgba(110, 80, 50, .08); }
+body[data-project="next"]      { background: #0a1424; --glow-a: rgba(120, 160, 255, .12); --glow-b: rgba(60, 90, 180, .09); }
+
+/* Scener som inte syns ska inte animera i onödan */
+.scene__layer:not(.is-active),
+.scene__layer:not(.is-active) * { animation-play-state: paused !important; }
+
+/* Skärmbilder med låg upplösning: mjukare och mörkare som bakgrund */
+.scene__img--soft { filter: brightness(.36) saturate(.9) blur(3px); }
+
+/* Rosetta: okända byte-kolumner som får namn ur fysiken (js/main.js) */
+.hexscene {
+  position: absolute;
+  inset: 76px 0 0;
+  display: flex;
+  justify-content: center;
+  gap: clamp(18px, 3vw, 40px);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+}
+.hexcol { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; height: 100%; }
+/* Rubrikraden: okänt ID tills fysiken ger kolumnen ett namn */
+.hexcol__name {
+  flex: none;
+  font-size: .6875rem;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  color: rgba(150, 200, 210, .42);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(150, 200, 210, .16);
+  transition: color 500ms var(--ease-std), border-color 500ms var(--ease-std);
+}
+.hexcol.is-named .hexcol__name { color: rgba(240, 190, 150, .92); border-bottom-color: rgba(224, 118, 60, .6); }
+/* Byte-strömmen under rubriken, klippt så den aldrig skymmer namnet */
+.hexcol__body {
+  flex: 1;
+  overflow: hidden;
+  padding-top: 10px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+}
+.hexcol__bytes {
+  display: block;
+  font-size: .75rem;
+  line-height: 1.9;
+  white-space: pre;
+  color: rgba(150, 200, 210, .075);
+  animation: hexScroll 40s linear infinite;
+}
+.hexcol.is-named .hexcol__bytes { color: rgba(150, 200, 210, .15); }
+@keyframes hexScroll { to { transform: translateY(-50%); } }
+
+/* "Nästa sajt": en ritning av en hemsida som byggs upp, ruta för ruta */
+.blueprint {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(120, 160, 255, .07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 160, 255, .07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 25%, transparent 78%);
+  mask-image: radial-gradient(ellipse at center, #000 25%, transparent 78%);
+}
+.blueprint__frame { position: absolute; left: 50%; top: 50%; width: min(78vw, 1040px); height: min(70vh, 640px); transform: translate(-50%, -50%); }
+.blueprint__box {
+  position: absolute;
+  border: 1px solid rgba(120, 160, 255, .3);
+  border-radius: 6px;
+  background: rgba(120, 160, 255, .03);
+  opacity: 0;
+  animation: blueprintBox 14s var(--ease-std) infinite;
+}
+@keyframes blueprintBox {
+  0%   { opacity: 0; transform: translateY(10px); }
+  7%   { opacity: 1; transform: none; }
+  78%  { opacity: 1; transform: none; }
+  88%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Små motiv inuti kloten för projekt utan bild */
+.orb__hex {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.7;
+  white-space: pre;
+  color: rgba(150, 200, 210, .3);
+}
+.orb__blueprint {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(120, 160, 255, .16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 160, 255, .16) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hexcol__bytes { animation: none; }
+  .blueprint__box { animation: none; opacity: 1; }
+}
+
+/* Mjuk övergång mellan sidorna: det valda klotet "öppnas" till nästa vy.
+   Webbläsare utan stöd navigerar som vanligt. */
+@view-transition { navigation: auto; }
+.nav { view-transition-name: site-nav; }
+@media (prefers-reduced-motion: no-preference) {
+  /* Varje del av karusellen glider till sin plats på nästa sida i stället
+     för att två lager tonas ovanpå varandra (inga dubbla rubriker/pilar). */
+  .orb--center { view-transition-name: orb-focus; }
+  .orb--left { view-transition-name: orb-left; }
+  .orb--right { view-transition-name: orb-right; }
+  .orbit__name { view-transition-name: orbit-title; }
+  .orbit__sub { view-transition-name: orbit-sub; }
+  .orbit__role { view-transition-name: orbit-role; }
+  .orbit__arrow--prev { view-transition-name: orbit-prev; }
+  .orbit__arrow--next { view-transition-name: orbit-next; }
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation-duration: 320ms; }
+  ::view-transition-group(*) { animation-duration: 480ms; animation-timing-function: var(--ease-out); }
+  /* Texter med olika innehåll ska inte töjas till varandras bredd: varje
+     ögonblicksbild behåller sin naturliga storlek, den gamla tonas ut snabbt
+     och den nya tonas in efteråt, så ingen text ligger dubbelt. */
+  ::view-transition-old(orbit-title), ::view-transition-new(orbit-title),
+  ::view-transition-old(orbit-sub), ::view-transition-new(orbit-sub) {
+    inline-size: auto;
+    block-size: auto;
+    left: 50%;
+    translate: -50% 0;
+  }
+  ::view-transition-old(orbit-title), ::view-transition-old(orbit-sub),
+  ::view-transition-old(orbit-role) { animation-duration: 120ms; }
+  ::view-transition-new(orbit-title), ::view-transition-new(orbit-sub) { animation-delay: 100ms; animation-duration: 260ms; }
+}
+/* Mindre rörelse: inga förflyttningar, men mjuka toningar i stället för
+   hårda klipp (en toning räknas inte som rörelse). */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation-duration: 200ms !important; animation-iteration-count: 1 !important; }
+  .scene__layer { transition: opacity 240ms var(--ease-std) !important; }
+  .orbit__sub { transition: opacity 180ms var(--ease-std) !important; }
+  .orb, .orb::before, .orb__media, .orb svg, .orb__label { transition: opacity 200ms var(--ease-std) !important; }
+  .orbit__panel { transform: none !important; transition: opacity 160ms var(--ease-std), visibility 0s linear 160ms !important; }
+  .orbit__panel.is-active { transition: opacity 200ms var(--ease-std) 140ms, visibility 0s !important; }
+  body { transition: background-color 240ms var(--ease-std) !important; }
 }
 
 /* ============ KATEGORISIDOR (research/apps/websites.html) ============ */
@@ -539,10 +858,14 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  justify-content: center;
   font-size: .9375rem;
   font-weight: 600;
+  line-height: 1.25;
   text-decoration: none;
-  padding: 13px 26px;
+  /* En knapphöjd på hela sajten (48 px = även bekväm pekyta) */
+  min-height: 48px;
+  padding: 10px 26px;
   border-radius: 99px;
   cursor: pointer;
   transition: background var(--dur-fast) var(--ease-std), border-color var(--dur-fast) var(--ease-std), color var(--dur-fast) var(--ease-std), transform var(--dur-fast) var(--ease-out);
@@ -863,7 +1186,9 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
 }
 
 /* ============ CONTACT ============ */
-.contact { text-align: center; position: relative; overflow: hidden; }
+/* Kontakt och sidfot har alltid sidans neutrala bakgrund, oavsett vilket
+   klot som senast var i fokus i karusellen ovanför. */
+.contact { text-align: center; position: relative; overflow: hidden; background: var(--bg-0); }
 .contact::before {
   content: '';
   position: absolute;
@@ -954,7 +1279,7 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
 }
 
 /* ============ FOOTER ============ */
-.footer { border-top: 1px solid var(--border-1); padding: 36px 0; }
+.footer { border-top: 1px solid var(--border-1); padding: 36px 0; background: var(--bg-0); }
 .footer__inner {
   display: flex;
   justify-content: space-between;
@@ -1102,7 +1427,10 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
   font-size: .9375rem;
   margin-top: 44px;
 }
-.case-insight strong { color: var(--accent); }
+.case-insight strong { color: var(--accent-hover); }
+/* Länkar i löptext: sidans ljusa accent + understrykning (aldrig webbläsarens blå) */
+.case-step > p a { color: var(--accent-hover); text-decoration: underline; text-underline-offset: .2em; }
+.case-step > p a:hover { color: var(--text-1); }
 
 .case-cta {
   border-top: 1px solid var(--border-1);
@@ -1186,7 +1514,10 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
   .nav__links { display: none; }
   .nav__hamburger { display: flex; }
   .orbit { padding: 96px 16px 40px; }
+  /* Toppjusterat på mobil: ringen hamnar på samma höjd på alla kategorisidor */
+  .orbit--projects { padding-top: 92px; justify-content: flex-start; }
   .orbit__stage { --orb-shift: clamp(96px, 32vw, 220px); }
+  .orbit__sub { min-height: 3.3em; }
   .about__facts { grid-template-columns: 1fr; }
   .card { padding: 26px; }
   .case-stats { grid-template-columns: repeat(2, 1fr); }
@@ -1196,5 +1527,30 @@ body[data-category="apps"]     { background: #081712; --glow-a: rgba(110, 220, 1
 @media (max-width: 480px) {
   .card--featured { padding: 26px; }
   .orbit__stage { height: 240px; --orb-size: clamp(120px, 36vw, 150px); }
-  .orb--left .orb__label, .orb--right .orb__label { display: none; }
+  .orb--left .orb__label, .orb--right .orb__label { max-width: 106px; }
+  /* Långa namn i mittklotet bryts snyggt och stannar inne i sfären */
+  .orb--center .orb__label { font-size: .8125rem; max-width: calc(var(--orb-size) - 30px); text-wrap: balance; transform: translate(-50%, 8px); }
+  /* Tätare på smala skärmar, så knapparna syns utan att man scrollar */
+  .orbit--projects { padding-top: 78px; }
+  .orbit--projects .orbit__back { margin-bottom: 6px; }
+  .orbit--projects .orbit__stage { height: 216px; }
+  .orbit--projects .orbit__panel { gap: 10px; }
+  .orbit__desc { font-size: .9375rem; }
+  .orbit__actions .btn { padding: 10px 18px; }
+  /* Pilarna under mittklotet, så de inte täcker sidokloten på smala skärmar */
+  .orbit__stage { margin-bottom: 60px; }
+  .orbit__arrow { top: auto; bottom: -58px; transform: none; }
+  .orbit__arrow:active { transform: scale(.94); }
+  .orbit__arrow--prev { left: calc(50% - 56px); }
+  .orbit__arrow--next { right: calc(50% - 56px); }
+}
+
+/* Korta skärmar (vanliga laptops): hela projektkarusellen inklusive
+   knapparna ska rymmas utan att man behöver scrolla. */
+@media (min-width: 481px) and (max-height: 820px) {
+  .orbit--projects { padding-top: 84px; padding-bottom: 32px; }
+  .orbit--projects .orbit__back { margin-bottom: 6px; }
+  .orbit--projects .orbit__sub { margin-top: 10px; }
+  .orbit--projects .orbit__stage { height: clamp(190px, 28vh, 260px); margin-top: 8px; --orb-size: clamp(110px, 21vmin, 180px); }
+  .orbit--projects .orbit__panel { gap: 10px; }
 }

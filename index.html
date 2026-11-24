@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nataniel Ataseven — Developer & Data Scientist</title>
-  <meta name="description" content="Portfolio of Nataniel Ataseven — Developer & Data Scientist. Published research on 5.4M municipal transactions, an open-source tool for battery-lab data, on-device GDPR tooling for law firms, and AI-powered applications.">
+  <title>Nataniel Ataseven | Developer & Data Scientist</title>
+  <meta name="description" content="Portfolio of Nataniel Ataseven, developer and data scientist. Published research on 5.4M municipal transactions, an open-source tool for battery-lab data, on-device GDPR tooling for law firms, and AI-powered applications.">
   <meta name="theme-color" content="#081712">
 
   <!-- Favicon -->
@@ -17,17 +17,17 @@
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Nataniel Ataseven">
-  <meta property="og:title" content="Nataniel Ataseven — Developer & Data Scientist">
-  <meta property="og:description" content="Published research on public spending, privacy tools and real applications. Explore the study of 5.4M municipal transactions in DiVA.">
+  <meta property="og:title" content="Nataniel Ataseven | Developer & Data Scientist">
+  <meta property="og:description" content="Developer and data scientist. Published research on 5.4M municipal transactions, on-device GDPR tooling for law firms, and websites for small businesses.">
   <meta property="og:url" content="https://natanielataseven.github.io/">
-  <meta property="og:image" content="https://natanielataseven.github.io/assets/og-image.png">
+  <meta property="og:image" content="https://natanielataseven.github.io/assets/og-image-v2.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Nataniel Ataseven — Developer & Data Scientist">
+  <meta property="og:image:alt" content="Nataniel Ataseven | Developer & Data Scientist">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Nataniel Ataseven — Developer & Data Scientist">
-  <meta name="twitter:description" content="I build systems to investigate public spending, protect privacy and solve practical problems.">
-  <meta name="twitter:image" content="https://natanielataseven.github.io/assets/og-image.png">
+  <meta name="twitter:title" content="Nataniel Ataseven | Developer & Data Scientist">
+  <meta name="twitter:description" content="Developer and data scientist. Published research on 5.4M municipal transactions, on-device GDPR tooling for law firms, and websites for small businesses.">
+  <meta name="twitter:image" content="https://natanielataseven.github.io/assets/og-image-v2.jpg">
   <link rel="canonical" href="https://natanielataseven.github.io/">
 
   <!-- Structured Data -->
@@ -36,7 +36,7 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Nataniel Ataseven",
-    "alternateName": "Nataniel Ataseven — Portfolio",
+    "alternateName": "Nataniel Ataseven Portfolio",
     "url": "https://natanielataseven.github.io/"
   }
   </script>
@@ -47,12 +47,12 @@
     "name": "Nataniel Ataseven",
     "url": "https://natanielataseven.github.io/",
     "image": "https://natanielataseven.github.io/assets/images/portrait.jpg",
-    "jobTitle": "Full-Stack Developer & Data Scientist",
+    "jobTitle": "Developer & Data Scientist",
     "affiliation": {
       "@type": "CollegeOrUniversity",
       "name": "Mid Sweden University"
     },
-    "knowsAbout": ["Web Development", "Data Science", "Machine Learning", "Fraud Detection", "Python", "JavaScript"],
+    "knowsAbout": ["Web Development", "Data Science", "Machine Learning", "Anomaly Detection", "Python", "JavaScript"],
     "email": "mailto:nataniel.ata7@hotmail.se",
     "sameAs": [
       "https://github.com/Nataniel0212",
@@ -64,8 +64,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=15">
-  <link rel="stylesheet" href="css/research.css?v=2">
+  <link rel="stylesheet" href="css/styles.css?v=22">
+  <link rel="stylesheet" href="css/research.css?v=3">
+  <!-- Ridån visas en gång per besök: dölj den före första renderingen om den redan visats -->
+  <script>try { if (sessionStorage.getItem('na-intro') === '1') document.documentElement.classList.add('intro-seen'); } catch (e) {}</script>
 </head>
 <body class="research-home" data-category="apps">
 
@@ -103,27 +105,28 @@
   </div>
 
   <!-- Orbit-hero: kategorikarusell runt "klotet" -->
-  <header class="orbit" id="top">
+  <header class="orbit" id="top" data-orbit="category" data-start="apps">
 
     <!-- Scen: levande bakgrund per kategori -->
     <div class="orbit__scene" aria-hidden="true">
       <div class="scene__layer" data-scene="research">
-        <img class="research-scene-page research-scene-page--cover" src="assets/images/research/thesis-cover.jpg" alt="">
-        <img class="research-scene-page research-scene-page--method" src="assets/images/research/thesis-method.jpg" alt="">
+        <img class="research-scene-page research-scene-page--cover" data-src="assets/images/research/thesis-cover.jpg" alt="">
+        <img class="research-scene-page research-scene-page--method" data-src="assets/images/research/thesis-method.jpg" alt="">
         <div class="rain research-scene-rain" data-rain="12"></div>
       </div>
       <div class="scene__layer" data-scene="websites">
-        <img class="scene__img scene__img--a" src="assets/images/stanek/campaign-doorway.jpg" alt="" loading="lazy">
-        <img class="scene__img scene__img--b" src="assets/images/stanek/campaign-detail.jpg" alt="" loading="lazy">
-        <img class="scene__img scene__img--c" src="assets/images/stanek/site-hero.png" alt="" loading="lazy">
+        <img class="scene__img scene__img--a" data-src="assets/images/stanek/campaign-doorway.webp" alt="">
+        <img class="scene__img scene__img--b" data-src="assets/images/stanek/campaign-detail.webp" alt="">
+        <img class="scene__img scene__img--c" data-src="assets/images/stanek/site-hero.webp" alt="">
       </div>
       <div class="scene__layer is-active" data-scene="apps">
-        <video class="scene__video" src="assets/video/privera-demo.mp4" muted loop playsinline preload="metadata"></video>
+        <video class="scene__video" src="assets/video/privera-demo.mp4?v=2" poster="assets/images/privera/privera-demo-poster.jpg" muted loop playsinline preload="metadata"></video>
       </div>
       <div class="scene__shade"></div>
     </div>
 
     <h1 class="orbit__name">Nataniel Ataseven</h1>
+    <p class="orbit__role">Developer and data scientist. I build data tools, apps and websites.</p>
       <p class="orbit__sub" id="orbitSub" aria-live="polite"><strong>Apps</strong> · Privera · Video Processor Pro · File Converter</p>
 
     <div class="orbit__stage">
@@ -131,23 +134,24 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
 
-      <button class="orb orb--center" data-cat="apps" type="button" aria-label="Apps — open category page">
-        <span class="orb__media" aria-hidden="true"><img src="assets/images/privera/app-ui.png" alt=""></span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+      <!-- Ringens ordning = DOM-ordningen: nästa klot ligger till höger -->
+      <a class="orb orb--center" href="apps.html" data-key="apps" data-label="Apps" data-desc="Privera · Video Processor Pro · File Converter" data-action="open the projects" data-theme="#081712" aria-label="Apps: open the projects">
+        <span class="orb__media" aria-hidden="true"><img src="assets/images/orbs/privera.jpg" alt="" width="440" height="440"></span>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
         <span class="orb__label">Apps</span>
-      </button>
+      </a>
 
-      <button class="orb orb--right" data-cat="research" type="button" aria-label="Research — rotate into focus">
-        <span class="orb__media" aria-hidden="true"><img src="assets/images/research/thesis-cover.jpg" alt=""></span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z"/><path d="M14 2.5V7.5h5"/><path d="M9 13h6M9 16.5h6"/></svg>
+      <a class="orb orb--right" href="research.html" data-key="research" data-label="Research" data-desc="Published thesis · Rosetta, an open-source data tool" data-action="open the studies" data-theme="#191006" aria-label="Research: rotate into focus">
+        <span class="orb__media orb__media--paper" aria-hidden="true"><img src="assets/images/orbs/thesis.jpg" alt="" width="440" height="440"></span>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z"/><path d="M14 2.5V7.5h5"/><path d="M9 13h6M9 16.5h6"/></svg>
         <span class="orb__label">Research</span>
-      </button>
+      </a>
 
-      <button class="orb orb--left" data-cat="websites" type="button" aria-label="Websites — rotate into focus">
-        <span class="orb__media" aria-hidden="true"><img src="assets/images/stanek/campaign-doorway.jpg" alt=""></span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.6 3.9 5.9 3.9 9.5s-1.3 6.9-3.9 9.5c-2.6-2.6-3.9-5.9-3.9-9.5S9.4 5.1 12 2.5z"/></svg>
+      <a class="orb orb--left" href="websites.html" data-key="websites" data-label="Websites" data-desc="STANEK · Peter Baho, with more in progress" data-action="open the projects" data-theme="#0a1424" aria-label="Websites: rotate into focus">
+        <span class="orb__media" aria-hidden="true"><img src="assets/images/orbs/websites.jpg" alt="" width="440" height="440"></span>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.6 3.9 5.9 3.9 9.5s-1.3 6.9-3.9 9.5c-2.6-2.6-3.9-5.9-3.9-9.5S9.4 5.1 12 2.5z"/></svg>
         <span class="orb__label">Websites</span>
-      </button>
+      </a>
 
       <button class="orbit__arrow orbit__arrow--next" id="orbitNext" type="button" aria-label="Next category">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
@@ -168,10 +172,10 @@
           <img src="assets/images/portrait.jpg" alt="Nataniel Ataseven" loading="lazy" width="800" height="1000">
         </div>
         <div class="about__text reveal">
-          <p>I study <strong>Industrial Engineering &amp; Management</strong> at Mid Sweden University, and I like problems where the data is messy, the stakes are real, and nobody has looked closely enough. My published bachelor’s thesis combines analysis of 5.4 million municipal transactions with public records to investigate control deficiencies.</p>
+          <p>I study <strong>Industrial Engineering &amp; Management</strong> at Mid Sweden University, and I like problems where the data is messy, the stakes are real, and nobody has looked closely enough. My published bachelor's thesis combines analysis of 5.4 million municipal transactions with public records to investigate control deficiencies.</p>
           <p>I work across the stack: <strong>Python for data and ML</strong> (Pandas, PyTorch, OpenCV), <strong>TypeScript/React for interfaces</strong>, and enough infrastructure to ship real desktop products with installers, audit logs and 179 automated tests.</p>
           <div class="about__facts">
-            <div class="fact"><span class="fact__label">Education</span><span class="fact__value">MSc Industrial Engineering, MIUN</span></div>
+            <div class="fact"><span class="fact__label">Education</span><span class="fact__value">MSc in Engineering, Industrial Engineering &amp; Management (2022–2028)</span></div>
             <div class="fact"><span class="fact__label">Focus</span><span class="fact__value">Data science · Full-stack</span></div>
             <div class="fact"><span class="fact__label">Core stack</span><span class="fact__value">Python · React · TypeScript</span></div>
             <div class="fact"><span class="fact__label">Currently</span><span class="fact__value">Open to opportunities</span></div>
@@ -182,7 +186,7 @@
       <!-- Teamwork -->
       <div class="about-team reveal">
         <div class="about-team__media">
-          <img src="assets/images/team.jpg" alt="Nataniel and the Privera team gathered around a laptop in a meeting room" loading="lazy" width="1600" height="1069">
+          <img src="assets/images/team.webp" alt="Nataniel and the Privera team gathered around a laptop in a meeting room" loading="lazy" width="1200" height="802">
         </div>
         <div class="about-team__text">
           <span class="eyebrow">How I work</span>
@@ -198,7 +202,7 @@
     <div class="container">
       <span class="eyebrow reveal">Contact</span>
       <h2 class="section__title reveal">Let's build something that matters.</h2>
-      <p class="contact__sub reveal">Recruiting, collaborating, or just curious about the published research? My inbox is open.</p>
+      <p class="contact__sub reveal">Hiring, looking for a website, or curious about the published research? My inbox is open.</p>
       <a href="mailto:nataniel.ata7@hotmail.se" class="contact__mail reveal">nataniel.ata7@hotmail.se</a>
       <div class="contact__grid reveal">
         <a href="https://github.com/Nataniel0212" class="contact-card" target="_blank" rel="noopener">
@@ -228,7 +232,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=17"></script>
-  <script src="js/analytics.js"></script>
+  <script src="js/main.js?v=20"></script>
+  <script src="js/analytics.js?v=2"></script>
 </body>
 </html>
